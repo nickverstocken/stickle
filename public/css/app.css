@@ -2,6 +2,8 @@
   padding: 0;
   margin: 0;
   font-weight: 400;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 html,
@@ -13,6 +15,31 @@ body {
   color: #313131;
   background: #198891;
   font-family: "Open Sans Condensed", sans-serif;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px #21b0bd inset;
+  -webkit-text-fill-color: #fff;
+}
+
+::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: #fff;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #fff;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #fff;
+}
+
+::placeholder {
+  /* Most modern browsers support this now. */
+  color: #fff;
 }
 
 .flex-center {
@@ -36,7 +63,6 @@ body {
 
 h1 {
   font-family: "Fredericka the Great", cursive;
-  font-size: 6rem;
   line-height: 1;
   color: #fff;
 }
@@ -44,6 +70,28 @@ h1 {
 button {
   font-family: "Open Sans Condensed", sans-serif;
   font-weight: 700;
+  border: 0;
+  outline: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+a.button {
+  font-weight: 700;
+}
+
+a:visited {
+  color: #313131;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.2em;
+  margin-bottom: 5px;
+  font-family: "Open Sans Condensed", sans-serif;
   border: 0;
   outline: 0;
 }
@@ -61,8 +109,6 @@ button {
   z-index: 1;
   color: #fff;
   background: #1D9CA7;
-  width: 50%;
-  max-width: 500px;
   padding: 50px 0px;
   text-align: center;
   border-radius: 40% 50% 40% 50%;
@@ -83,7 +129,7 @@ button {
   margin-top: 40px;
 }
 
-.intro .buttons button:first-child {
+.intro .buttons .button:first-child {
   background: #EE7418;
   color: #fff;
   margin-right: 10px;
@@ -106,25 +152,64 @@ button {
 }
 
 .main .animal-bg.olifant {
-  -webkit-transform: translateY(calc(-100%)) translateX(70%) rotate(25deg);
-          transform: translateY(calc(-100%)) translateX(70%) rotate(25deg);
+  top: -70px;
+  right: 25px;
+  -webkit-transform: rotate(25deg);
+          transform: rotate(25deg);
   width: 180px;
 }
 
 .main .animal-bg.krokodil {
-  -webkit-transform: translateY(calc(-50% - 140px)) translateX(10%) rotate(25deg);
-          transform: translateY(calc(-50% - 140px)) translateX(10%) rotate(25deg);
+  top: -60px;
+  left: 35%;
+  -webkit-transform: rotate(25deg);
+          transform: rotate(25deg);
   width: 180px;
 }
 
 .main .animal-bg.giraf {
-  -webkit-transform: translateY(41%) translateX(30%) rotate(180deg);
-          transform: translateY(41%) translateX(30%) rotate(180deg);
-  width: 180px;
+  bottom: -110px;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  width: 140px;
+  left: 45%;
 }
 
-#login.main {
-  overflow-y: auto;
+.mainwrap {
+  position: relative;
+  width: 50%;
+  max-width: 600px;
+}
+
+.bg-animals {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+#start h1 {
+  font-size: 6rem;
+}
+
+#login h1 {
+  font-size: 4rem;
+}
+
+.form {
+  margin: 0 auto;
+  display: block;
+  max-width: 250px;
+  padding: 5px;
+  margin-top: 40px;
+}
+
+.form input {
+  color: #fff;
+  background-color: #21b0bd;
+  border-bottom: 2px solid #198891;
 }
 
 @media only screen and (max-width: 768px) {
@@ -134,47 +219,57 @@ button {
     font-size: 5rem;
   }
 
-  .intro {
+  .mainwrap {
     margin: 0px 5px;
     width: 100%;
   }
 
-  .intro h1 {
+  .mainwrap h1 {
     position: relative;
     z-index: 1;
     margin-top: 20px;
   }
 
-  .intro .buttons {
+  .mainwrap .buttons {
     margin-bottom: 20px;
-  }
-
-  .main .animal-bg.olifant {
-    display: none;
-  }
-
-  .main .animal-bg.krokodil {
-    -webkit-transform: translateY(calc(-50% - 110px)) translateX(50%) rotate(45deg);
-            transform: translateY(calc(-50% - 110px)) translateX(50%) rotate(45deg);
-    width: 180px;
-  }
-
-  .main .animal-bg.giraf {
-    -webkit-transform: translateY(32%) translateX(30%) rotate(180deg);
-            transform: translateY(32%) translateX(30%) rotate(180deg);
-    width: 180px;
   }
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 767px) {
+@media only screen and (max-device-width: 414px) {
+  .main {
+    overflow: hidden;
+  }
+
   .main .animal-bg.olifant {
     display: none;
   }
 
   .main .animal-bg.krokodil {
-    -webkit-transform: translateY(calc(-50% - 80px)) translateX(50%) rotate(45deg);
-            transform: translateY(calc(-50% - 80px)) translateX(50%) rotate(45deg);
-    width: 180px;
+    -webkit-transform: rotate(50deg);
+            transform: rotate(50deg);
+    left: auto;
+    right: -30px;
+    top: -25px;
+  }
+
+  #login .intro {
+    border-radius: 4px;
+  }
+
+  #login .animal-bg.hagedis {
+    display: none;
+  }
+
+  #login .animal-bg.olifant {
+    display: none;
+  }
+
+  #login .animal-bg.krokodil {
+    display: none;
+  }
+
+  #login .animal-bg.giraf {
+    display: none;
   }
 }
 

@@ -1,16 +1,26 @@
 @extends('layout')
 
 @section('content')
-    <div class="flex-center full-height main" id="start">
+    <div class="flex-center full-height main" id="login">
         <div class="mainwrap">
             <div class="intro">
-                <h1>Stickle</h1>
-                <p>Lees. Ontdek. Speel!</p>
+                <h1>Registreer</h1>
+                <div class="form">
+                    <form >
+                        <input type="text" placeholder="Voornaam" name="firstname" required >
+                        <input type="text" placeholder="Achternaam" name="lastname" required >
+                        <input type="email" placeholder="Email" name="email" required >
+                        <input type="password" placeholder="Wachtwoord" name="password">
+                        <input type="password" placeholder="Bevestig wachtwoord" name="confirm_password">
+                    </form>
+
+                </div>
                 <div class="buttons">
-                    <a href="/registreer" class="button orange">Begin nu</a>
+                    <button class="button orange">Registreer</button>
                     <a href="/login" class="button white">Log in</a>
                 </div>
                 <img class="animal-bg hagedis" src="{{ URL::asset('images/hagedis.svg') }}" alt="Hagedis">
+
             </div>
             <div class="bg-animals">
                 <img class="animal-bg olifant" src="{{ URL::asset('images/olifant.svg') }}" alt="Olifant">
@@ -19,5 +29,4 @@
             </div>
         </div>
     </div>
-
 @stop
