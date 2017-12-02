@@ -13,11 +13,11 @@ html, body{
 }
 body{
   color:$font-color;
-  background: darken($green,5%);
+  background:$bg;
   font-family: $open-sans-font;
 }
 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 30px lighten($green,5%) inset;
+  -webkit-box-shadow: 0 0 0 30px darken($bg_light, 2%) inset;
   -webkit-text-fill-color: #fff;
 }
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
@@ -94,7 +94,7 @@ input{
   position: relative;
   z-index:1;
   color:#fff;
-  background: $green;
+  background: $bg_light;
   padding:50px 0px;
   text-align: center;
   border-radius: 40% 50% 40% 50%;
@@ -180,8 +180,11 @@ h1{
   margin-top:40px;
   input{
     color:#fff;
-    background-color:lighten($green, 5%);
-    border-bottom:2px solid darken($green, 5%);
+    background-color:darken($bg_light,2%);
+    border-bottom:2px solid $bg;
+    &:focus{
+      background-color:darken($bg_light, 4%);
+    }
   }
 }
 @media only screen and (max-width: 768px) {

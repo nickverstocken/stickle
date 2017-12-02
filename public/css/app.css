@@ -13,12 +13,12 @@ body {
 
 body {
   color: #313131;
-  background: #198891;
+  background: #121F30;
   font-family: "Open Sans Condensed", sans-serif;
 }
 
 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 30px #21b0bd inset;
+  -webkit-box-shadow: 0 0 0 30px #1c2736 inset;
   -webkit-text-fill-color: #fff;
 }
 
@@ -108,7 +108,7 @@ input {
   position: relative;
   z-index: 1;
   color: #fff;
-  background: #1D9CA7;
+  background: #1F2C3D;
   padding: 50px 0px;
   text-align: center;
   border-radius: 40% 50% 40% 50%;
@@ -208,8 +208,12 @@ input {
 
 .form input {
   color: #fff;
-  background-color: #21b0bd;
-  border-bottom: 2px solid #198891;
+  background-color: #1c2736;
+  border-bottom: 2px solid #121F30;
+}
+
+.form input:focus {
+  background-color: #18222f;
 }
 
 @media only screen and (max-width: 768px) {
