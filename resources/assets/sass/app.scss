@@ -8,7 +8,7 @@
 // Bootstrap
 html, body{
   height:100%;
-  overflow:hidden;
+
 }
 body{
   color:#313131;
@@ -47,7 +47,7 @@ button{
   font-size:1.1em;
   border-radius: 10px;
 }
-#intro{
+.intro{
   position: relative;
   z-index:1;
   color:#fff;
@@ -75,7 +75,8 @@ button{
     margin-top:40px;
   }
 }
-#main{
+.main{
+  overflow:hidden;
   .animal-bg{
     width:120px;
     position:absolute;
@@ -98,13 +99,15 @@ button{
     }
   }
 }
-
+#login.main{
+overflow-y: auto;
+}
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   h1{
     font-size:5rem;
   }
-  #intro{
+  .intro{
     margin:0px 5px;
     width: 100%;
     h1{
@@ -117,7 +120,7 @@ button{
     }
 
   }
-  #main{
+  .main{
     .animal-bg{
       &.olifant{
         display:none;
@@ -134,7 +137,7 @@ button{
   }
 }
 @media only screen and (min-device-width : 320px) and (max-device-width : 767px)  {
-  #main{
+  .main{
     .animal-bg{
       &.olifant{
         display:none;

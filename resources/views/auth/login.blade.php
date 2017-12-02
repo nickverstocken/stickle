@@ -1,10 +1,12 @@
 @extends('layout')
 
 @section('content')
-    <div class="flex-center full-height main" id="start">
+    <div class="flex-center full-height main" id="login">
         <div class="intro">
-            <h1>Stickle</h1>
-            <p>Lees. Ontdek. Speel!</p>
+            <h1>Login</h1>
+            <div class="form">
+                <input  />
+            </div>
             <div class="buttons">
                 <button class="button orange">Begin nu</button><button class="button white">Log in</button>
             </div>
