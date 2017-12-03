@@ -1,7 +1,8 @@
 
 // Body
 $body-bg: #f5f8fa;
-
+$fredericka-font: 'Fredericka the Great', cursive;
+$open-sans-font: 'Open Sans Condensed', sans-serif;
 // Borders
 $laravel-border-color: darken($body-bg, 10%);
 $list-group-border: $laravel-border-color;
@@ -15,10 +16,8 @@ $brand-info: #8eb4cb;
 $brand-success: #2ab27b;
 $brand-warning: #cbb956;
 $brand-danger: #bf5329;
-
 // Typography
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
-$font-family-sans-serif: "Raleway", sans-serif;
 $font-size-base: 14px;
 $line-height-base: 1.6;
 $text-color: #636b6f;
@@ -36,3 +35,14 @@ $input-color-placeholder: lighten($text-color, 30%);
 
 // Panels
 $panel-default-heading-bg: #fff;
+
+// Colors
+$bg: #121F30;
+$bg_light: #1F2C3D;
+$orange: #EE7418;
+$purple: #69316D;
+$green: #1D9CA7;
+$grey: #B4B8C4;
+$red: #FC4C78;
+$blue: #1974AB;
+$font-color: #313131;

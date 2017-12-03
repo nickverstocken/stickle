@@ -1,91 +1,32 @@
-@extends('layouts.app')
+@extends('layout')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Registreer als ouder</div>
-
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('firstName') ? ' has-error' : '' }}">
-                            <label for="firstName" class="col-md-4 control-label">Voornaam</label>
-
-                            <div class="col-md-6">
-                                <input id="firstName" type="text" class="form-control" name="firstName" value="{{ old('firstName') }}" required autofocus>
-
-                                @if ($errors->has('firstName'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('firstName') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('lastName') ? ' has-error' : '' }}">
-                            <label for="lastName" class="col-md-4 control-label">Achternaam</label>
-
-                            <div class="col-md-6">
-                                <input id="lastName" type="text" class="form-control" name="lastName" value="{{ old('lastName') }}" required autofocus>
-
-                                @if ($errors->has('lastName'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('lastName') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">Email</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Wachtwoord</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Bevestig uw wachtwoord</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Registreer
-                                </button>
-                            </div>
-                        </div>
+    <div class="flex-center full-height main" id="login">
+        <div class="mainwrap">
+            <div class="intro">
+                <h1>Registreer</h1>
+                <div class="form">
+                    <form >
+                        <input type="text" placeholder="Voornaam" name="firstname" required >
+                        <input type="text" placeholder="Achternaam" name="lastname" required >
+                        <input type="email" placeholder="Email" name="email" required >
+                        <input type="password" placeholder="Wachtwoord" name="password">
+                        <input type="password" placeholder="Bevestig wachtwoord" name="confirm_password">
                     </form>
+
                 </div>
+                <div class="buttons">
+                    <button class="button orange">Registreer</button>
+                    <a href="/login" class="button white">Log in</a>
+                </div>
+                <img class="animal-bg hagedis" src="{{ URL::asset('images/hagedis.svg') }}" alt="Hagedis">
+
+            </div>
+            <div class="bg-animals">
+                <img class="animal-bg olifant" src="{{ URL::asset('images/olifant.svg') }}" alt="Olifant">
+                <img class="animal-bg krokodil" src="{{ URL::asset('images/krokodil.svg') }}" alt="Olifant">
+                <img class="animal-bg giraf" src="{{ URL::asset('images/giraf.svg') }}" alt="Giraf">
             </div>
         </div>
     </div>
-</div>
-@endsection
+@stop
