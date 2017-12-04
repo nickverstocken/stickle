@@ -192,10 +192,12 @@ h1{
   }
 }
 #navbar-leftfixed{
+  z-index:1;
   height:100vh;
   width:90px;
   position: fixed;
   background:lighten($bg-light, 15%);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   nav{
     display:flex;
     justify-content: center;
@@ -238,6 +240,96 @@ h1{
     }
   }
 }
+.content{
+  position: relative;
+  margin-left:90px;
+
+  .cardswrap{
+    display:flex;
+    height:100vh;
+    overflow-x: auto;
+    .card{
+      position: relative;
+      height:100%;
+      width:33.33%;
+      min-width:500px;
+      border-left:1px solid $bg;
+      &:last-child{
+        border-right:1px solid $bg;
+      }
+      .cardHeader{
+        height:150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        h1{
+          max-width: 320px;
+          text-align: center;
+          font-size:50px;
+        }
+      }
+      .cardImage{
+        padding:25px 0;
+        .image{
+          width:200px;
+          height:250px;
+          margin: 0 auto;
+          position: relative;
+          overflow:hidden;
+          box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        }
+        img {
+          height: 250px;
+          object-fit: cover;
+        }
+
+        img[class] {
+          width: 100%;
+
+        }
+        .progress-bar{
+          height:7px;
+          position: absolute;
+          bottom:0;
+          width:100%;
+          background:rgba(255,255,255,0.4);
+          .progress{
+            background: $orange;
+            opacity:1;
+            width:0;
+            height:100%;
+          }
+        }
+        .page{
+          color:#fff;
+          text-align: center;
+          margin-top: 10px;
+          font-weight: 700;
+        }
+      }
+      &:nth-child(1n + 1){
+        background:$green;
+        .cardImage{
+          background:darken($green, 5%);
+        }
+      }
+      &:nth-child(2n + 1){
+        background:$red;
+        .cardImage{
+          background:darken($green, 5%);
+        }
+      }
+      &:nth-child(3n + 1){
+        background:$purple;
+        .cardImage{
+          background:darken($purple, 5%);
+        }
+      }
+    }
+  }
+
+}
+
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   h1{
