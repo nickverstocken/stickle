@@ -6,7 +6,8 @@
             <div class="intro">
                 <h1>Registreer</h1>
                 <div class="form">
-                    <form >
+                    <form id="frmRegister" method="POST" action="{{ route('register') }}" >
+                        {{ csrf_field() }}
                         <input type="text" placeholder="Voornaam" name="firstname" required >
                         <input type="text" placeholder="Achternaam" name="lastname" required >
                         <input type="email" placeholder="Email" name="email" required >
@@ -16,7 +17,7 @@
 
                 </div>
                 <div class="buttons">
-                    <button class="button orange">Registreer</button>
+                    <button type="submit" form="frmRegister" class="button orange">Registreer</button>
                     <a href="/login" class="button white">Log in</a>
                 </div>
                 <img class="animal-bg hagedis" src="{{ URL::asset('images/hagedis.svg') }}" alt="Hagedis">

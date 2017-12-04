@@ -14,11 +14,7 @@
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/login', function () {
-    return view('auth.login');
-});
 Route::get('/registreer', function () {
     return view('auth.register');
 });
-
 Auth::routes();
