@@ -18,4 +18,7 @@ Route::get('/registreer', function () {
     return view('auth.register');
 });
 
+Route::get('/nieuwkind','parrentController@openNewChild');
+Route::post('/voegnieuwkindtoe','parrentController@addNewChild');
+Route::get('/verwijderkind/{id}','parrentController@deleteChild')
 Auth::routes();

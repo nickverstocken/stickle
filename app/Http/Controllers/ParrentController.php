@@ -10,14 +10,14 @@ use Redirect;
 
 class ParrentController extends Controller
 {
-    public function openAddANewChild()
+    public function openNewChild()
     {
-        return view('addANewChild');
+        return view('newChild');
     }
 
     //function to add a new Child for the parrent logged in
-    public function addANewChild(Request $request){
-    	$validator = Validator::make($request, [
+    public function addNewChild(Request $request){
+    	$validator = Validator::make($request->all(), [
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'gender' => 'required|string|max:25',
@@ -42,5 +42,11 @@ class ParrentController extends Controller
 
         	return Redirect::back()->withErrors($validator);
         }
+    }
+
+    public function deleteChild($child_id){
+        $child = Child::find($child_id);    
+        $child->delete();
+        return Redirect::back();
     }
 }
