@@ -18,6 +18,7 @@ Route::get('/registreer', function () {
     return view('auth.register');
 });
 
+Route::get('/accountwijzigen','parentController@openEditAccount');
 Route::get('/verwijderaccount','parentController@deleteAccount');
 Route::get('/wijzigkind/{id}','parentController@openEditChild');
 Route::post('/wijzigkind/{id}','parentController@editChild');
