@@ -27,4 +27,7 @@ Route::get('/verwijderkind/{id}','parentController@deleteChild');
 Route::get('/parent/dashboard', function () {
     return view('dashboard_parents');
 });
+Route::get('/nieuwkind','parrentController@openNewChild');
+Route::post('/voegnieuwkindtoe','parrentController@addNewChild');
+Route::get('/verwijderkind/{id}','parrentController@deleteChild');
 Auth::routes();
