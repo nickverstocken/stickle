@@ -18,9 +18,12 @@ Route::get('/registreer', function () {
     return view('auth.register');
 });
 
-Route::get('/nieuwkind','parrentController@openNewChild');
-Route::post('/voegnieuwkindtoe','parrentController@addNewChild');
-Route::get('/verwijderkind/{id}','parrentController@deleteChild');
+Route::get('/verwijderaccount','parentController@deleteAccount');
+Route::get('/wijzigkind/{id}','parentController@openEditChild');
+Route::post('/wijzigkind/{id}','parentController@editChild');
+Route::get('/nieuwkind','parentController@openNewChild');
+Route::post('/voegnieuwkindtoe','parentController@addNewChild');
+Route::get('/verwijderkind/{id}','parentController@deleteChild');
 Route::get('/parent/dashboard', function () {
     return view('dashboard_parents');
 });
