@@ -19,7 +19,7 @@
         </ul>
     </nav>
 </div>
-    <div id="content">
+    <div class="content">
         @yield('dashboardcontent')
     </div>
 @stop
