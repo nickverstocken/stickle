@@ -4,12 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Child;
+use App\User;
 use Validator;
 use Auth;
 use Redirect;
 
 class ParentController extends Controller
 {
+    public function openEditAccount(){
+        $user = User::find(Auth::id());
+        return view('auth.editAccount',[
+            'user' => $user
+            ]);
+    }
+
     public function deleteAccount(){
 
         $user = User::find(Auth::id());    
