@@ -17,4 +17,5 @@ Route::get('/', function () {
 Route::get('/registreer', function () {
     return view('auth.register');
 });
+
 Auth::routes();

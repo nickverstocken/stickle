@@ -5,6 +5,15 @@
         <div class="mainwrap">
             <div class="intro">
                 <h1>Registreer</h1>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="form">
                     <form id="frmRegister" method="POST" action="{{ route('register') }}" >
                         {{ csrf_field() }}
@@ -12,7 +21,7 @@
                         <input type="text" placeholder="Achternaam" name="lastname" required >
                         <input type="email" placeholder="Email" name="email" required >
                         <input type="password" placeholder="Wachtwoord" name="password">
-                        <input type="password" placeholder="Bevestig wachtwoord" name="confirm_password">
+                        <input type="password" placeholder="Bevestig wachtwoord" name="password_confirmation">
                     </form>
 
                 </div>
