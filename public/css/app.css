@@ -61,6 +61,10 @@ input:-webkit-autofill {
   width: 100%;
 }
 
+ul li {
+  list-style-type: none;
+}
+
 h1 {
   font-family: "Fredericka the Great", cursive;
   line-height: 1;
@@ -214,6 +218,82 @@ input {
 
 .form input:focus {
   background-color: #18222f;
+}
+
+#navbar-leftfixed {
+  height: 100vh;
+  width: 90px;
+  position: fixed;
+  background: #395170;
+}
+
+#navbar-leftfixed nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
+
+#navbar-leftfixed nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#navbar-leftfixed nav ul li {
+  margin-bottom: 20px;
+}
+
+#navbar-leftfixed nav ul li a {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #30445f;
+  border-radius: 50% 50% 40% 40%;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+#navbar-leftfixed nav ul li a.selected {
+  background: #1F2C3D;
+}
+
+#navbar-leftfixed nav ul li a.selected,
+#navbar-leftfixed nav ul li a:hover {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  margin: 15px 0px;
+}
+
+#navbar-leftfixed nav ul li a img {
+  width: 30px;
 }
 
 @media only screen and (max-width: 768px) {

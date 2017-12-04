@@ -52,6 +52,11 @@ input:-webkit-autofill {
   height:100vh;
   width:100%;
 }
+ul{
+  li{
+    list-style-type: none;
+  }
+}
 h1{
   font-family: $fredericka-font;
 
@@ -171,7 +176,6 @@ h1{
   font-size:4rem;
 }
 }
-
 .form{
   margin:0 auto;
   display:block;
@@ -184,6 +188,53 @@ h1{
     border-bottom:2px solid $bg;
     &:focus{
       background-color:darken($bg_light, 4%);
+    }
+  }
+}
+#navbar-leftfixed{
+  height:100vh;
+  width:90px;
+  position: fixed;
+  background:lighten($bg-light, 15%);
+  nav{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+    ul{
+      display:flex;
+      justify-content: center;
+      align-content: center;
+      flex-wrap: wrap;
+      align-items: center;
+      li{
+        margin-bottom: 20px;
+        a{
+          justify-content: center;
+          align-items: center;
+          align-content: center;
+          display:flex;
+          background:lighten($bg_light, 10%);
+          border-radius: 50% 50% 40% 40%;
+          width:50px;
+          height:50px;
+
+          text-align: center;
+          transition:all 0.3s ease;
+          &.selected{
+
+            background: $bg_light;
+          }
+          &.selected, &:hover{
+            transform: scale(1.5);
+            margin:15px 0px;
+          }
+          img{
+            width:30px;
+          }
+        }
+
+      }
     }
   }
 }

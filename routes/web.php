@@ -20,5 +20,8 @@ Route::get('/registreer', function () {
 
 Route::get('/nieuwkind','parrentController@openNewChild');
 Route::post('/voegnieuwkindtoe','parrentController@addNewChild');
-Route::get('/verwijderkind/{id}','parrentController@deleteChild')
+Route::get('/verwijderkind/{id}','parrentController@deleteChild');
+Route::get('/parent/dashboard', function () {
+    return view('dashboard_parents');
+});
 Auth::routes();
