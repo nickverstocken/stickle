@@ -15,5 +15,6 @@
         <div class="container-fluid">
             @yield('content')
         </div>
+<script src="{{ URL::asset('js/app.js') }}" type="text/javascript"></script>
     </body>
 </html>
