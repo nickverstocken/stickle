@@ -1,0 +1,188 @@
+@import 'variables';
+.modalContainer{
+  ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: $bg;
+  }
+  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    $bg;
+    opacity:  1;
+  }
+  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    $bg;
+    opacity:  1;
+  }
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:    $bg;
+  }
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color:    $bg;
+  }
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: -moz-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  z-index: -1;
+  opacity: 0;
+  -moz-transition: opacity .2s ease-in-out;
+  -o-transition: opacity .2s ease-in-out;
+  -webkit-transition: opacity .2s ease-in-out;
+  transition: opacity .2s ease-in-out;
+  .modal{
+    position: relative;
+    width: 320px;
+    pointer-events: auto;
+
+  }
+  .modalHeader{
+    .close{
+      position: absolute;
+      z-index: 3;
+      top: 0;
+      right: 0;
+      padding: 8px;
+      cursor: pointer;
+      img{
+        width:25px;
+      }
+    }
+    h3 {
+      position: relative;
+      z-index: 2;
+      background: $blue;
+      padding: 16px;
+      line-height: 32px;
+      font-size: 22px;
+      font-weight:400;
+      font-family: $fredericka-font;
+      color: #fff;
+      text-align: center;
+      border-radius: 4px 4px 0 0;
+      box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+    }
+  }
+  .modalContent{
+    max-height: 100vh;
+    max-height: calc(90vh - 10px);
+    background: #fff;
+    position: relative;
+    overflow: auto;
+    background: $grey;
+    z-index: 1;
+    border-radius: 0 0 4px 4px;
+    .contentContainer{
+      .card{
+          margin:10px;
+          border-radius: 4px;
+          padding:15px;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+          transition: .6s ease;
+          background: #fff;
+          position:relative;
+
+        h4{
+          font-weight: 700;
+          padding-bottom: 12px;
+          margin-bottom: 15px;
+          font-size: 16px;
+          border-bottom: 1px solid $grey;
+          color: $bg;
+        }
+        textarea{
+          font-size:16px;
+        }
+        .input{
+          margin-bottom:0;
+          color:$bg;
+          border:1px solid darken($grey, 2%);
+          &:focus{
+            border:1px solid darken($grey, 10%);
+          }
+        }
+      }
+      .button{
+        padding:6px;
+        border-radius:4px;
+        margin-right:10px;
+        margin-bottom:10px;
+        background-color: $green;
+        border:1px solid $green;
+        color: #fff;
+        cursor: pointer;
+        &:hover{
+          background:none;
+          color:$green;
+        }
+        &.cancel{
+          border:1px solid $red;
+          background:$red;
+          &:hover{
+            background:none;
+            color:$red;
+          }
+        }
+        &.delete{
+          background:none;
+          margin-bottom: 0px;
+          line-height: 1;
+          vertical-align: top;
+          border:1px solid $red;
+          & .lnr{
+            margin-right: 0;
+            font-size:26px;
+            font-weight: 400;
+            color:$red;
+
+          }
+          &:hover{
+            background:$red;
+            border:1px solid $red;
+            & .lnr{
+              color:#fff;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+.modalBg{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+  background: rgba(26,36,48,.55);
+  opacity:0;
+}
+.actions{
+  float:right;
+  button{
+    &:hover{
+      background:$green;
+      color:#fff;
+      border:1px solid $green;
+      span{
+        color:#fff;
+      }
+    }
+
+  }
+}

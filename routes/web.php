@@ -28,6 +28,12 @@ Route::get('/verwijderkind/{id}','parentController@deleteChild');
 Route::get('/parent/dashboard', function () {
     return view('dashboard_parents');
 });
+Route::get('/parent/books', function () {
+    return view('parent.books.book');
+});
+Route::get('/parent/kids', function () {
+    return view('parent.kids.kids');
+});
 Route::get('/nieuwkind','parrentController@openNewChild');
 Route::post('/voegnieuwkindtoe','parrentController@addNewChild');
 Route::get('/verwijderkind/{id}','parrentController@deleteChild');
