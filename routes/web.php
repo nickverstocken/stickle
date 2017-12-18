@@ -34,6 +34,9 @@ Route::get('/parent/books', function () {
 Route::get('/parent/kids', function () {
     return view('parent.kids.kids');
 });
+Route::get('/child/login', function () {
+    return view('child.login');
+});
 Route::get('/nieuwkind','parrentController@openNewChild');
 Route::post('/voegnieuwkindtoe','parrentController@addNewChild');
 Route::get('/verwijderkind/{id}','parrentController@deleteChild');

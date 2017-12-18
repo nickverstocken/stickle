@@ -12,7 +12,8 @@
                 </div>
             </div>
             <div class="cardInfo">
-
+                <h2>Naam</h2>
+                <input value="Nick Verstocken" />
             </div>
         </div>
         <div class="card">
@@ -25,13 +26,17 @@
                 </div>
             </div>
             <div class="cardInfo">
-
+                <h2>Naam</h2>
+                <input value="Eveline Verhoeven" />
             </div>
         </div>
 
     </div>
     <div class="addButton">
-        <a id="addBookBtn" class="addBtn"> <img class="poster" src="{{ URL::asset('images/icons/add.svg') }}" alt="Instellingen"></a>
+        <a id="addChildBtn" class="addBtn"> <img class="poster" src="{{ URL::asset('images/icons/add.svg') }}" alt="Instellingen"></a>
     </div>
-    @include('layouts.modals.book')
+    <div class="addButton">
+        <a id="cameraBtn" class="addBtn" href="/child/login"> <img class="poster" src="{{ URL::asset('images/icons/photo-camera-1.svg') }}" alt="Instellingen"></a>
+    </div>
+    @include('layouts.modals.newChild')
 @stop
