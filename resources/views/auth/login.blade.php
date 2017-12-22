@@ -5,15 +5,25 @@
         <div class="mainwrap">
             <div class="intro">
                 <h1>Login</h1>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="form">
-                    <form >
+                    <form id="frmLogin" method="POST" action="{{ route('login') }}">
+                        {{ csrf_field() }}
                         <input type="email" placeholder="Email" name="email" required >
                         <input type="password" placeholder="Wachtwoords" name="password" required autocomplete="off">
                     </form>
 
                 </div>
                 <div class="buttons">
-                    <button type="submit" class="button orange">Log in</button>
+                    <button type="submit" form="frmLogin" class="button orange">Log in</button>
                     <a href="/registreer" class="button white">Registreer</a>
                 </div>
                 <img class="animal-bg hagedis" src="{{ URL::asset('images/hagedis.svg') }}" alt="Hagedis">

@@ -67,7 +67,7 @@ class ParentController extends Controller
                 'child' => $child
                 ]);
         }
-        return Redirect::back();
+        return redirect('/');
     }
 
     public function editChild($child_id, Request $request){
@@ -99,10 +99,10 @@ class ParentController extends Controller
             $child = Child::find($child_id);    
             $child->delete();
         }
-        return Redirect::back();
+        return redirect('/');
     }
 
-    //function to check if the child is from the logged in parrant
+    //function to check if the child is from the logged in parant
     public function isChildFromParent($child_id){
 
         $child = new Child;
