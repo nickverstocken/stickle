@@ -9,7 +9,7 @@ class Child extends Model
 {
     protected $table = 'children';
     protected $primaryKey = 'child_id';
-
+    
     public function getChildWithParentId($parent_id){
 
         return DB::table('children')

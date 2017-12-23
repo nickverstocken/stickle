@@ -26,22 +26,23 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/verwijderaccount','parentController@deleteAccount');
 
     //Children routes
-    Route::get('/wijzigkind/{id}','parentController@openEditChild');
-    Route::post('/wijzigkind/{id}','parentController@editChild');
-    Route::get('/nieuwkind','parentController@openNewChild');
-    Route::post('/voegnieuwkindtoe','parentController@addNewChild');
-    Route::get('/verwijderkind/{id}','parentController@deleteChild');
-    Route::get('/ouders/kinderen', function () {
-        return view('parent.kids.kids');
-    });
+    Route::get('/ouders/kinderen', 'ParentController@showAllChildrenFromParent');
+    Route::post('/ouders/kinderen/wijzig/{id}','parentController@editChild');    
+    Route::post('/ouders/kinderen/toevoegen','parentController@addNewChild');
+    Route::get('/ouders/kinderen/verwijder/{id}','parentController@deleteChild');
+    //Temporary children routes
+    Route::get('/ouders/kinderen/nieuw','parentController@openNewChild');
+    Route::get('/ouders/kinderen/open/{id}','parentController@openEditChild');
+    
     
     //Book routes
-    Route::get('/ouders/boeken', 'bookController@showAllBooks');
-    Route::post('/ouders/boeken/toevoegen','bookController@addNewBook');    
-    Route::get('/nieuwkind','parrentController@openNewChild');
-    Route::post('/voegnieuwkindtoe','parrentController@addNewChild');
-    Route::get('/verwijderkind/{id}','parrentController@deleteChild');
-	
+    Route::get('/ouders/boeken', 'BookController@showAllBooks');
+    Route::post('/ouders/boeken/toevoegen','BookController@addNewBook');
+    Route::post('/ouders/boeken/wijzig/{id}','BookController@editBook');
+    Route::get('/ouders/boeken/verwijder/{id}','BookController@deleteBook');
+	//Temporary book routes
+    Route::get('/ouders/boeken/nieuw','BookController@openNewBook');
+    Route::get('/ouders/boeken/open/{id}','BookController@openEditBook');
 });
 
 

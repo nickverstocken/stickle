@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Book route
+Route::get('/ouders/boeken/get/{id}','BookController@getBookData');
+
+//Children route
+Route::get('/ouders/kinderen/get/{id}','ParentController@getChildData');
