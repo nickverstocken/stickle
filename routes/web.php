@@ -37,6 +37,12 @@ Route::get('/parent/kids', function () {
 Route::get('/child/login', function () {
     return view('child.login');
 });
+Route::get('/child/dashboard', function () {
+    return view('dashboard_kids');
+});
+Route::get('/child/trophies', function () {
+    return view('child.trophies.trophies');
+});
 Route::get('/nieuwkind','parrentController@openNewChild');
 Route::post('/voegnieuwkindtoe','parrentController@addNewChild');
 Route::get('/verwijderkind/{id}','parrentController@deleteChild');

@@ -422,7 +422,19 @@ textarea {
   background-color: #18222f;
 }
 
-#navbar-leftfixed {
+#kidsnav {
+  background: #0F6E75;
+}
+
+#kidsnav ul li a {
+  background: #147E87;
+}
+
+#kidsnav ul li a.selected {
+  background: #1D9CA7;
+}
+
+.navbar-leftfixed {
   z-index: 1;
   height: 100vh;
   width: 90px;
@@ -432,7 +444,7 @@ textarea {
           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
-#navbar-leftfixed nav {
+.navbar-leftfixed nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -445,17 +457,17 @@ textarea {
   height: 100%;
 }
 
-#navbar-leftfixed nav ul {
+.navbar-leftfixed nav ul {
   text-align: center;
 }
 
-#navbar-leftfixed nav ul li {
+.navbar-leftfixed nav ul li {
   display: block;
   text-align: center;
   margin-bottom: 20px;
 }
 
-#navbar-leftfixed nav ul li a {
+.navbar-leftfixed nav ul li a {
   display: block;
   background: #d1d1d1;
   border-radius: 50% 50% 40% 40%;
@@ -468,12 +480,12 @@ textarea {
   transition: all 0.3s ease;
 }
 
-#navbar-leftfixed nav ul li a.selected {
+.navbar-leftfixed nav ul li a.selected {
   background: #EE7418;
 }
 
-#navbar-leftfixed nav ul li a.selected,
-#navbar-leftfixed nav ul li a:hover {
+.navbar-leftfixed nav ul li a.selected,
+.navbar-leftfixed nav ul li a:hover {
   -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
           box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   -webkit-transform: scale(1.2);
@@ -481,8 +493,13 @@ textarea {
   margin: 7px auto;
 }
 
-#navbar-leftfixed nav ul li a img {
+.navbar-leftfixed nav ul li a img {
   width: 30px;
+}
+
+#contentKids {
+  background: #1D9CA7;
+  overflow: auto;
 }
 
 .content {
@@ -875,7 +892,7 @@ textarea {
   margin-top: 15px;
 }
 
-.QRscan {
+#childLogin .QRscan {
   height: 0px;
   width: 0px;
   overflow: hidden;
@@ -884,50 +901,50 @@ textarea {
   position: relative;
 }
 
-.QRscan.show {
+#childLogin .QRscan.show {
   height: 320px;
   width: 320px;
 }
 
-.QRscan.show span {
+#childLogin .QRscan.show span {
   position: absolute;
   width: 50px;
   height: 50px;
   z-index: 2;
 }
 
-.QRscan.show span:first-child,
-.QRscan.show span:nth-child(2) {
+#childLogin .QRscan.show span:first-child,
+#childLogin .QRscan.show span:nth-child(2) {
   border-top: 8px solid rgba(247, 247, 247, 0.5);
   top: 0;
 }
 
-.QRscan.show span:last-child,
-.QRscan.show span:nth-last-child(2) {
+#childLogin .QRscan.show span:last-child,
+#childLogin .QRscan.show span:nth-last-child(2) {
   border-bottom: 8px solid rgba(247, 247, 247, 0.5);
   bottom: 0;
 }
 
-.QRscan.show span:first-child,
-.QRscan.show span:last-child {
+#childLogin .QRscan.show span:first-child,
+#childLogin .QRscan.show span:last-child {
   left: 0;
   border-left: 8px solid rgba(247, 247, 247, 0.5);
 }
 
-.QRscan.show span:nth-child(2),
-.QRscan.show span:nth-last-child(2) {
+#childLogin .QRscan.show span:nth-child(2),
+#childLogin .QRscan.show span:nth-last-child(2) {
   right: 0;
   border-right: 8px solid rgba(247, 247, 247, 0.5);
 }
 
-.QRscan .previewWrap {
+#childLogin .QRscan .previewWrap {
   width: 320px;
   height: 320px;
   overflow: hidden;
   z-index: 1;
 }
 
-.QRscan .previewWrap:after {
+#childLogin .QRscan .previewWrap:after {
   position: absolute;
   content: '';
   width: 100%;
@@ -940,7 +957,7 @@ textarea {
           animation: scan 4s infinite ease;
 }
 
-.QRscan #preview {
+#childLogin .QRscan #preview {
   width: 320px;
   height: 320px;
   -o-object-fit: cover;
@@ -954,6 +971,14 @@ textarea {
   background: #F7F7F7;
   padding: 10px;
   border-radius: 10px;
+  cursor: pointer;
+  opacity: 0;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.backbtn.show {
+  opacity: 1;
 }
 
 .backbtn img {
@@ -995,32 +1020,76 @@ textarea {
   }
 }
 
-@-webkit-keyframes beam {
-  0% {
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 0.7;
-  }
-
-  50% {
-    opacity: 0;
-  }
+.cardGridWrap h1 {
+  font-size: 90px;
+  text-align: center;
+  padding-top: 20px;
 }
 
-@keyframes beam {
-  0% {
-    opacity: 0;
-  }
+.cardGridWrap .cardGrid {
+  -webkit-column-width: 320px;
+          column-width: 320px;
+  -webkit-column-gap: 15px;
+          column-gap: 15px;
+  max-width: 1100px;
+  margin: 30px auto;
+}
 
-  50% {
-    opacity: 0.7;
-  }
+.cardGridWrap .cardGrid .card {
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -webkit-column-break-inside: avoid;
+          break-inside: avoid-column;
+  background: #fff;
+  display: inline-block;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
 
-  50% {
-    opacity: 0;
-  }
+.cardGridWrap .cardGrid .card .cardHeader {
+  margin: 15px;
+}
+
+.cardGridWrap .cardGrid .card .cardHeader h2 {
+  font-weight: 700;
+}
+
+.cardGridWrap .cardGrid .card .cardtumb {
+  width: 100%;
+}
+
+.cardGridWrap .cardGrid .card .cardtumb .image {
+  height: 200px;
+  margin: 15px;
+  position: relative;
+}
+
+.cardGridWrap .cardGrid .card .cardtumb .image img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 200px;
+}
+
+.cardGridWrap .cardGrid .card .cardtumb .image img[class] {
+  width: 100%;
+}
+
+.cardGridWrap .cardGrid .card .cardTitle {
+  margin: 15px;
+}
+
+.cardGridWrap .cardGrid .card .cardTitle p {
+  max-width: 300px;
+}
+
+.cardGridWrap .cardGrid .card .cardAction button {
+  width: 100%;
+  padding: 15px;
+  border-radius: 0px 0px 10px 10px;
+  background: #147E87;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 768px) {

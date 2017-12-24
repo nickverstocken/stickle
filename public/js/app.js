@@ -126,6 +126,7 @@ window.selectChild = function (kid) {
             $('#' + kid).addClass('childSelected');
         });
         $('.animal-bg').addClass('show');
+        $('.backbtn').addClass('show');
     });
     scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
     scanner.addListener('scan', function (content) {
@@ -164,6 +165,7 @@ window.backChildLogin = function () {
         $('.childrenWrap').removeClass('childSelected');
 
         $('.animal-bg').removeClass('show');
+        $('.backbtn').removeClass('show');
     });
 };
 window.closeModal = function ($event) {

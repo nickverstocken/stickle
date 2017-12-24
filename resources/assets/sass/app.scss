@@ -194,7 +194,20 @@ input, textarea{
     }
   }
 }
-#navbar-leftfixed{
+#kidsnav{
+  background:$green_darkest;
+  ul{
+    li{
+      a{
+        background:$green_darker;
+        &.selected{
+          background:$green;
+        }
+      }
+    }
+  }
+}
+.navbar-leftfixed{
   z-index:1;
   height:100vh;
   width:90px;
@@ -239,6 +252,10 @@ input, textarea{
       }
     }
   }
+}
+#contentKids{
+  background: $green;
+  overflow: auto;
 }
 .content{
   position: relative;
@@ -535,62 +552,62 @@ position: relative;
       }
     }
   }
-}
-.QRscan{
-  height:0px;
-  width:0px;
-  overflow: hidden;
-  transition: height 0.3s ease-in;
-  position:relative;
+  .QRscan{
+    height:0px;
+    width:0px;
+    overflow: hidden;
+    transition: height 0.3s ease-in;
+    position:relative;
 
-  &.show{
-    height:320px;
-    width:320px;
-    span{
-     position:absolute;
-      width:50px;
-      height:50px;
-      z-index: 2;
-      &:first-child, &:nth-child(2){
-        border-top:8px solid rgba($grey,0.5);
+    &.show{
+      height:320px;
+      width:320px;
+      span{
+        position:absolute;
+        width:50px;
+        height:50px;
+        z-index: 2;
+        &:first-child, &:nth-child(2){
+          border-top:8px solid rgba($grey,0.5);
+          top:0;
+        }
+        &:last-child, &:nth-last-child(2){
+          border-bottom:8px solid rgba($grey,0.5);
+          bottom:0;
+        }
+        &:first-child,&:last-child{
+          left:0;
+          border-left:8px solid rgba($grey,0.5);
+        }
+        &:nth-child(2),&:nth-last-child(2){
+          right:0;
+          border-right:8px solid rgba($grey,0.5);
+        }
+      }
+    }
+
+    .previewWrap{
+      width: 320px;
+      height: 320px;
+      overflow:hidden;
+      z-index: 1;
+      &:after{
+        position: absolute;
+        content:'';
+        width:100%;
+        height:50px;
+        background: linear-gradient(to bottom, rgba(250,129,107,1) 0%, rgba(250,129,107,0.95) 6%, rgba(237,102,90,0.15) 100%);
         top:0;
-      }
-      &:last-child, &:nth-last-child(2){
-        border-bottom:8px solid rgba($grey,0.5);
-        bottom:0;
-      }
-      &:first-child,&:last-child{
         left:0;
-        border-left:8px solid rgba($grey,0.5);
-      }
-      &:nth-child(2),&:nth-last-child(2){
-        right:0;
-        border-right:8px solid rgba($grey,0.5);
+        animation:scan 4s infinite ease;
       }
     }
-  }
+    #preview{
+      width: 320px;
+      height: 320px;
+      object-fit: cover;
 
-  .previewWrap{
-    width: 320px;
-    height: 320px;
-    overflow:hidden;
-    z-index: 1;
-    &:after{
-      position: absolute;
-      content:'';
-      width:100%;
-      height:50px;
-      background: linear-gradient(to bottom, rgba(250,129,107,1) 0%, rgba(250,129,107,0.95) 6%, rgba(237,102,90,0.15) 100%);
-      top:0;
-      left:0;
-      animation:scan 4s infinite ease;
     }
-  }
-  #preview{
-    width: 320px;
-    height: 320px;
-    object-fit: cover;
-
   }
 }
 .backbtn{
@@ -600,6 +617,12 @@ position: relative;
   background:$grey;
   padding:10px;
   border-radius: 10px;
+  cursor:pointer;
+ opacity:0;
+  transition:all 0.5s ease;
+  &.show{
+    opacity:1;
+  }
   img{
     width:30px;
     vertical-align: middle;
@@ -621,16 +644,67 @@ position: relative;
     top: 0;
   }
 }
-@keyframes beam {
-  0% {
-    opacity:0;
+.cardGridWrap{
+
+  h1{
+    font-size:90px;
+    text-align: center;
+    padding-top: 20px;
   }
-  50% {
-    opacity: 0.7;
+  .cardGrid{
+    column-width: 320px;
+    column-gap: 15px;
+    max-width: 1100px;
+    margin: 30px auto;
+
+    .card{
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      break-inside: avoid-column;
+      background: #fff;
+      display: inline-block;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      .cardHeader{
+        margin: 15px;
+        h2{
+          font-weight: 700;
+        }
+      }
+      .cardtumb{
+        width:100%;
+        .image{
+          height: 200px;
+          margin: 15px;
+          position: relative;
+          img{
+            object-fit: cover;
+            height:200px;
+          }
+          img[class]{
+            width:100%;
+          }
+        }
+      }
+      .cardTitle{
+        margin:15px;
+        p{
+          max-width: 300px;
+        }
+      }
+      .cardAction{
+        button{
+          width:100%;
+          padding:15px;
+          border-radius: 0px 0px 10px 10px;
+          background:$green_darker;
+          color:#fff;
+          font-size: 16px;
+          cursor:pointer;
+        }
+      }
+    }
   }
-  50% {
-    opacity: 0;
-  }
+
 }
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */

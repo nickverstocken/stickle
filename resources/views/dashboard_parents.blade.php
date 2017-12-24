@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-<div id="navbar-leftfixed">
+<div class="navbar-leftfixed">
     <nav>
         <ul>
             <li>
