@@ -645,6 +645,7 @@ position: relative;
   }
 }
 .cardGridWrap{
+  padding:15px;
 
   h1{
     font-size:90px;
@@ -652,9 +653,9 @@ position: relative;
     padding-top: 20px;
   }
   .cardGrid{
+    padding-top:20px;
     column-width: 320px;
     column-gap: 15px;
-    max-width: 1100px;
     margin: 30px auto;
 
     .card{
@@ -692,6 +693,9 @@ position: relative;
         }
       }
       .cardAction{
+        margin-left: -1px;
+        margin-right: -1px;
+        margin-bottom: -1px;
         button{
           width:100%;
           padding:15px;
@@ -700,6 +704,12 @@ position: relative;
           color:#fff;
           font-size: 16px;
           cursor:pointer;
+          img{
+            vertical-align: top;
+            margin-left:15px;
+            margin-right: 5px;
+            width:20px;
+          }
         }
       }
     }
@@ -729,7 +739,7 @@ position: relative;
   body{
     height:auto;
   }
-  #navbar-leftfixed{
+  .navbar-leftfixed{
     z-index:1;
     height:90px;
     width:100%;

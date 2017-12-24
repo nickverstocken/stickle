@@ -1020,6 +1020,10 @@ textarea {
   }
 }
 
+.cardGridWrap {
+  padding: 15px;
+}
+
 .cardGridWrap h1 {
   font-size: 90px;
   text-align: center;
@@ -1027,11 +1031,11 @@ textarea {
 }
 
 .cardGridWrap .cardGrid {
+  padding-top: 20px;
   -webkit-column-width: 320px;
           column-width: 320px;
   -webkit-column-gap: 15px;
           column-gap: 15px;
-  max-width: 1100px;
   margin: 30px auto;
 }
 
@@ -1082,6 +1086,12 @@ textarea {
   max-width: 300px;
 }
 
+.cardGridWrap .cardGrid .card .cardAction {
+  margin-left: -1px;
+  margin-right: -1px;
+  margin-bottom: -1px;
+}
+
 .cardGridWrap .cardGrid .card .cardAction button {
   width: 100%;
   padding: 15px;
@@ -1090,6 +1100,13 @@ textarea {
   color: #fff;
   font-size: 16px;
   cursor: pointer;
+}
+
+.cardGridWrap .cardGrid .card .cardAction button img {
+  vertical-align: top;
+  margin-left: 15px;
+  margin-right: 5px;
+  width: 20px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -1120,7 +1137,7 @@ textarea {
     height: auto;
   }
 
-  #navbar-leftfixed {
+  .navbar-leftfixed {
     z-index: 1;
     height: 90px;
     width: 100%;
@@ -1128,7 +1145,7 @@ textarea {
     position: fixed;
   }
 
-  #navbar-leftfixed nav ul li {
+  .navbar-leftfixed nav ul li {
     display: inline-block;
     margin-bottom: 0px;
     margin-left: 15px;

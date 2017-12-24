@@ -19,7 +19,7 @@
                 </p>
             </div>
             <div class="cardAction">
-                <button>Koop deze prijs</button>
+                <button>Koop deze prijs<img src="{{ URL::asset('images/icons/coins.svg') }}" alt="Instellingen">10</button>
             </div>
         </div>
         <div class="card">
@@ -37,7 +37,7 @@
                 </p>
             </div>
             <div class="cardAction">
-                <button>Koop deze prijs</button>
+                <button>Koop deze prijs<img src="{{ URL::asset('images/icons/coins.svg') }}" alt="Instellingen">10</button>
             </div>
         </div>
         <div class="card">
@@ -55,7 +55,7 @@
                 </p>
             </div>
             <div class="cardAction">
-                <button>Koop deze prijs</button>
+                <button>Koop deze prijs<img src="{{ URL::asset('images/icons/coins.svg') }}" alt="Instellingen">10</button>
             </div>
         </div>
         <div class="card">
@@ -73,7 +73,7 @@
                 </p>
             </div>
             <div class="cardAction">
-                <button>Koop deze prijs</button>
+                <button>Koop deze prijs<img src="{{ URL::asset('images/icons/coins.svg') }}" alt="Instellingen">5</button>
             </div>
         </div>
         <div class="card">
@@ -91,7 +91,7 @@
                 </p>
             </div>
             <div class="cardAction">
-                <button>Koop deze prijs</button>
+                <button>Koop deze prijs<img src="{{ URL::asset('images/icons/coins.svg') }}" alt="Instellingen">1</button>
             </div>
         </div>
         <div class="card">
@@ -109,7 +109,7 @@
                 </p>
             </div>
             <div class="cardAction">
-                <button>Koop deze prijs</button>
+                <button>Koop deze prijs<img src="{{ URL::asset('images/icons/coins.svg') }}" alt="Instellingen">1</button>
             </div>
         </div>
         <div class="card">
@@ -127,7 +127,7 @@
                 </p>
             </div>
             <div class="cardAction">
-                <button>Koop deze prijs</button>
+                <button>Koop deze prijs<img src="{{ URL::asset('images/icons/coins.svg') }}" alt="Instellingen">1</button>
             </div>
         </div>
         <div class="card">
@@ -145,7 +145,7 @@
                 </p>
             </div>
             <div class="cardAction">
-                <button>Koop deze prijs</button>
+                <button>Koop deze prijs<img src="{{ URL::asset('images/icons/coins.svg') }}" alt="Instellingen">1</button>
             </div>
         </div>
         <div class="card">
@@ -163,7 +163,7 @@
                 </p>
             </div>
             <div class="cardAction">
-                <button>Koop deze prijs</button>
+                <button>Koop deze prijs<img src="{{ URL::asset('images/icons/coins.svg') }}" alt="Instellingen">1</button>
             </div>
         </div>
     </div>
