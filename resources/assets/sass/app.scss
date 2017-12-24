@@ -122,11 +122,13 @@ input, textarea{
     margin-top:40px;
   }
 }
+.animal-bg{
+  width:120px;
+  position:absolute;
+}
 .main{
   overflow:hidden;
   .animal-bg{
-    width:120px;
-    position:absolute;
     &.hagedis{
       top:-35px;
       left:25%;
@@ -421,41 +423,96 @@ position: relative;
   }
 
 }
+#childLoginWrap{
+  position: relative;
+  display:flex;
+  align-content: center;
+  flex-wrap: wrap;
+  height:100vh;
+  align-self:center;
+  justify-content: center;;
+}
 #childLogin{
-  position: absolute;
-  width:100%;
-  top:50%;
-  transform: translateY(-50%);
+position: relative;
+  border-radius: 40%;
+  max-width: 800px;
+  align-self: center;
+
+  flex:1;
+  padding:15px;
   .heading{
-    margin-bottom:40px;
-    margin-top:20px;
+    overflow:hidden;
     flex: 1;
     h1{
+      margin-top:20px;
+      margin-bottom: 50px;
       font-size:50px;
       text-align: center;
     }
   }
   #children{
     position: relative;
-    transition: all 0.2s ease;
-    max-width: 1200px;
-    overflow: hidden;
+    transition: all 0.5s ease;
+    max-width: 800px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin:0 auto;
-    margin-bottom: 40px;
+    border-radius: 20px;
     text-align: center;
+    background:$bg_light;
+    padding:25px;
+    .animal-bg{
+      z-index:-1;
+      width:150px;
+      transition: all 0.5s ease-in;
+      &.zebra{
+        width:170px;
+        transition-delay: 0.7s;
+        left:50px;
+        top:50px;
+      }
+      &.leeuw{
+        right:50px;
+        top:50px;
+      }
+      &.show.leeuw{
+        transition-delay: 0.7s;
+        right:-90px;
+        top:-50px;
+        transform:rotate(45deg);
+      }
+      &.show.zebra{
+        left:-90px;
+        top:-20px;
+        transform:rotate(-45deg);
+      }
+    }
+    &.smaller{
+      height:600px;
+      max-width: 400px;
+      transition-delay: 0.3s;
+    }
     .childrenWrap{
-      float:left;
-      padding:0px 10px;
-      text-align: center;
       cursor: pointer;
+      padding:0px 25px;
+      margin-bottom:25px;
+      .childSelected{
+        margin-top: 0px;
+      }
+      &.childSelected{
+        width:100%;
+        display:block !important;
+        .image{
+        }
+      }
       .image{
+        margin:0 auto;
         border-radius: 50%;
-        width:250px;
-        height:250px;
-        border:10px solid rgba(255,255,255,0.2);
+        width:170px;
+        height:170px;
+        transition: all 0.2s ease;
+        border:10px solid rgba($bg,0.8);
         box-shadow: 0px 0px;
         img{
           border-radius: 50%;
@@ -470,7 +527,7 @@ position: relative;
       .childName{
         span{
           color:#fff;
-          font-size:30px;
+          font-size:25px;
           font-weight: 700;
           display: block;
           margin-top: 15px;
@@ -480,16 +537,99 @@ position: relative;
   }
 }
 .QRscan{
-  height:0;
-  width:300px;
-  margin: 0 auto;
-  transition: all 0.2s ease;
-  margin-bottom: 20px;
+  height:0px;
+  width:0px;
   overflow: hidden;
+  transition: height 0.3s ease-in;
+  position:relative;
+
+  &.show{
+    height:320px;
+    width:320px;
+    span{
+     position:absolute;
+      width:50px;
+      height:50px;
+      z-index: 2;
+      &:first-child, &:nth-child(2){
+        border-top:8px solid rgba($grey,0.5);
+        top:0;
+      }
+      &:last-child, &:nth-last-child(2){
+        border-bottom:8px solid rgba($grey,0.5);
+        bottom:0;
+      }
+      &:first-child,&:last-child{
+        left:0;
+        border-left:8px solid rgba($grey,0.5);
+      }
+      &:nth-child(2),&:nth-last-child(2){
+        right:0;
+        border-right:8px solid rgba($grey,0.5);
+      }
+    }
+  }
+
+  .previewWrap{
+    width: 320px;
+    height: 320px;
+    overflow:hidden;
+    z-index: 1;
+    &:after{
+      position: absolute;
+      content:'';
+      width:100%;
+      height:50px;
+      background: linear-gradient(to bottom, rgba(250,129,107,1) 0%, rgba(250,129,107,0.95) 6%, rgba(237,102,90,0.15) 100%);
+      top:0;
+      left:0;
+      animation:scan 4s infinite ease;
+    }
+  }
   #preview{
-    width: 300px;
-    height: 300px;
+    width: 320px;
+    height: 320px;
     object-fit: cover;
+
+  }
+}
+.backbtn{
+  position: absolute;
+  bottom:20px;
+  left:20px;
+  background:$grey;
+  padding:10px;
+  border-radius: 10px;
+  img{
+    width:30px;
+    vertical-align: middle;
+    margin-top: -2px;
+  }
+  a{
+    font-weight: 700;
+    color:#fff;
+  }
+}
+@keyframes scan {
+  0% {
+    top: 0;
+  }
+  50% {
+    top: 100%;
+  }
+  100% {
+    top: 0;
+  }
+}
+@keyframes beam {
+  0% {
+    opacity:0;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0;
   }
 }
 @media only screen and (max-width: 768px) {
@@ -605,10 +745,7 @@ position: relative;
       }
     }
   }
-  #childLogin {
-    position: relative;
-    width: 100%;
-    top: 50%;
-    transform: none;
+  #childLoginWrap {
+    height:auto;
   }
 }

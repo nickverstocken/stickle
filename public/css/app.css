@@ -341,13 +341,13 @@ textarea {
   margin-right: 10px;
 }
 
-.main {
-  overflow: hidden;
-}
-
-.main .animal-bg {
+.animal-bg {
   width: 120px;
   position: absolute;
+}
+
+.main {
+  overflow: hidden;
 }
 
 .main .animal-bg.hagedis {
@@ -723,33 +723,54 @@ textarea {
   width: 30px;
 }
 
+#childLoginWrap {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 100vh;
+  -ms-flex-item-align: center;
+      align-self: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 #childLogin {
-  position: absolute;
-  width: 100%;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  position: relative;
+  border-radius: 40%;
+  max-width: 800px;
+  -ms-flex-item-align: center;
+      align-self: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 15px;
 }
 
 #childLogin .heading {
-  margin-bottom: 40px;
-  margin-top: 20px;
+  overflow: hidden;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
 
 #childLogin .heading h1 {
+  margin-top: 20px;
+  margin-bottom: 50px;
   font-size: 50px;
   text-align: center;
 }
 
 #childLogin #children {
   position: relative;
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-  max-width: 1200px;
-  overflow: hidden;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  max-width: 800px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -759,22 +780,78 @@ textarea {
       -ms-flex-pack: center;
           justify-content: center;
   margin: 0 auto;
-  margin-bottom: 40px;
+  border-radius: 20px;
   text-align: center;
+  background: #1F2C3D;
+  padding: 25px;
+}
+
+#childLogin #children .animal-bg {
+  z-index: -1;
+  width: 150px;
+  -webkit-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+}
+
+#childLogin #children .animal-bg.zebra {
+  width: 170px;
+  -webkit-transition-delay: 0.7s;
+          transition-delay: 0.7s;
+  left: 50px;
+  top: 50px;
+}
+
+#childLogin #children .animal-bg.leeuw {
+  right: 50px;
+  top: 50px;
+}
+
+#childLogin #children .animal-bg.show.leeuw {
+  -webkit-transition-delay: 0.7s;
+          transition-delay: 0.7s;
+  right: -90px;
+  top: -50px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+#childLogin #children .animal-bg.show.zebra {
+  left: -90px;
+  top: -20px;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+#childLogin #children.smaller {
+  height: 600px;
+  max-width: 400px;
+  -webkit-transition-delay: 0.3s;
+          transition-delay: 0.3s;
 }
 
 #childLogin #children .childrenWrap {
-  float: left;
-  padding: 0px 10px;
-  text-align: center;
   cursor: pointer;
+  padding: 0px 25px;
+  margin-bottom: 25px;
+}
+
+#childLogin #children .childrenWrap .childSelected {
+  margin-top: 0px;
+}
+
+#childLogin #children .childrenWrap.childSelected {
+  width: 100%;
+  display: block !important;
 }
 
 #childLogin #children .childrenWrap .image {
+  margin: 0 auto;
   border-radius: 50%;
-  width: 250px;
-  height: 250px;
-  border: 10px solid rgba(255, 255, 255, 0.2);
+  width: 170px;
+  height: 170px;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  border: 10px solid rgba(18, 31, 48, 0.8);
   -webkit-box-shadow: 0px 0px;
           box-shadow: 0px 0px;
 }
@@ -792,27 +869,158 @@ textarea {
 
 #childLogin #children .childrenWrap .childName span {
   color: #fff;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 700;
   display: block;
   margin-top: 15px;
 }
 
 .QRscan {
-  height: 0;
-  width: 300px;
-  margin: 0 auto;
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-  margin-bottom: 20px;
+  height: 0px;
+  width: 0px;
   overflow: hidden;
+  -webkit-transition: height 0.3s ease-in;
+  transition: height 0.3s ease-in;
+  position: relative;
+}
+
+.QRscan.show {
+  height: 320px;
+  width: 320px;
+}
+
+.QRscan.show span {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  z-index: 2;
+}
+
+.QRscan.show span:first-child,
+.QRscan.show span:nth-child(2) {
+  border-top: 8px solid rgba(247, 247, 247, 0.5);
+  top: 0;
+}
+
+.QRscan.show span:last-child,
+.QRscan.show span:nth-last-child(2) {
+  border-bottom: 8px solid rgba(247, 247, 247, 0.5);
+  bottom: 0;
+}
+
+.QRscan.show span:first-child,
+.QRscan.show span:last-child {
+  left: 0;
+  border-left: 8px solid rgba(247, 247, 247, 0.5);
+}
+
+.QRscan.show span:nth-child(2),
+.QRscan.show span:nth-last-child(2) {
+  right: 0;
+  border-right: 8px solid rgba(247, 247, 247, 0.5);
+}
+
+.QRscan .previewWrap {
+  width: 320px;
+  height: 320px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.QRscan .previewWrap:after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 50px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fa816b), color-stop(6%, rgba(250, 129, 107, 0.95)), to(rgba(237, 102, 90, 0.15)));
+  background: linear-gradient(to bottom, #fa816b 0%, rgba(250, 129, 107, 0.95) 6%, rgba(237, 102, 90, 0.15) 100%);
+  top: 0;
+  left: 0;
+  -webkit-animation: scan 4s infinite ease;
+          animation: scan 4s infinite ease;
 }
 
 .QRscan #preview {
-  width: 300px;
-  height: 300px;
+  width: 320px;
+  height: 320px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.backbtn {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: #F7F7F7;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.backbtn img {
+  width: 30px;
+  vertical-align: middle;
+  margin-top: -2px;
+}
+
+.backbtn a {
+  font-weight: 700;
+  color: #fff;
+}
+
+@-webkit-keyframes scan {
+  0% {
+    top: 0;
+  }
+
+  50% {
+    top: 100%;
+  }
+
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes scan {
+  0% {
+    top: 0;
+  }
+
+  50% {
+    top: 100%;
+  }
+
+  100% {
+    top: 0;
+  }
+}
+
+@-webkit-keyframes beam {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes beam {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -944,12 +1152,8 @@ textarea {
     display: none;
   }
 
-  #childLogin {
-    position: relative;
-    width: 100%;
-    top: 50%;
-    -webkit-transform: none;
-            transform: none;
+  #childLoginWrap {
+    height: auto;
   }
 }
 

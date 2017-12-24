@@ -97,27 +97,37 @@ $('#addChildBtn').click(function () {
         'z-index': '1'
     });
 });
-window.doSomethin = function (kid) {
+var scanner;
+window.selectChild = function (kid) {
+    $('#children').animate({
+        height: 600
+    }, 200);
     $('.childrenWrap').animate({
         opacity: 0
     }, 200, function () {
         $('.childrenWrap').css({
-            position: 'absolute'
+            display: 'none',
+            opacity: 0
         });
-        $('#children').css({
-            maxWidth: 280,
-            height: 300
+
+        $('.childrenWrap .image').css({
+            width: '130px',
+            height: '130px'
+        });
+
+        $('.heading').animate({
+            height: 0
         });
         $('#' + kid).animate({
             opacity: 1
         }, 200, function () {
-            $('.QRscan').css({
-                height: '300px'
-            });
+            $('.QRscan').addClass('show');
+            $('#children').addClass('smaller');
+            $('#' + kid).addClass('childSelected');
         });
+        $('.animal-bg').addClass('show');
     });
-
-    var scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+    scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
     scanner.addListener('scan', function (content) {
         console.log(content);
     });
@@ -129,6 +139,31 @@ window.doSomethin = function (kid) {
         }
     }).catch(function (e) {
         console.error(e);
+    });
+};
+window.backChildLogin = function () {
+    scanner.stop();
+    $('#children').css({
+        height: 'auto'
+    });
+    $('.childrenWrap').animate({
+        opacity: 1
+    }, 200, function () {
+        $('.childrenWrap').css({
+            display: 'block'
+        });
+        $('#children').removeClass('smaller');
+        $('.childrenWrap .image').css({
+            width: '170px',
+            height: '170px'
+        });
+        $('.heading').css({
+            height: 'auto'
+        });
+        $('.QRscan').removeClass('show');
+        $('.childrenWrap').removeClass('childSelected');
+
+        $('.animal-bg').removeClass('show');
     });
 };
 window.closeModal = function ($event) {
