@@ -198,6 +198,22 @@ input, textarea{
   background:$green_darkest;
   ul{
     li{
+      &:first-child{
+       position:absolute;
+        top:25px;
+        left:13px;
+        a{
+          overflow: hidden;
+          border-radius: 50%;
+          width:60px;
+          height:60px;
+          padding:0;
+        }
+
+        img{
+          width:60px;
+        }
+      }
       a{
         background:$green_darker;
         &.selected{
@@ -256,12 +272,18 @@ input, textarea{
 #contentKids{
   background: $green;
   overflow: auto;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+#contentParents{
+  height:100vh;
 }
 .content{
   position: relative;
   margin-left:90px;
   overflow-y: hidden;
-  height:100vh;
+  min-height: 100vh;
   #kids{
     .cardHeader{
       h1{
@@ -552,62 +574,63 @@ position: relative;
       }
     }
   }
-  .QRscan{
-    height:0px;
-    width:0px;
-    overflow: hidden;
-    transition: height 0.3s ease-in;
-    position:relative;
 
-    &.show{
-      height:320px;
-      width:320px;
-      span{
-        position:absolute;
-        width:50px;
-        height:50px;
-        z-index: 2;
-        &:first-child, &:nth-child(2){
-          border-top:8px solid rgba($grey,0.5);
-          top:0;
-        }
-        &:last-child, &:nth-last-child(2){
-          border-bottom:8px solid rgba($grey,0.5);
-          bottom:0;
-        }
-        &:first-child,&:last-child{
-          left:0;
-          border-left:8px solid rgba($grey,0.5);
-        }
-        &:nth-child(2),&:nth-last-child(2){
-          right:0;
-          border-right:8px solid rgba($grey,0.5);
-        }
-      }
-    }
+}
+.QRscan{
+  height:0px;
+  width:0px;
+  overflow: hidden;
+  transition: height 0.3s ease-in;
+  position:relative;
 
-    .previewWrap{
-      width: 320px;
-      height: 320px;
-      overflow:hidden;
-      z-index: 1;
-      &:after{
-        position: absolute;
-        content:'';
-        width:100%;
-        height:50px;
-        background: linear-gradient(to bottom, rgba(250,129,107,1) 0%, rgba(250,129,107,0.95) 6%, rgba(237,102,90,0.15) 100%);
+  &.show{
+    height:320px;
+    width:320px;
+    span{
+      position:absolute;
+      width:50px;
+      height:50px;
+      z-index: 2;
+      &:first-child, &:nth-child(2){
+        border-top:8px solid rgba($grey,0.5);
         top:0;
+      }
+      &:last-child, &:nth-last-child(2){
+        border-bottom:8px solid rgba($grey,0.5);
+        bottom:0;
+      }
+      &:first-child,&:last-child{
         left:0;
-        animation:scan 4s infinite ease;
+        border-left:8px solid rgba($grey,0.5);
+      }
+      &:nth-child(2),&:nth-last-child(2){
+        right:0;
+        border-right:8px solid rgba($grey,0.5);
       }
     }
-    #preview{
-      width: 320px;
-      height: 320px;
-      object-fit: cover;
+  }
 
+  .previewWrap{
+    width: 320px;
+    height: 320px;
+    overflow:hidden;
+    z-index: 1;
+    &:after{
+      position: absolute;
+      content:'';
+      width:100%;
+      height:50px;
+      background: linear-gradient(to bottom, rgba(250,129,107,1) 0%, rgba(250,129,107,0.95) 6%, rgba(237,102,90,0.15) 100%);
+      top:0;
+      left:0;
+      animation:scan 4s infinite ease;
     }
+  }
+  #preview{
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+
   }
 }
 .backbtn{
@@ -651,6 +674,23 @@ position: relative;
     font-size:90px;
     text-align: center;
     padding-top: 20px;
+  }
+  .helpDescription{
+    color:#fff;
+    max-width: 800px;
+    margin: 25px auto;
+    font-size: 18px;
+    text-align: center;
+    .button{
+      margin-top: 50px;
+      width:150px;
+      background: $orange;
+      color:#fff;
+    }
+    p{
+      font-weight: 700;
+    }
+
   }
   .cardGrid{
     padding-top:20px;
@@ -714,7 +754,10 @@ position: relative;
       }
     }
   }
-
+  .QRscan{
+    margin: 0 auto;
+    margin-top:70px;
+  }
 }
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */

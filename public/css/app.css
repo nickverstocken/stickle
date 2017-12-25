@@ -426,6 +426,24 @@ textarea {
   background: #0F6E75;
 }
 
+#kidsnav ul li:first-child {
+  position: absolute;
+  top: 25px;
+  left: 13px;
+}
+
+#kidsnav ul li:first-child a {
+  overflow: hidden;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  padding: 0;
+}
+
+#kidsnav ul li:first-child img {
+  width: 60px;
+}
+
 #kidsnav ul li a {
   background: #147E87;
 }
@@ -500,13 +518,26 @@ textarea {
 #contentKids {
   background: #1D9CA7;
   overflow: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#contentParents {
+  height: 100vh;
 }
 
 .content {
   position: relative;
   margin-left: 90px;
   overflow-y: hidden;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .content #kids .cardHeader h1 {
@@ -892,7 +923,7 @@ textarea {
   margin-top: 15px;
 }
 
-#childLogin .QRscan {
+.QRscan {
   height: 0px;
   width: 0px;
   overflow: hidden;
@@ -901,50 +932,50 @@ textarea {
   position: relative;
 }
 
-#childLogin .QRscan.show {
+.QRscan.show {
   height: 320px;
   width: 320px;
 }
 
-#childLogin .QRscan.show span {
+.QRscan.show span {
   position: absolute;
   width: 50px;
   height: 50px;
   z-index: 2;
 }
 
-#childLogin .QRscan.show span:first-child,
-#childLogin .QRscan.show span:nth-child(2) {
+.QRscan.show span:first-child,
+.QRscan.show span:nth-child(2) {
   border-top: 8px solid rgba(247, 247, 247, 0.5);
   top: 0;
 }
 
-#childLogin .QRscan.show span:last-child,
-#childLogin .QRscan.show span:nth-last-child(2) {
+.QRscan.show span:last-child,
+.QRscan.show span:nth-last-child(2) {
   border-bottom: 8px solid rgba(247, 247, 247, 0.5);
   bottom: 0;
 }
 
-#childLogin .QRscan.show span:first-child,
-#childLogin .QRscan.show span:last-child {
+.QRscan.show span:first-child,
+.QRscan.show span:last-child {
   left: 0;
   border-left: 8px solid rgba(247, 247, 247, 0.5);
 }
 
-#childLogin .QRscan.show span:nth-child(2),
-#childLogin .QRscan.show span:nth-last-child(2) {
+.QRscan.show span:nth-child(2),
+.QRscan.show span:nth-last-child(2) {
   right: 0;
   border-right: 8px solid rgba(247, 247, 247, 0.5);
 }
 
-#childLogin .QRscan .previewWrap {
+.QRscan .previewWrap {
   width: 320px;
   height: 320px;
   overflow: hidden;
   z-index: 1;
 }
 
-#childLogin .QRscan .previewWrap:after {
+.QRscan .previewWrap:after {
   position: absolute;
   content: '';
   width: 100%;
@@ -957,7 +988,7 @@ textarea {
           animation: scan 4s infinite ease;
 }
 
-#childLogin .QRscan #preview {
+.QRscan #preview {
   width: 320px;
   height: 320px;
   -o-object-fit: cover;
@@ -1028,6 +1059,25 @@ textarea {
   font-size: 90px;
   text-align: center;
   padding-top: 20px;
+}
+
+.cardGridWrap .helpDescription {
+  color: #fff;
+  max-width: 800px;
+  margin: 25px auto;
+  font-size: 18px;
+  text-align: center;
+}
+
+.cardGridWrap .helpDescription .button {
+  margin-top: 50px;
+  width: 150px;
+  background: #EE7418;
+  color: #fff;
+}
+
+.cardGridWrap .helpDescription p {
+  font-weight: 700;
 }
 
 .cardGridWrap .cardGrid {
@@ -1107,6 +1157,11 @@ textarea {
   margin-left: 15px;
   margin-right: 5px;
   width: 20px;
+}
+
+.cardGridWrap .QRscan {
+  margin: 0 auto;
+  margin-top: 70px;
 }
 
 @media only screen and (max-width: 768px) {

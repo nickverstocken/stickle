@@ -75,7 +75,6 @@ module.exports = __webpack_require__(3);
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-console.log('hello');
 window.$ = window.jQuery = __webpack_require__(2);
 $('#addBookBtn').click(function () {
     $('#bookModal').css({
@@ -166,6 +165,23 @@ window.backChildLogin = function () {
 
         $('.animal-bg').removeClass('show');
         $('.backbtn').removeClass('show');
+    });
+};
+window.loadscanner = function () {
+    console.log('tsart scan');
+    $('.QRscan').addClass('show');
+    scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+    scanner.addListener('scan', function (content) {
+        console.log(content);
+    });
+    Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+            scanner.start(cameras[0]);
+        } else {
+            console.error('No cameras found.');
+        }
+    }).catch(function (e) {
+        console.error(e);
     });
 };
 window.closeModal = function ($event) {
