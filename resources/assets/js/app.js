@@ -21,6 +21,9 @@ $('#addChildBtn').click(function () {
 });
 var scanner;
 window.selectChild = function(kid) {
+    if(scanner){
+        scanner.stop();
+    }
     $('#children').animate({
        height:600
     }, 200);
@@ -67,7 +70,9 @@ window.selectChild = function(kid) {
 
 }
 window.backChildLogin = function(){
-    scanner.stop();
+    if(scanner){
+        scanner.stop();
+    }
     $('#children').css({
         height:'auto'
     });
@@ -93,7 +98,10 @@ window.backChildLogin = function(){
     });
 }
 window.loadscanner = function(){
-    console.log('tsart scan');
+    if(scanner){
+        scanner.stop();
+    }
+
     $('.QRscan').addClass('show');
     scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
     scanner.addListener('scan', function (content) {

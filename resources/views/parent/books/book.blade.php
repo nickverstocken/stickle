@@ -3,7 +3,11 @@
 @section('dashboardcontent')
     <div class="cardswrap">
 <div class="card">
+
     <div class="cardHeader">
+        <div class="actions">
+            <button><img src="{{ URL::asset('images/icons/edit.svg') }}" alt="Edit"></button>
+        </div>
         <h1>Polly paints a penis</h1>
     </div>
     <div class="cardImage">
@@ -19,13 +23,16 @@
     </div>
     <div class="cardInfo">
         <h2>Auteur</h2>
-        <input value="Ernest Hamminway" />
+        <input readonly value="Ernest Hamminway" />
         <h2>Korte beschrijving</h2>
-        <textarea>Ernest Hamminway</textarea>
+        <textarea readonly>Ernest Hamminway</textarea>
     </div>
 </div>
         <div class="card">
             <div class="cardHeader">
+                <div class="actions">
+                    <button><img src="{{ URL::asset('images/icons/edit.svg') }}" alt="Edit"></button>
+                </div>
                 <h1>The old man and the sea</h1>
             </div>
             <div class="cardImage">
@@ -41,13 +48,16 @@
             </div>
             <div class="cardInfo">
                 <h2>Auteur</h2>
-                <input value="Ernest Hamminway" />
+                <input readonly value="Ernest Hamminway" />
                 <h2>Korte beschrijving</h2>
-                <textarea>Ernest Hamminway</textarea>
+                <textarea readonly>Ernest Hamminway</textarea>
             </div>
         </div>
         <div class="card">
             <div class="cardHeader">
+                <div class="actions">
+                    <button><img src="{{ URL::asset('images/icons/edit.svg') }}" alt="Edit"></button>
+                </div>
                 <h1>The old man and the sea</h1>
             </div>
             <div class="cardImage">
@@ -63,13 +73,16 @@
             </div>
             <div class="cardInfo">
                 <h2>Auteur</h2>
-                <input value="Ernest Hamminway" />
+                <input readonly value="Ernest Hamminway" />
                 <h2>Korte beschrijving</h2>
-                <textarea>Ernest Hamminway</textarea>
+                <textarea readonly>Ernest Hamminway</textarea>
             </div>
         </div>
         <div class="card">
             <div class="cardHeader">
+                <div class="actions">
+                    <button><img src="{{ URL::asset('images/icons/edit.svg') }}" alt="Edit"></button>
+                </div>
                 <h1>The old man and the sea</h1>
             </div>
             <div class="cardImage">
@@ -85,13 +98,16 @@
             </div>
             <div class="cardInfo">
                 <h2>Auteur</h2>
-                <input value="Ernest Hamminway" />
+                <input readonly value="Ernest Hamminway" />
                 <h2>Korte beschrijving</h2>
-                <textarea>Ernest Hamminway</textarea>
+                <textarea readonly >Ernest Hamminway</textarea>
             </div>
         </div>
         <div class="card">
             <div class="cardHeader">
+                <div class="actions">
+                    <button><img src="{{ URL::asset('images/icons/edit.svg') }}" alt="Edit"></button>
+                </div>
                 <h1>The old man and the sea</h1>
             </div>
             <div class="cardImage">
@@ -107,53 +123,9 @@
             </div>
             <div class="cardInfo">
                 <h2>Auteur</h2>
-                <input value="Ernest Hamminway" />
+                <input readonly value="Ernest Hamminway" />
                 <h2>Korte beschrijving</h2>
-                <textarea>Ernest Hamminway</textarea>
-            </div>
-        </div>
-        <div class="card">
-            <div class="cardHeader">
-                <h1>The old man and the sea</h1>
-            </div>
-            <div class="cardImage">
-                <div class="image">
-                    <img class="poster" src="{{ URL::asset('images/books/oldmanandthesea.jpg') }}" alt="Instellingen">
-                    <div class="progress-bar">
-                        <div style="width:10%" class="progress"></div>
-                    </div>
-                </div>
-                <div class="page">
-                    Pagina:  7/20
-                </div>
-            </div>
-            <div class="cardInfo">
-                <h2>Auteur</h2>
-                <input value="Ernest Hamminway" />
-                <h2>Korte beschrijving</h2>
-                <textarea>Ernest Hamminway</textarea>
-            </div>
-        </div>
-        <div class="card">
-            <div class="cardHeader">
-                <h1>The old man and the sea</h1>
-            </div>
-            <div class="cardImage">
-                <div class="image">
-                    <img class="poster" src="{{ URL::asset('images/books/oldmanandthesea.jpg') }}" alt="Instellingen">
-                    <div class="progress-bar">
-                        <div style="width:10%" class="progress"></div>
-                    </div>
-                </div>
-                <div class="page">
-                    Pagina:  7/20
-                </div>
-            </div>
-            <div class="cardInfo">
-                <h2>Auteur</h2>
-                <input value="Ernest Hamminway" />
-                <h2>Korte beschrijving</h2>
-                <textarea>Ernest Hamminway</textarea>
+                <textarea readonly >Ernest Hamminway</textarea>
             </div>
         </div>
     </div>

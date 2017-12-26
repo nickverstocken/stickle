@@ -38,7 +38,7 @@ Route::get('/child/login', function () {
     return view('child.login');
 });
 Route::get('/child/dashboard', function () {
-    return view('dashboard_kids');
+    return view('child.home.home');
 });
 Route::get('/child/trophies', function () {
     return view('child.trophies.trophies');

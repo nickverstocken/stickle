@@ -14,7 +14,7 @@
                 <a class="{{ (Route::getFacadeRoot()->current()->uri() == 'parent/kids') ? 'selected' : '' }}" href="/parent/kids"><img src="{{ URL::asset('images/icons/user-4.svg') }}" alt="Kinderen"></a>
             </li>
             <li>
-                <a class="{{ (\Request::route()->getName() == 'this.route') ? 'active' : '' }}" href="/parent/dashboard"><img src="{{ URL::asset('images/icons/settings.svg') }}" alt="Instellingen"></a>
+                <a class="{{ (\Request::route()->getName() == 'this.route') ? 'active' : '' }}" href="/parent/dashboard"><img src="{{ URL::asset('images/icons/exit-2.svg') }}" alt="Instellingen"></a>
             </li>
         </ul>
     </nav>
