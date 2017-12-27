@@ -6,7 +6,7 @@
 
     <div class="cardHeader">
         <div class="actions">
-            <button><img src="{{ URL::asset('images/icons/edit.svg') }}" alt="Edit"></button>
+            <button onclick="editBook(1)"><img src="{{ URL::asset('images/icons/edit.svg') }}" alt="Edit"></button>
         </div>
         <h1>Polly paints a penis</h1>
     </div>
@@ -133,4 +133,5 @@
         <a id="addBookBtn" class="addBtn"> <img class="poster" src="{{ URL::asset('images/icons/add.svg') }}" alt="Instellingen"></a>
     </div>
     @include('layouts.modals.book')
+    @include('layouts.modals.editBook')
 @stop

@@ -97,6 +97,16 @@ $('#addChildBtn').click(function () {
     });
 });
 var scanner;
+window.editBook = function (id) {
+    $('#editbookModal').css({
+        'opacity': '1',
+        'z-index': '2'
+    });
+    $('#editbookModalBg').css({
+        'opacity': '1',
+        'z-index': '1'
+    });
+};
 window.selectChild = function (kid) {
     if (scanner) {
         scanner.stop();
