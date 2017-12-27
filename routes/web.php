@@ -47,9 +47,10 @@ Route::group(['middleware' => 'auth'], function () {
     //region Child Routes
     //Childdashboard routes
     Route::get('/child/login', 'ChildController@index');
+
     //endregion Child Routes
 });
-
+Route::post('/child/login/{stickerBookId}', 'ChildController@scanStickerBook');
 
 Route::get('/child/dashboard', function () {
     return view('child.home.home');

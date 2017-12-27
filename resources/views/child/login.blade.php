@@ -8,38 +8,16 @@
             </div>
 
             <div id="children">
-                <div id="child1" class="childrenWrap" onclick="selectChild('child1')">
-                    <div class="image">
-                        <img class="poster" src="{{ URL::asset('images/kids/nick.jpg') }}" alt="Nick">
+                @foreach ($parentKids as $child)
+                    <div id="child{{$child->child_id}}" class="childrenWrap" onclick="selectChild('{{$child->child_id}}')">
+                        <div class="image">
+                            <img class="poster" src="{{ URL::asset('images/kids/nick.jpg') }}" alt="Nick">
+                        </div>
+                        <div class="childName">
+                            <span>{{$child->firstName . ' ' . $child->lastName}}</span>
+                        </div>
                     </div>
-                    <div class="childName">
-                        <span>Nick Verstocken</span>
-                    </div>
-                </div>
-                <div id="child2" class="childrenWrap" onclick="selectChild('child2')">
-                    <div class="image">
-                        <img class="poster" src="{{ URL::asset('images/kids/eveline.jpg') }}" alt="Eveline">
-                    </div>
-                    <div class="childName">
-                        <span>Eveline Verhoeven</span>
-                    </div>
-                </div>
-                <div id="child3" class="childrenWrap" onclick="selectChild('child3')">
-                    <div class="image">
-                        <img class="poster" src="{{ URL::asset('images/kids/eveline.jpg') }}" alt="Eveline">
-                    </div>
-                    <div class="childName">
-                        <span>Nick Verhoeven</span>
-                    </div>
-                </div>
-                <div id="child4" class="childrenWrap" onclick="selectChild('child4')">
-                    <div class="image">
-                        <img class="poster" src="{{ URL::asset('images/kids/eveline.jpg') }}" alt="Eveline">
-                    </div>
-                    <div class="childName">
-                        <span>Nick Haha</span>
-                    </div>
-                </div>
+                @endforeach
                 <div class="QRscan">
                     <span></span>
                     <span></span>
