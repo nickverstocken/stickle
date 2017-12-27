@@ -50,7 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
     //Childdashboard routes
     Route::get('/child/login', 'ChildController@index');
     Route::post('/child/login/{stickerBookId}', 'ChildController@scanStickerBook');
-    Route::get('/child/dashboard', function () {
+    Route::get('/child/{childId}/dashboard', function () {
         return view('child.home.home');
     });
     Route::get('/child/trophies', function () {
