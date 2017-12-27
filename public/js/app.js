@@ -148,7 +148,7 @@ window.selectChild = function (childId) {
     scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
     scanner.addListener('scan', function (content) {
         console.log(content);
-        $.post(content).done(function (data) {
+        $.post(content, { childId: childId }).done(function (data) {
             alert(data);
         }).fail(function () {
             alert("not a valid QR code");

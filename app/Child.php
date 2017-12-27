@@ -19,4 +19,7 @@ class Child extends Model
     public function parent(){
         return $this->belongsTo('App\User');
     }
+    public function stickerBook(){
+        return $this->hasMany('App\StickerBook', 'child_id');
+    }
 }

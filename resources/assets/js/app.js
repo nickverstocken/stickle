@@ -72,7 +72,9 @@ window.selectChild = function(childId) {
     scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
     scanner.addListener('scan', function (content) {
         console.log(content);
-        $.post(content)
+        $.post(content,
+            { childId: childId}
+            )
             .done(function(data) {
                 alert(data);
             })
