@@ -10,15 +10,25 @@
         </div>
         <div class="modalContent">
             <div class="contentContainer">
-                <form id="addKidForm" name="addKidForm">
+                <form id="addKidForm" name="addKidForm"  method="POST" enctype="multipart/form-data" action="/ouders/kinderen/toevoegen">
+                    {{ csrf_field() }}
                     <div class="card">
-                        <h4>Naam</h4>
-                        <input type="text" placeholder="Voornaam*" autocorrect="off" autocapitalize="off" spellcheck="off" class="input">
-                        <input type="text" placeholder="Naam*" autocorrect="off" autocapitalize="off" spellcheck="off" class="input">
+                        <h4>Foto kind</h4>
+                        <input type="file" name="picture" id="picture" class="input">
                     </div>
                     <div class="card">
-                        <h4>Info</h4>
-                        <input required name="title" type="text" class="input" id="title" placeholder="Boek titel*" class="input">
+                        <h4>Naam</h4>
+                        <input required name="firstName" id="firstName" type="text" placeholder="Voornaam*" autocorrect="off" autocapitalize="off" spellcheck="off" class="input">
+                        <input required name="lastName" id="lastName" type="text" placeholder="Achternaam*" autocorrect="off" autocapitalize="off" spellcheck="off" class="input">
+                    </div>
+                    <div class="card">
+                        <h4>Jongen of meisje?</h4>
+                        <input required name="gender" type="radio" class="input" id="gender" value="male">Jongen <br>
+                        <input required name="gender" type="radio" class="input" id="gender" value="female">Meisje
+                    </div>
+                    <div class="card">
+                        <h4>Geboortedatum</h4>
+                        <input required name="dateOfBirth" id="dateOfBirth" type="date" class="input">
                     </div>
                 </form>
                 <div class="actions">

@@ -43,18 +43,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/ouders/boeken/wijzig/{id}','BookController@editBook');
     Route::get('/ouders/boeken/verwijder/{id}','BookController@deleteBook');
     //endregion routes
-    
+
     //region Child Routes
     //Childdashboard routes
-    Route::get('/child/login', 'ChildController@index');
-    Route::post('/child/login/{stickerBookId}', 'ChildController@scanStickerBook');
-    Route::get('/child/{childId}/dashboard', function () {
+    Route::get('/kind/login', 'ChildController@index');
+    Route::post('/kind/login/{stickerBookId}', 'ChildController@scanStickerBook');
+    Route::get('/kind/{kindId}/dashboard', function () {
         return view('child.home.home');
     });
-    Route::get('/child/trophies', function () {
+    Route::get('/kind/prijzen', function () {
         return view('child.trophies.trophies');
     });
-    Route::get('/child/scan', function () {
+    Route::get('/kind/scan', function () {
         return view('child.scan.scancode');
     });
     //endregion Child Routes

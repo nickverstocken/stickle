@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 use App\Child;
 use App\User;
 use Validator;
@@ -43,25 +45,44 @@ class ParentController extends Controller
     //function to add a new Child for the parent logged in
     public function addNewChild(Request $request){
     	$validator = Validator::make($request->all(), [
-            'firstname' => 'required|string|max:255',
-            'lastname' => 'required|string|max:255',
+            'firstName' => 'required|string|max:255',
+            'lastName' => 'required|string|max:255',
             'gender' => 'required|string|max:25',
-            'dateOfBirth' => 'required|date'
+            'dateOfBirth' => 'required|date',
+            'picture' => 'image'
         ]);
 
         if ($validator->passes()) {
 
         	$child = new Child;
-        	$child->firstName = $request->firstname;
-        	$child->lastName = $request->lastname;
+        	$child->firstName = $request->firstName;
+        	$child->lastName = $request->lastName;
         	$child->gender = $request->gender;
         	$child->dateOfBirth = $request->dateOfBirth;
-        	$child->picturePath = 'Change this with default path';
+        	$child->picturePath = 'no picture';
         	$child->rewardPoints = 0;
         	$child->parent_id = Auth::id();
-        	$child->save();
+            $child->save();
+            $child_id = $child->child_id;
+            
+            $file = $request->picture;
 
-        	return redirect('/');
+            if($file){
+                $img = Image::make($file);
+                $img = $img->resize(250, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                });
+
+                $extension = pathinfo(storage_path().$file->getClientOriginalName(), PATHINFO_EXTENSION);
+                $img = $img->stream();               
+                $filename = 'storage/children/' . $child_id . '.' .$extension;
+                Storage::disk('local')->put($filename, $img);
+                $child->picturePath = $filename;
+                $child->save();
+            }
+
+        	return redirect('/ouders/kinderen');
 
         } else{
 

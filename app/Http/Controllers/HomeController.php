@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::check()){
-            return redirect('/parent/dashboard');
+            return redirect('/ouders/dashboard');
         }else{
             return view('home');
         }
