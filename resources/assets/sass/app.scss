@@ -113,10 +113,10 @@ input, textarea{
     padding:0;
   }
   .buttons{
-    .button:first-child{
+    .button.orange{
       background:$orange;
       color:#fff;
-      margin-right: 10px;
+      margin-left: 10px;
     }
     margin-bottom:55px;
     margin-top:40px;

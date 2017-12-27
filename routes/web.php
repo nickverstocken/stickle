@@ -19,7 +19,7 @@ Route::get('/registreer', function () {
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/logout','HomeController@logout');
-    Route::get('/parent/dashboard', 'HomeController@dashboard');
+    Route::get('/ouders/dashboard', 'HomeController@dashboard');
     
     //account routes
 	Route::get('/accountwijzigen','parentController@openEditAccount');

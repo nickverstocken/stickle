@@ -23,8 +23,8 @@
 
                 </div>
                 <div class="buttons">
-                    <button type="submit" form="frmLogin" class="button orange">Log in</button>
                     <a href="/registreer" class="button white">Registreer</a>
+                    <button type="submit" form="frmLogin" class="button orange">Log in</button>
                 </div>
                 <img class="animal-bg hagedis" src="{{ URL::asset('images/hagedis.svg') }}" alt="Hagedis">
 

@@ -335,10 +335,10 @@ textarea {
   margin-top: 40px;
 }
 
-.intro .buttons .button:first-child {
+.intro .buttons .button.orange {
   background: #EE7418;
   color: #fff;
-  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .animal-bg {

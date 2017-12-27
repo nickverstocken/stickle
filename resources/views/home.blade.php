@@ -8,8 +8,8 @@
                 <h1>Stickle</h1>
                 <p>Lees. Ontdek. Speel!</p>
                 <div class="buttons">
-                    <a href="/registreer" class="button orange">Begin nu</a>
-                    <a href="/login" class="button white">Log in</a>
+                    <a href="/registreer" class="button">Registreer</a>
+                    <a href="/login" class="button orange">Log in</a>
                 </div>
                 <img class="animal-bg hagedis" src="{{ URL::asset('images/hagedis.svg') }}" alt="Hagedis">
             </div>
