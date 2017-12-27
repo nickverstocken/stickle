@@ -24,7 +24,7 @@ Route::group(['middleware' => 'auth'], function () {
     //account routes
 	Route::get('/accountwijzigen','parentController@openEditAccount');
     Route::get('/verwijderaccount','parentController@deleteAccount');
-
+    //region parent Routes
     //Children routes
     Route::get('/ouders/kinderen', 'ParentController@showAllChildrenFromParent');
     Route::post('/ouders/kinderen/wijzig/{id}','parentController@editChild');    
@@ -43,11 +43,14 @@ Route::group(['middleware' => 'auth'], function () {
 	//Temporary book routes
     Route::get('/ouders/boeken/nieuw','BookController@openNewBook');
     Route::get('/ouders/boeken/open/{id}','BookController@openEditBook');
+    //endregion routes
+    //region Child Routes
+    //Childdashboard routes
+    Route::get('/child/login', 'ChildController@index');
+    //endregion Child Routes
 });
 
-Route::get('/child/login', function () {
-    return view('child.login');
-});
+
 Route::get('/child/dashboard', function () {
     return view('child.home.home');
 });
