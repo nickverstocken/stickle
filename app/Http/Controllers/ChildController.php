@@ -33,7 +33,7 @@ class ChildController extends Controller
             session(['childLoggedIn' => $stickerBook->child_id]);
             return response::json([
                     'success' => true,
-                    'url' => '/child/' . $stickerBook->child_id . '/dashboard'
+                    'url' => '/kind/' . $stickerBook->child_id . '/dashboard'
                 ]
                 , 200
             );
@@ -42,7 +42,7 @@ class ChildController extends Controller
                 session(['childLoggedIn' => $stickerBook->child_id]);
                 return response::json([
                     'success' => true,
-                   'url' => '/child/' . $stickerBook->child_id . '/dashboard'
+                   'url' => '/kind/' . $stickerBook->child_id . '/dashboard'
                     ]
                     , 200
                 );

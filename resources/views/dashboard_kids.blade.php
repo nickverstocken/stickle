@@ -9,13 +9,13 @@
                     <div class="coins"> <img class="coinsImg" src="{{ URL::asset('images/icons/coins.svg') }}" alt="Coins">250</div>
                 </li>
                 <li>
-                    <a class="{{ (Route::getFacadeRoot()->current()->uri() == 'child/dashboard') ? 'selected' : '' }}" href="/child/dashboard"><img src="{{ URL::asset('images/icons/home-1.svg') }}" alt="Home"></a>
+                    <a class="{{ (Route::getFacadeRoot()->current()->uri() == 'kind/dashboard') ? 'selected' : '' }}" href="/kind/dashboard"><img src="{{ URL::asset('images/icons/home-1.svg') }}" alt="Home"></a>
                 </li>
                 <li>
-                    <a class="{{ (Route::getFacadeRoot()->current()->uri() == 'child/trophies') ? 'selected' : '' }}" href="/child/trophies"><img src="{{ URL::asset('images/icons/trophy.svg') }}" alt="Boeken"></a>
+                    <a class="{{ (Route::getFacadeRoot()->current()->uri() == 'kind/prijzen') ? 'selected' : '' }}" href="/kind/prijzen"><img src="{{ URL::asset('images/icons/trophy.svg') }}" alt="Boeken"></a>
                 </li>
                 <li>
-                    <a class="{{ (Route::getFacadeRoot()->current()->uri() == 'child/scan') ? 'selected' : '' }}" href="/child/scan"><img src="{{ URL::asset('images/icons/photo-camera.svg') }}" alt="Kinderen"></a>
+                    <a class="{{ (Route::getFacadeRoot()->current()->uri() == 'kind/scan') ? 'selected' : '' }}" href="/kind/scan"><img src="{{ URL::asset('images/icons/photo-camera.svg') }}" alt="Kinderen"></a>
                 </li>
             </ul>
         </nav>
