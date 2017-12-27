@@ -11,7 +11,7 @@ class ChildController extends Controller
     public function index(Request $request){
         $parent = Auth::user();
         $parentKids = $parent->children;
-       // dd($parentKids[0]);
+        $request->session()->forget('childLoggedIn');
             return view('child.login',[
                 'parentKids' => $parentKids,
             ]);

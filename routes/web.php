@@ -48,9 +48,7 @@ Route::group(['middleware' => 'auth'], function () {
     //Childdashboard routes
     Route::get('/kind/login', 'ChildController@index');
     Route::post('/kind/login/{stickerBookId}', 'ChildController@scanStickerBook');
-    Route::get('/kind/{kindId}/dashboard', function () {
-        return view('child.home.home');
-    });
+    Route::get('/kind/{kindId}/dashboard', 'ChildController@getDashBoard');
     Route::get('/kind/prijzen', function () {
         return view('child.trophies.trophies');
     });
