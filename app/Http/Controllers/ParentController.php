@@ -25,6 +25,16 @@ class ParentController extends Controller
         return redirect('/');
     }
 
+    public function showAllChildrenFromParent(){
+        $child = new Child;
+        $childrenOfParents = $child->getChildWithParentId(Auth::id());
+
+        return view('parent.kids.kids',[
+            'childrenOfParents' => $childrenOfParents,
+        ]); 
+    }
+
+    //temporary function
     public function openNewChild()
     {
         return view('newChild');
@@ -67,7 +77,20 @@ class ParentController extends Controller
                 'child' => $child
                 ]);
         }
-        return Redirect::back();
+        return redirect('/');
+    }
+
+    public function getChildData($child_id)    
+    {
+        //If doesn't work for a reason
+        //if ($this->isChildFromParent($child_id)){
+            $child = Child::find($child_id);
+            return response()->json($child);
+       /*  }
+        else{
+            //return "Child does not belong to user";
+            return $child_id;
+        } */
     }
 
     public function editChild($child_id, Request $request){
@@ -99,10 +122,10 @@ class ParentController extends Controller
             $child = Child::find($child_id);    
             $child->delete();
         }
-        return Redirect::back();
+        return redirect('/');
     }
 
-    //function to check if the child is from the logged in parrant
+    //function to check if the child is from the logged in parant
     public function isChildFromParent($child_id){
 
         $child = new Child;

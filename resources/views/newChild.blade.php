@@ -8,7 +8,7 @@
                 <div class="panel-heading">Kind toevoegen</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="/voegnieuwkindtoe">
+                    <form class="form-horizontal" method="POST" action="/ouders/kinderen/toevoegen">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">

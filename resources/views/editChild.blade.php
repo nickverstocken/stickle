@@ -5,10 +5,10 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Kind toevoegen</div>
+                <div class="panel-heading">Kind Wijzigen</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="/wijzigkind/{{ $child->child_id }}">
+                    <form class="form-horizontal" method="POST" action="/ouders/kinderen/wijzig/{{ $child->child_id }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
