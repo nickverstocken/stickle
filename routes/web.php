@@ -42,10 +42,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/ouders/boeken/get/{id}','BookController@getBookData');
     Route::post('/ouders/boeken/wijzig/{id}','BookController@editBook');
     Route::get('/ouders/boeken/verwijder/{id}','BookController@deleteBook');
-	//Temporary book routes
-    Route::get('/ouders/boeken/nieuw','BookController@openNewBook');
-    Route::get('/ouders/boeken/open/{id}','BookController@openEditBook');
     //endregion routes
+    
     //region Child Routes
     //Childdashboard routes
     Route::get('/child/login', 'ChildController@index');

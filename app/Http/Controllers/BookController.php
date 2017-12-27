@@ -29,12 +29,6 @@ class BookController extends Controller
         ]);
     }
 
-    //temporary function
-    public function openNewBook()
-    {
-        return view('newBook');
-    }
-
     public function addNewBook(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -82,18 +76,6 @@ class BookController extends Controller
         
     }
 
-    //temporary function
-    public function openEditBook($readingBook_id)    
-    {
-        if ($this->isBookFromUser($readingBook_id)){
-            $book = ReadingBook::find($readingBook_id);
-            return view('editBook',[
-                'book' => $book
-                ]);
-        }
-        return redirect('/');
-    }
-
     //Function to give Book information in jsonfile
     public function getBookData($readingBook_id)    
     {
@@ -112,7 +94,7 @@ class BookController extends Controller
         ]);
 
         if ($validator->passes()) {      
-
+            $book = ReadingBook::find($readingBook_id);
             $file = $request->bookCover;
             
             if($file){
@@ -124,16 +106,16 @@ class BookController extends Controller
             
                 $extension = pathinfo(storage_path().$file->getClientOriginalName(), PATHINFO_EXTENSION);
                 $img = $img->stream();               
-                $filename = 'storage/books/' . $book_id . '.' .$extension;
+                $filename = 'storage/books/' . $book->readingBook_id . '.' .$extension;
                 Storage::disk('local')->put($filename, $img);
+                $book->coverPath = $filename;
             }
 
-            $book = ReadingBook::find($readingBook_id);
+            
             $book->title = $request->title;
         	$book->author = $request->author;
         	$book->shortDescription = $request->shortDescription;
-            $book->numberOfPages = $request->numberOfPages;
-            $book->coverPath = $filename;
+            $book->numberOfPages = $request->numberOfPages;            
             $book->save();
             
             return redirect('/ouders/boeken');

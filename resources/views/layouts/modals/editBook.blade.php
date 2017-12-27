@@ -36,7 +36,7 @@
                 </form>
                 <div class="actions">
                     <button  form="editBookForm" class="button">Wijzig</button>
-                    <button  class="button cancel closeModal" onclick="closeModal(this);">Verwijder</button>
+                    <button  class="button cancel closeModal" onclick="/ouders/boeken/verwijder/{{ $book->readingBook_id }}">Verwijder</button>
                 </div>
             </div>
         </div>
