@@ -29,6 +29,7 @@ window.editBook = function(id) {
        $('#editBookForm #description').val(data.shortDescription);
        $('#editBookForm #numberOfPages').val(data.numberOfPages);
        $("#editBookForm").attr('action', '/ouders/boeken/wijzig/'+data.readingBook_id);
+       $("#deleteButton").attr('onclick', '/ouders/boeken/verwijder/'+data.readingBook_id);
     })
     .fail(function() {
         alert( "error" );
