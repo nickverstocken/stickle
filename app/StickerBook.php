@@ -8,4 +8,7 @@ class StickerBook extends Model
 {
     protected $table = 'stickerBooks';
     protected $primaryKey = 'stickerBook_id';
+    public function child(){
+        return $this->belongsTo('App\Child', 'child_id');
+    }
 }
