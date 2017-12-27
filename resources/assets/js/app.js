@@ -76,7 +76,11 @@ window.selectChild = function(childId) {
             { childId: childId}
             )
             .done(function(data) {
-                alert(data);
+                if(data.success){
+                    window.location = data.url;
+                }else{
+                    alert(data.error);
+                }
             })
             .fail(function() {
                 alert( "not a valid QR code" );

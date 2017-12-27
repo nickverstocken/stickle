@@ -149,7 +149,11 @@ window.selectChild = function (childId) {
     scanner.addListener('scan', function (content) {
         console.log(content);
         $.post(content, { childId: childId }).done(function (data) {
-            alert(data);
+            if (data.success) {
+                window.location = data.url;
+            } else {
+                alert(data.error);
+            }
         }).fail(function () {
             alert("not a valid QR code");
         });
