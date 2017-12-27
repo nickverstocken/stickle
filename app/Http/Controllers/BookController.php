@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 use App\ReadingBook;
 use App\ChildrenReadingBook;
 use Auth;
@@ -40,26 +42,37 @@ class BookController extends Controller
             'author' => 'required|string|max:255',
             'shortDescription' => 'string|max:255',
             'numberOfPages' => 'required|numeric',
-            //'cover' => 'image'
+            'bookCover' => 'image'
         ]);
 
         if ($validator->passes()){
-            /* $image = $request->cover;
-            $extension = pathinfo(storage_path().$image->getClientOriginalName(), PATHINFO_EXTENSION);
-
-            $imageName = 'user-'.Auth::id().'-'.str_random(5).'.'.$extension;
-            $image->move("img/BookCovers/", $imageName);
-            $coverPath = 'img/BookCovers/'.$imageName; */
-
+           
             $book = new ReadingBook;
         	$book->title = $request->title;
         	$book->author = $request->author;
         	$book->shortDescription = $request->shortDescription;
         	$book->numberOfPages = $request->numberOfPages;
-            //$book->coverPath = $coverPath;
-            $book->coverPath = "temporaryPath";
+            $book->coverPath = "no cover";
         	$book->addedBy_id = Auth::id();
             $book->save();
+            $book_id = $book->readingBook_id;
+
+            $file = $request->bookCover;
+
+            if($file){
+                $img = Image::make($file);
+                $img = $img->resize(400, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                });
+
+                $extension = pathinfo(storage_path().$file->getClientOriginalName(), PATHINFO_EXTENSION);
+                $img = $img->stream();               
+                $filename = 'storage/books/' . $book_id . '.' .$extension;
+                Storage::disk('local')->put($filename, $img);
+                $book->coverPath = $filename;
+                $book->save();
+            }
             
             return redirect('/ouders/boeken');
         }
