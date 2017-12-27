@@ -17,8 +17,8 @@ class CreateStickerBooksTable extends Migration
             $table->increments('stickerBook_id');
             $table->string('uniqueCode')->nullable();
             $table->integer('numberOfStickers');
-            $table->boolean('isPairedToChild');
-            $table->integer('child_id')->unsigned();
+            $table->boolean('isPairedToChild')->default(0);
+            $table->integer('child_id')->unsigned()->nullable();
             $table->timestamps();
 
             $table->foreign('child_id')->references('child_id')

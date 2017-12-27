@@ -107,7 +107,12 @@ window.editBook = function (id) {
         'z-index': '1'
     });
 };
-window.selectChild = function (kid) {
+window.selectChild = function (childId) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     if (scanner) {
         scanner.stop();
     }
@@ -130,12 +135,12 @@ window.selectChild = function (kid) {
         $('.heading').animate({
             height: 0
         });
-        $('#' + kid).animate({
+        $('#child' + childId).animate({
             opacity: 1
         }, 200, function () {
             $('.QRscan').addClass('show');
             $('#children').addClass('smaller');
-            $('#' + kid).addClass('childSelected');
+            $('#child' + childId).addClass('childSelected');
         });
         $('.animal-bg').addClass('show');
         $('.backbtn').addClass('show');
@@ -143,6 +148,11 @@ window.selectChild = function (kid) {
     scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
     scanner.addListener('scan', function (content) {
         console.log(content);
+        $.post('http://127.0.0.1:8000/child/login/1').done(function (data) {
+            alert(data);
+        }).fail(function () {
+            alert("error");
+        });
     });
     Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
