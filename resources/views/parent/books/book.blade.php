@@ -7,7 +7,7 @@
 
                 <div class="cardHeader">
                     <div class="actions">
-                        <button onclick="editBook({{ $book->readingBook_id }})"><img src="{{ URL::asset('images/icons/edit.svg') }}" alt="Edit"></button>
+                        <button onclick="editBook({{ json_encode($book) }})"><img src="{{ URL::asset('images/icons/edit.svg') }}" alt="Edit"></button>
                     </div>
                     <h1>{{ $book->title }}</h1>
                 </div>

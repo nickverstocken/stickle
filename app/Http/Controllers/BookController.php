@@ -76,14 +76,7 @@ class BookController extends Controller
         }
         
     }
-
-    //Function to give Book information in jsonfile
-    public function getBookData($readingBook_id)    
-    {
-        $book = ReadingBook::find($readingBook_id);
-        return response()->json($book);
-    }
-
+    
     public function editBook($readingBook_id, Request $request)
     {
         $validator = Validator::make($request->all(), [
