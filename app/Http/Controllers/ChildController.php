@@ -57,6 +57,7 @@ class ChildController extends Controller
         }
     }
     public function getDashBoard($child_id){
+
         $parent = Auth::user();
         $childIdSession = session('childLoggedIn');
         if($child_id == $childIdSession){
@@ -65,9 +66,7 @@ class ChildController extends Controller
             ]);
         }else{
             $parentKids = $parent->children;
-            return view('child.login',[
-                'parentKids' => $parentKids,
-            ]);
+            return redirect('/kind/login');
         }
     }
 }
