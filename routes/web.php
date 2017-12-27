@@ -47,20 +47,19 @@ Route::group(['middleware' => 'auth'], function () {
     //region Child Routes
     //Childdashboard routes
     Route::get('/child/login', 'ChildController@index');
-
+    Route::post('/child/login/{stickerBookId}', 'ChildController@scanStickerBook');
+    Route::get('/child/dashboard', function () {
+        return view('child.home.home');
+    });
+    Route::get('/child/trophies', function () {
+        return view('child.trophies.trophies');
+    });
+    Route::get('/child/scan', function () {
+        return view('child.scan.scancode');
+    });
     //endregion Child Routes
 });
-Route::post('/child/login/{stickerBookId}', 'ChildController@scanStickerBook');
 
-Route::get('/child/dashboard', function () {
-    return view('child.home.home');
-});
-Route::get('/child/trophies', function () {
-    return view('child.trophies.trophies');
-});
-Route::get('/child/scan', function () {
-    return view('child.scan.scancode');
-});
 Route::get('/nieuwkind','parrentController@openNewChild');
 Route::post('/voegnieuwkindtoe','parrentController@addNewChild');
 Route::get('/verwijderkind/{id}','parrentController@deleteChild');

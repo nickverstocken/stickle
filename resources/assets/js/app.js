@@ -72,12 +72,12 @@ window.selectChild = function(childId) {
     scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
     scanner.addListener('scan', function (content) {
         console.log(content);
-        $.post('http://127.0.0.1:8000/child/login/1')
+        $.post(content)
             .done(function(data) {
                 alert(data);
             })
             .fail(function() {
-                alert( "error" );
+                alert( "not a valid QR code" );
             });
     });
     Instascan.Camera.getCameras().then(function (cameras) {
