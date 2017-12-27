@@ -97,13 +97,8 @@ class BookController extends Controller
     //Function to give Book information in jsonfile
     public function getBookData($readingBook_id)    
     {
-        //if ($this->isBookFromUser($readingBook_id)){
-            $book = ReadingBook::find($readingBook_id);
-            return response()->json($book);
-        /* }
-        else{
-            return "Book does not belong to user";
-        }   */      
+        $book = ReadingBook::find($readingBook_id);
+        return response()->json($book);
     }
 
     public function editBook($readingBook_id, Request $request)
@@ -112,16 +107,33 @@ class BookController extends Controller
             'title' => 'required|string|max:255',
             'author' => 'required|string|max:255',
             'shortDescription' => 'string|max:255',
-            'numberOfPages' => 'required|numeric'
+            'numberOfPages' => 'required|numeric',
+            'bookCover' => 'image'
         ]);
 
         if ($validator->passes()) {      
+
+            $file = $request->bookCover;
+            
+            if($file){
+                $img = Image::make($file);
+                $img = $img->resize(400, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                });
+            
+                $extension = pathinfo(storage_path().$file->getClientOriginalName(), PATHINFO_EXTENSION);
+                $img = $img->stream();               
+                $filename = 'storage/books/' . $book_id . '.' .$extension;
+                Storage::disk('local')->put($filename, $img);
+            }
 
             $book = ReadingBook::find($readingBook_id);
             $book->title = $request->title;
         	$book->author = $request->author;
         	$book->shortDescription = $request->shortDescription;
-        	$book->numberOfPages = $request->numberOfPages;
+            $book->numberOfPages = $request->numberOfPages;
+            $book->coverPath = $filename;
             $book->save();
             
             return redirect('/ouders/boeken');

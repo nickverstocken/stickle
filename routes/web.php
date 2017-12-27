@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth'], function () {
     //region parent Routes
     //Children routes
     Route::get('/ouders/kinderen', 'ParentController@showAllChildrenFromParent');
+    Route::get('/ouders/kinderen/get/{id}','ParentController@getChildData');
     Route::post('/ouders/kinderen/wijzig/{id}','parentController@editChild');    
     Route::post('/ouders/kinderen/toevoegen','parentController@addNewChild');
     Route::get('/ouders/kinderen/verwijder/{id}','parentController@deleteChild');
@@ -38,6 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
     //Book routes
     Route::get('/ouders/boeken', 'BookController@showAllBooks');
     Route::post('/ouders/boeken/toevoegen','BookController@addNewBook');
+    Route::get('/ouders/boeken/get/{id}','BookController@getBookData');
     Route::post('/ouders/boeken/wijzig/{id}','BookController@editBook');
     Route::get('/ouders/boeken/verwijder/{id}','BookController@deleteBook');
 	//Temporary book routes

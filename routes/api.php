@@ -12,9 +12,3 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-//Book route
-Route::get('/ouders/boeken/get/{id}','BookController@getBookData');
-
-//Children route
-Route::get('/ouders/kinderen/get/{id}','ParentController@getChildData');

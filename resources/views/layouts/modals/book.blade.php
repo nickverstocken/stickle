@@ -13,6 +13,10 @@
                 <form id="addBookForm" name="addBookForm" method="POST" enctype="multipart/form-data" action="/ouders/boeken/toevoegen">
                     {{ csrf_field() }}
                     <div class="card">
+                        <h4>Afbeelding van het boek</h4>
+                        <input type="file" name="bookCover" id="bookCover" class="input">
+                    </div>
+                    <div class="card">
                         <h4>Titel</h4>
                         <input required name="title" type="text" class="input" id="title" placeholder="Boek titel*">
                     </div>
@@ -27,13 +31,7 @@
                     <div class="card">
                         <h4>Aantal bladzijden</h4>
                         <input required name="numberOfPages" type="number" class="input" id="numberOfPages" placeholder="Aantal bladzijden*">
-                    </div>
-                    <div class="card">
-                        <h4>Afbeelding van het boek</h4>
-                        <input type="file" name="bookCover" id="bookCover" class="input">
-                    </div>
-
-                    
+                    </div> 
                 </form>
                 <div class="actions">
                     <button  form="addBookForm" class="button">Toevoegen</button>
