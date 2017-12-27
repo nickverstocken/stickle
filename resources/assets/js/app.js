@@ -21,6 +21,19 @@ $('#addChildBtn').click(function () {
 });
 var scanner;
 window.editBook = function(id) {
+    $.get('/ouders/boeken/get/'+id)
+    .done(function(data) {
+        console.log(data.title);
+       $('#editBookForm #title').val(data.title);
+       $('#editBookForm #author').val(data.author);
+       $('#editBookForm #description').val(data.shortDescription);
+       $('#editBookForm #numberOfPages').val(data.numberOfPages);
+       $("#editBookForm").attr('action', '/ouders/boeken/wijzig/'+data.readingBook_id);
+    })
+    .fail(function() {
+        alert( "error" );
+    });
+
     $('#editbookModal').css({
         'opacity': '1',
         'z-index': '2'
@@ -29,6 +42,7 @@ window.editBook = function(id) {
         'opacity': '1',
         'z-index': '1'
     });
+    
 }
 window.selectChild = function(childId) {
     $.ajaxSetup({
