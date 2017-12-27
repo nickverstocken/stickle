@@ -7,7 +7,7 @@ use Auth;
 class ChildController extends Controller
 {
     public function index(){
-        $parent = Auth::user()->toArray();
-       // dd($parent->child);
+        $parent = Auth::user();
+       dd($parent->children->toArray());
     }
 }

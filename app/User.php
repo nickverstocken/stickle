@@ -28,6 +28,6 @@ class User extends Authenticatable
     ];
 
     public function children(){
-        return $this->hasMany('App\Child');
+        return $this->hasMany('App\Child', 'parent_id');
     }
 }
