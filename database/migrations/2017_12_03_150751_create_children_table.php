@@ -17,7 +17,7 @@ class CreateChildrenTable extends Migration
             $table->increments('child_id');
             $table->string('firstName');
             $table->string('lastName');
-            $table->string('gender');
+            $table->enum('gender',['male','female'])->default('male');
             $table->date('dateOfBirth');
             $table->string('picturePath');
             $table->integer('rewardPoints');

@@ -16,4 +16,7 @@ class Child extends Model
         ->where('parent_id','=',$parent_id)
         ->get();
     }
+    public function parent(){
+        return $this->belongsTo('App\User', 'parent_id');
+    }
 }
