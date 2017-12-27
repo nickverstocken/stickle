@@ -29,6 +29,14 @@ window.editBook = function(id) {
         'opacity': '1',
         'z-index': '1'
     });
+
+    $.get('/api/ouders/boeken/get/'+id)
+    .done(function(data) {
+       console.log(data);
+    })
+    .fail(function() {
+        alert( "error" );
+    });
 }
 window.selectChild = function(childId) {
     $.ajaxSetup({
