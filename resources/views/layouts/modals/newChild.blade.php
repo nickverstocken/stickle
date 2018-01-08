@@ -32,8 +32,8 @@
                     </div>
                 </form>
                 <div class="actions">
-                    <button  form="addKidForm" class="button">Add</button>
-                    <button  class="button cancel closeModal" onclick="closeModal(this);">Cancel</button>
+                    <button  form="addKidForm" class="button">Toevoegen</button>
+                    <button  class="button cancel closeModal" onclick="closeModal(this);">Annuleren</button>
                 </div>
             </div>
         </div>

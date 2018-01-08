@@ -134,6 +134,7 @@ class ParentController extends Controller
 
             return redirect('/');
         }
+        return Redirect::back()->withErrors($validator);
 
     }
 
