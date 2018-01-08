@@ -7,6 +7,6 @@ use DB;
 
 class ChildrenReadingBook extends Model
 {
-    protected $table = 'childrenReadingBook';
+    protected $table = 'childrenReadingBooks';
     protected $primaryKey = 'childrenReadingBook_id';
 }
