@@ -62,10 +62,11 @@ class ChildController extends Controller
         $parent = Auth::user();
         $childIdSession = session('childLoggedIn');
         $child = Child::find($childIdSession);
-        dd($child->toArray());
+        $childBooks = $child->readingBooks;
+
         if($child_id == $childIdSession){
             return view('child.home.home',[
-
+                'child' => $child,
             ]);
         }else{
            // $parentKids = $parent->children;

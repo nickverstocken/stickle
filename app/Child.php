@@ -22,4 +22,10 @@ class Child extends Model
     public function stickerBook(){
         return $this->hasMany('App\StickerBook', 'child_id');
     }
+    public function readingBooks(){
+        return $this->hasManyThrough(
+            ReadingBook::class, ChildrenReadingBook::class,
+            'child_id', 'readingBook_id', 'child_id'
+        );
+    }
 }
