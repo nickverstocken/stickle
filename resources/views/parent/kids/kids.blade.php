@@ -5,6 +5,9 @@
         @foreach($childrenOfParents as $child)
             <div class="card">
                 <div class="cardHeader">
+                    <div class="actions">
+                        <button onclick="editChild({{ json_encode($child) }})"><img src="{{ URL::asset('images/icons/edit.svg') }}" alt="Edit"></button>
+                    </div>
                     <h1>{{ $child->firstName }}</h1>
                 </div>
                 <div class="cardImage">

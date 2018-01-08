@@ -116,6 +116,25 @@ window.editBook = function (data) {
         'z-index': '1'
     });
 };
+window.editChild = function (data) {
+    $('#editKidForm #firstName').val(data.firstName);
+    $('#editKidForm #lastName').val(data.lastName);
+    $('#editKidForm #gender').val(data.gender);
+    $('#editKidForm #dateOfBirth').val(data.dateOfBirth);
+    $("#editKidForm").attr('action', '/ouders/kinderen/wijzig/' + data.child_id);
+    $("#deleteButton").attr('onclick', '/ouders/kinderen/verwijder/' + data.child_id);
+
+    console.log(data);
+
+    $('#editChildModal').css({
+        'opacity': '1',
+        'z-index': '2'
+    });
+    $('#editChildModalBg').css({
+        'opacity': '1',
+        'z-index': '1'
+    });
+};
 window.selectChild = function (childId) {
     $.ajaxSetup({
         headers: {
