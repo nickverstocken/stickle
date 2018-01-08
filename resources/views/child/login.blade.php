@@ -11,7 +11,7 @@
                 @foreach ($parentKids as $child)
                     <div id="child{{$child->child_id}}" class="childrenWrap" onclick="selectChild('{{$child->child_id}}')">
                         <div class="image">
-                            <img class="poster" src="{{ URL::asset('images/kids/nick.jpg') }}" alt="Nick">
+                            <img class="poster" src="{{ URL::asset( $child->picturePath ) }}" alt="Nick">
                         </div>
                         <div class="childName">
                             <span>{{$child->firstName . ' ' . $child->lastName}}</span>

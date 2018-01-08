@@ -27,9 +27,9 @@ Route::group(['middleware' => 'auth'], function () {
     //region parent Routes
     //Children routes
     Route::get('/ouders/kinderen', 'ParentController@showAllChildrenFromParent');
-    Route::post('/ouders/kinderen/wijzig/{id}','parentController@editChild');    
-    Route::post('/ouders/kinderen/toevoegen','parentController@addNewChild');
-    Route::get('/ouders/kinderen/verwijder/{id}','parentController@deleteChild');
+    Route::post('/ouders/kinderen/wijzig/{id}','ParentController@editChild');
+    Route::post('/ouders/kinderen/toevoegen','ParentController@addNewChild');
+    Route::get('/ouders/kinderen/verwijder/{id}','ParentController@deleteChild');
     
     //Book routes
     Route::get('/ouders/boeken', 'BookController@showAllBooks');
