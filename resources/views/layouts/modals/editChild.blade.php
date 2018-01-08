@@ -23,8 +23,8 @@
                     </div>
                     <div class="card">
                         <h4>Jongen of meisje?</h4>
-                        <input required name="gender" type="radio" class="input" id="gender" value="male">Jongen <br>
-                        <input required name="gender" type="radio" class="input" id="gender" value="female">Meisje
+                        <input required name="gender" type="radio" class="input" id="maleGender" value="male">Jongen <br>
+                        <input required name="gender" type="radio" class="input" id="femaleGender" value="female">Meisje
                     </div>
                     <div class="card">
                         <h4>Geboortedatum</h4>
@@ -32,8 +32,8 @@
                     </div>
                 </form>
                 <div class="actions">
-                    <button  form="addKidForm" class="button">Wijzigen</button>
-                    <button  class="button cancel closeModal" onclick="closeModal(this);">Verwijder</button>
+                    <button form="editKidForm" class="button">Wijzigen</button>
+                    <button id="deleteButton" class="button cancel closeModal">Verwijder</button>
                 </div>
             </div>
         </div>

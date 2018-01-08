@@ -17,7 +17,7 @@
                 </div>
                 <div class="cardInfo">
                     <h2>Naam</h2>
-                    <input value="{{ $child->firstName }} {{ $child->lastName }}" />
+                    <input value="{{ $child->firstName }} {{ $child->lastName }}" readonly/>
                 </div>
             </div>
         @endforeach

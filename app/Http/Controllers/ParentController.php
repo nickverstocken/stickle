@@ -116,23 +116,39 @@ class ParentController extends Controller
 
     public function editChild($child_id, Request $request){
         $validator = Validator::make($request->all(), [
-            'firstname' => 'required|string|max:255',
-            'lastname' => 'required|string|max:255',
+            'firstName' => 'required|string|max:255',
+            'lastName' => 'required|string|max:255',
             'gender' => 'required|string|max:25',
             'dateOfBirth' => 'required|date',
+            'picture' => 'image'
         ]);
 
         if ($validator->passes()) {
 
             $child = Child::find($child_id);
-            $child->firstName = $request->firstname;
-            $child->lastName = $request->lastname;
+            $child->firstName = $request->firstName;
+            $child->lastName = $request->lastName;
             $child->gender = $request->gender;
             $child->dateOfBirth = $request->dateOfBirth;
-            $child->picturePath = 'Change this with edited path';
-            $child->save();
 
-            return redirect('/');
+            $file = $request->picture;
+
+            if($file){
+                $img = Image::make($file);
+                $img = $img->resize(250, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                });
+
+                $extension = pathinfo(storage_path().$file->getClientOriginalName(), PATHINFO_EXTENSION);
+                $img = $img->stream();               
+                $filename = 'public/children/' . $child_id . '.' .$extension;
+                Storage::disk('local')->put($filename, $img);
+                $child->picturePath =  Storage::url($filename);
+                $child->save();
+            }
+
+            return redirect('/ouders/kinderen');
         }
         return Redirect::back()->withErrors($validator);
 
