@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Response;
 use App\StickerBook;
+use App\Child;
 class ChildController extends Controller
 {
     public function index(Request $request){
@@ -60,12 +61,14 @@ class ChildController extends Controller
 
         $parent = Auth::user();
         $childIdSession = session('childLoggedIn');
+        $child = Child::find($childIdSession);
+        dd($child->toArray());
         if($child_id == $childIdSession){
             return view('child.home.home',[
 
             ]);
         }else{
-            $parentKids = $parent->children;
+           // $parentKids = $parent->children;
             return redirect('/kind/login');
         }
     }
