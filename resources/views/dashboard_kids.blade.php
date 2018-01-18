@@ -9,7 +9,7 @@
                         <a href="/kind/{{$child->child_id}}/dashboard"><img class="profilepic" src="{{ URL::asset( $child->picturePath ) }}" alt="profilePic"></a>
 
                     @else
-                        <a href="/child/dashboard"><img class="profilepic" src="{{ URL::asset('images/kids/defaultprofile-1.png') }}"
+                        <a href="/kind/{{$child->child_id}}/dashboard"><img class="profilepic" src="{{ URL::asset('images/kids/defaultprofile-1.png') }}"
                                                         alt="default profile picture"></a>
 
                     @endif
@@ -33,7 +33,6 @@
     </div>
 
     <div id="contentKids" class="content">
-        <example-component></example-component>
         @yield('dashboardcontent')
     </div>
 @stop

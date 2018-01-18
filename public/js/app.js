@@ -332,10 +332,9 @@ window.checkCanBuyPrice = function (childId, coins, rewardId, price) {
         }
     });
     if (coins >= price) {
-        coins = coins - price;
         $.post('/kind/koopprijs', { childId: childId, rewardPrice: price, rewardId: rewardId }).done(function (data) {
             if (data.success) {
-                console.log(data);
+                window.location = data.url;
             } else {
                 alert(data.error);
             }

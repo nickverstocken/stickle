@@ -11,7 +11,12 @@
                 @foreach ($parentKids as $child)
                     <div id="child{{$child->child_id}}" class="childrenWrap" onclick="selectChild('{{$child->child_id}}')">
                         <div class="image">
-                            <img class="poster" src="{{ URL::asset( $child->picturePath ) }}" alt="Nick">
+                            @if ($child->picturePath)
+                                <img class="poster" src="{{ URL::asset( $child->picturePath ) }}" alt="profilePic">
+                            @else
+                                <img class="poster" src="{{ URL::asset('images/kids/defaultprofile-1.png') }}"
+                                     alt="default profile picture">
+                            @endif
                         </div>
                         <div class="childName">
                             <span>{{$child->firstName . ' ' . $child->lastName}}</span>

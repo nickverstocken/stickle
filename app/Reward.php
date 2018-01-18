@@ -8,4 +8,8 @@ class Reward extends Model
 {
     protected $table = 'rewards';
     protected $primaryKey = 'reward_id';
+
+    public function childrenReward(){
+        return $this->hasMany(ChildrenReward::class, 'reward_id');
+    }
 }

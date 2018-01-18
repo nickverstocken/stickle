@@ -31,19 +31,7 @@ class Child extends Model
             'child_id', 'readingBook_id', 'child_id'
         )->with('childrenReadingBook')->where('currentlyReading', true);
     }
-    private function transformAnswersCollection($answers)
-    {
-        return array_map([$this, 'transformAnswer'], $answers->toArray());
-    }
-
-    private function transformAnswer($answer)
-    {
-        return [
-            'question' => QuestionController::transform($answer['survey_question']),
-            'answer' => [
-                'id' => $answer['id'],
-                'value' => $answer['answer']
-            ]
-        ];
+    public function childRewards(){
+        return $this->hasMany(ChildrenReward::class, 'child_id');
     }
 }

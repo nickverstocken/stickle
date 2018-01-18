@@ -27,6 +27,7 @@ class CreateChildrenRewardsTable extends Migration
             $table->foreign('reward_id')->references('reward_id')
             ->on('rewards')
             ->onDelete('cascade');
+            $table->unique(['child_id', 'reward_id']);
         });
     }
 

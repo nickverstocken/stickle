@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/kind/{kindId}/scan','ChildController@getScan');
     Route::post('/stickerbook/{stickerBookId}/reward/{rewardId}/scan', 'ChildController@scanReward');
     Route::post('/kind/koopprijs', 'ChildController@buyPrice');
+    Route::get('/kind/{kindId}/prijs/{priceId}', 'ChildController@viewPrice');
     //endregion Child Routes
 });
 

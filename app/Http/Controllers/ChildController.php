@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ChildrenReadingBook;
+use App\ChildrenReward;
 use App\Reward;
 use Illuminate\Http\Request;
 use Auth;
@@ -11,6 +12,7 @@ use Response;
 use App\StickerBook;
 use App\Child;
 use DB;
+use Illuminate\Support\Carbon;
 class ChildController extends Controller
 {
     public function index(Request $request){
@@ -170,13 +172,53 @@ class ChildController extends Controller
         $reward_id = $request->get('rewardId');
         $price = $request->get('rewardPrice');
         $child = Child::find($child_id);
+        $childrenReward = ChildrenReward::where('child_id', $child_id)->where('reward_id', $reward_id)->first();
+        if($childrenReward){
+            $now = Carbon::now();
+            $daysOld = $childrenReward->updated_at->diffInDays($now);
+            if($childrenReward->rewardIsBought == 1 && $daysOld <= 2){
+                return response::json([
+                        'success' => true,
+                        'url' => '/kind/' . $child_id . '/prijs/' . $reward_id
+                    ]
+                    , 200
+                );
+            }
+        }else{
+            $childrenReward = new ChildrenReward;
+            $childrenReward->child_id = $child_id;
+            $childrenReward->reward_id = $reward_id;
+            $childrenReward->rewardIsBought = true;
+            $childrenReward->save();
+        }
         $child->coins -= $price;
         $child->save();
         return response::json([
                 'success' => true,
-                'embedLink' => 'kind_id : ' . $child_id . ' rewardId  :' . $reward_id . 'price : ' . $price
+                'url' => '/kind/' . $child_id . '/prijs/' . $reward_id
             ]
             , 200
         );
+    }
+    public function viewPrice($childId, $priceId){
+        $child = Child::find($childId);
+        $parent = Auth::user();
+        $price = ChildrenReward::where('child_id', $childId)->where('reward_id', $priceId)->with('Reward')->first();
+        if(!$price){
+            return redirect('/kind/' . session('childLoggedIn') . '/dashboard');
+        }
+        if($price->child_id != session('childLoggedIn')){
+            return redirect('/kind/' . session('childLoggedIn') . '/dashboard');
+        }
+        $now = Carbon::now();
+        $daysOld = $price->updated_at->diffInDays($now);
+        if($daysOld > 2){
+            return redirect('/kind/' . session('childLoggedIn') . '/dashboard');
+        }
+        return view('child.rewards.reward', [
+            'child' => $child,
+            'parent' => $parent,
+            'reward' => $price->reward
+        ]);
     }
 }
