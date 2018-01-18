@@ -26,7 +26,7 @@
                     <input value="{{ $child->firstName }} {{ $child->lastName }}" readonly/>
                     <h2>Boeken</h2>
                     <div class="searchBooks">
-                        <input placeholder="Zoek Boeken die dit kind kan/mag lezen..."
+                        <input placeholder="Zoek een boek dat je kind mag lezen"
                                onkeyup="searchBooks(event, {{$child->child_id}})"/>
                         <ul id="bookSearch{{$child->child_id}}" class="searchResults">
 

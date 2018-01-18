@@ -325,6 +325,27 @@ var delay = function () {
         timer = setTimeout(callback, ms);
     };
 }();
+window.checkCanBuyPrice = function (childId, coins, rewardId, price) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    if (coins >= price) {
+        coins = coins - price;
+        $.post('/kind/koopprijs', { childId: childId, rewardPrice: price, rewardId: rewardId }).done(function (data) {
+            if (data.success) {
+                console.log(data);
+            } else {
+                alert(data.error);
+            }
+        }).fail(function () {
+            alert("Something went wrong!");
+        });
+    } else {
+        alert('Je hebt niet genoeg muntjes om deze prijs te kopen...');
+    }
+};
 
 /***/ }),
 /* 2 */

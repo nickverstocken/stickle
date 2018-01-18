@@ -164,4 +164,19 @@ class ChildController extends Controller
             );
         }
     }
+    public function buyPrice(Request $request){
+        $parent = Auth::user();
+        $child_id = $request->get('childId');
+        $reward_id = $request->get('rewardId');
+        $price = $request->get('rewardPrice');
+        $child = Child::find($child_id);
+        $child->coins -= $price;
+        $child->save();
+        return response::json([
+                'success' => true,
+                'embedLink' => 'kind_id : ' . $child_id . ' rewardId  :' . $reward_id . 'price : ' . $price
+            ]
+            , 200
+        );
+    }
 }

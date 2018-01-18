@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="cardAction">
-                <button>Koop deze prijs<img src="{{ URL::asset('images/icons/coins.svg') }}" alt="Instellingen">{{$reward->price}}</button>
+                <button onclick="checkCanBuyPrice({{$child->child_id}}, {{$child->coins}},{{$reward->reward_id}}, {{$reward->price}})">Koop deze prijs<img src="{{ URL::asset('images/icons/coins.svg') }}" alt="Instellingen">{{$reward->price}}</button>
             </div>
         </div>
         @endforeach
