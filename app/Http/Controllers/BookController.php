@@ -34,7 +34,7 @@ class BookController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'author' => 'required|string|max:255',
-            'shortDescription' => 'string|max:255',
+            'shortDescription' => 'string',
             'numberOfPages' => 'required|numeric',
             'bookCover' => 'image'
         ]);
@@ -79,14 +79,14 @@ class BookController extends Controller
     
     public function editBook($readingBook_id, Request $request)
     {
+
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'author' => 'required|string|max:255',
-            'shortDescription' => 'string|max:255',
+            'shortDescription' => 'string',
             'numberOfPages' => 'required|numeric',
             'bookCover' => 'image'
         ]);
-
         if ($validator->passes()) {      
             $book = ReadingBook::find($readingBook_id);
             $file = $request->bookCover;
@@ -109,13 +109,14 @@ class BookController extends Controller
             $book->title = $request->title;
         	$book->author = $request->author;
         	$book->shortDescription = $request->shortDescription;
-            $book->numberOfPages = $request->numberOfPages;            
+            $book->numberOfPages = $request->numberOfPages;
+
             $book->save();
             
             return redirect('/ouders/boeken');
         }
         
-        return redirect('/');
+        return redirect('/ouders/boeken');
     }
 
     public function deleteBook($readingBook_id){
