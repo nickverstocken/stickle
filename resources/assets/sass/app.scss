@@ -933,30 +933,43 @@ position: relative;
   .cardGrid{
     padding-top:20px;
     column-width: 250px;
-    column-count: 4;
+    column-count: 5;
     max-width: 1325px;
     column-gap: 15px;
+    overflow: hidden;
     margin: 30px auto;
     .card{
       box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
       break-inside: avoid-column;
       background: #fff;
+      max-width:100%;
+      width:100%;
       display: inline-block;
       margin-bottom: 15px;
       border-radius: 10px;
       .cardHeader{
-        margin: 15px;
+        margin:0px 15px;
         h2{
+          max-width: 100%;
+          overflow: hidden;
+          text-overflow:ellipsis;
+          white-space: nowrap;
           font-weight: 700;
+          line-height: 50px;
+          margin-top: 0px;
         }
       }
       .cardtumb{
         width:100%;
         .image{
-          height: 200px;
+          box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+          height: 140px;
+          overflow: hidden;
           margin: 15px;
+          margin-top: 0px;
           position: relative;
           img{
+            margin-top: -30px;
             object-fit: cover;
             height:200px;
           }

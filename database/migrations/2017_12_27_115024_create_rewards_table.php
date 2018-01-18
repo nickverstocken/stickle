@@ -15,7 +15,7 @@ class CreateRewardsTable extends Migration
     {
         Schema::create('rewards', function (Blueprint $table) {
             $table->increments('reward_id');
-            $table->string('kind');
+            $table->enum('kind', ['youtube','game'])->default('youtube');
             $table->string('link')->nullable();
             $table->string('title');
             $table->time('timeToPlay')->nullable();

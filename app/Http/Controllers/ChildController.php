@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ChildrenReadingBook;
+use App\Reward;
 use Illuminate\Http\Request;
 use Auth;
 use Mockery\Exception;
@@ -85,10 +86,12 @@ class ChildController extends Controller
         $parent = Auth::user();
         $childIdSession = session('childLoggedIn');
         $child = Child::find($childIdSession);
+        $rewards = Reward::all();
         if($child_id == $childIdSession){
             return view('child.trophies.trophies',[
                 'child' => $child,
-                'parent' => $parent
+                'parent' => $parent,
+                'rewards' => $rewards
             ]);
         }else{
             return redirect('/kind/login');

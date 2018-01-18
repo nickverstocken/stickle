@@ -1379,11 +1379,12 @@ textarea {
   padding-top: 20px;
   -webkit-column-width: 250px;
           column-width: 250px;
-  -webkit-column-count: 4;
-          column-count: 4;
+  -webkit-column-count: 5;
+          column-count: 5;
   max-width: 1325px;
   -webkit-column-gap: 15px;
           column-gap: 15px;
+  overflow: hidden;
   margin: 30px auto;
 }
 
@@ -1393,17 +1394,25 @@ textarea {
   -webkit-column-break-inside: avoid;
           break-inside: avoid-column;
   background: #fff;
+  max-width: 100%;
+  width: 100%;
   display: inline-block;
   margin-bottom: 15px;
   border-radius: 10px;
 }
 
 .cardGridWrap .cardGrid .card .cardHeader {
-  margin: 15px;
+  margin: 0px 15px;
 }
 
 .cardGridWrap .cardGrid .card .cardHeader h2 {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-weight: 700;
+  line-height: 50px;
+  margin-top: 0px;
 }
 
 .cardGridWrap .cardGrid .card .cardtumb {
@@ -1411,12 +1420,17 @@ textarea {
 }
 
 .cardGridWrap .cardGrid .card .cardtumb .image {
-  height: 200px;
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  height: 140px;
+  overflow: hidden;
   margin: 15px;
+  margin-top: 0px;
   position: relative;
 }
 
 .cardGridWrap .cardGrid .card .cardtumb .image img {
+  margin-top: -30px;
   -o-object-fit: cover;
      object-fit: cover;
   height: 200px;

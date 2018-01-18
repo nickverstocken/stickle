@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(bookSeeder::class);
         $this->call(stickerBookSeededr::class);
         $this->call(stickerSeeder::class);
+        $this->call(rewardSeeder::class);
     }
 }
