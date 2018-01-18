@@ -10,7 +10,7 @@
                     </div>
                     <h1>{{ $child->firstName }}</h1>
                 </div>
-                <div class="cardImage">
+                <div class="cardImage {{$child->logged_in ? 'online' : ''}} ">
                     <div class="image">
                         <img class="poster" src="{{ URL::asset( $child->picturePath ) }}" alt="Instellingen">
                     </div>
@@ -34,18 +34,17 @@
           "created_at" => null
           "updated_at" => null--}}
                     <div id="childBooksReading" class="booklogCarousel">
-                        @if ($child->toArray()['children_reading_book'] )
-                        @foreach ($child->toArray()['children_reading_book'] as $book)
-                   {{--         <div>{{$book->toArray()['children_reading_book']['lastPageRead']}} / {{$book->numberOfPages}}</div>--}}
-                            <div class="bookitem {{$book['currentlyReading'] == 1 ? 'currentlyReading' : ''}}">
-                                <img class="bookImage" src="{{ URL::asset( $book['book']['coverPath'] ) }}" alt="Book">
+                        @if ($child->childrenReadingBook )
+                        @foreach ($child->childrenReadingBook as $book)
+                                <div class="bookitem {{$book->currentlyReading == 1 ? 'currentlyReading' : ''}}">
+                                    <img class="bookImage" src="{{ URL::asset( $book->book->coverPath ) }}" alt="Book">
 
-                                <div class="progress-bar">
-                                    <div style="width:{{$book['lastPageRead'] / $book['book']['numberOfPages'] * 100}}%" class="progress"></div>
+                                    <div class="progress-bar">
+                                        <div style="width:{{$book->lastPageRead / $book->book->numberOfPages * 100}}%" class="progress"></div>
+                                    </div>
                                 </div>
-                            </div>
                         @endforeach
-                            @endif
+                        @endif
                     </div>
 
                 </div>

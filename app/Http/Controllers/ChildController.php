@@ -12,7 +12,6 @@ class ChildController extends Controller
     public function index(Request $request){
         $parent = Auth::user();
         $parentKids = $parent->children;
-        $request->session()->forget('childLoggedIn');
             return view('child.login',[
                 'parentKids' => $parentKids,
             ]);
@@ -61,10 +60,12 @@ class ChildController extends Controller
 
         $parent = Auth::user();
         $childIdSession = session('childLoggedIn');
-        $child = Child::find($childIdSession)->with(['childrenReadingBook' => function($q) {
+        $child = Child::where('child_id', $childIdSession)->first();
+        $child = Child::where('child_id', $childIdSession)->with(['childrenReadingBook' => function($q) {
             $q->with(['Book'])->get();
         }])->first();
-       $currentBook = $child->currentBook;
+       $currentBook = $child->currentBook->first();
+       //dd($currentBook->childrenReadingBook->first()->toArray());
         if($child_id == $childIdSession){
             return view('child.home.home',[
                 'child' => $child,

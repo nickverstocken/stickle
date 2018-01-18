@@ -779,6 +779,17 @@ textarea {
   border: 10px solid rgba(0, 0, 0, 0.2);
 }
 
+.content .cardswrap .card .cardImage.online .image:after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #D75A4A;
+  top: 0;
+  right: 0;
+}
+
 .content .cardswrap .card .cardImage img {
   height: 100%;
   -o-object-fit: cover;
@@ -1287,7 +1298,12 @@ textarea {
 }
 
 .cardGridWrap#profileDash .profileinfo .rightProfile .bookProfile {
+  position: relative;
   height: 80%;
+}
+
+.cardGridWrap#profileDash .profileinfo .rightProfile .bookProfile .progress-bar {
+  height: 10px;
 }
 
 .cardGridWrap#profileDash .profileinfo .rightProfile .bookProfile img {
@@ -1457,6 +1473,18 @@ textarea {
   height: 130px;
   position: relative;
   margin-right: 15px;
+}
+
+.booklogCarousel .bookitem.currentlyReading:after {
+  position: absolute;
+  content: 'Huidig boek';
+  right: 0;
+  border-radius: 0px 4px 0px 0px;
+  top: 0;
+  background: rgba(238, 116, 24, 0.9);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 2px 5px;
 }
 
 .booklogCarousel .bookitem img {

@@ -103,7 +103,7 @@ window.editBook = function (data) {
     $('#editBookForm #description').val(data.shortDescription);
     $('#editBookForm #numberOfPages').val(data.numberOfPages);
     $("#editBookForm").attr('action', '/ouders/boeken/wijzig/' + data.readingBook_id);
-    $("#deleteButton").attr('onclick', '/ouders/boeken/verwijder/' + data.readingBook_id);
+    $("#deleteButton").attr('onclick', 'window.location = "/ouders/boeken/verwijder/' + +data.readingBook_id + '"');
 
     $('#editbookModal').css({
         'opacity': '1',
@@ -119,7 +119,7 @@ window.editChild = function (data) {
     $('#editKidForm #lastName').val(data.lastName);
     $('#editKidForm #dateOfBirth').val(data.dateOfBirth);
     $("#editKidForm").attr('action', '/ouders/kinderen/wijzig/' + data.child_id);
-    $("#deleteButton").attr('onclick', '/ouders/kinderen/verwijder/' + data.child_id);
+    $("#deleteButton").attr('onclick', 'window.location = "/ouders/kinderen/verwijder/' + data.child_id + '"');
     if (data.gender == 'male') {
         $('#editKidForm #maleGender').attr("checked", "checked");
     } else {

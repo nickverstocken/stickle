@@ -29,7 +29,7 @@ class Child extends Model
         return $this->hasManyThrough(
             ReadingBook::class, ChildrenReadingBook::class,
             'child_id', 'readingBook_id', 'child_id'
-        )->where('currentlyReading', true);
+        )->with('childrenReadingBook')->where('currentlyReading', true);
     }
     private function transformAnswersCollection($answers)
     {

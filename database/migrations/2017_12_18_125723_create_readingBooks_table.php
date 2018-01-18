@@ -19,7 +19,7 @@ class CreateReadingBooksTable extends Migration
             $table->string('coverPath')->nullable();
             $table->integer('numberOfPages');
             $table->string('author');
-            $table->string('shortDescription')->nullable();
+            $table->text('shortDescription')->nullable();
             $table->integer('addedBy_id')->unsigned();
             $table->timestamps();
 

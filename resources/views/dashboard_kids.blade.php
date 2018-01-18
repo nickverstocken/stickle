@@ -17,6 +17,9 @@
                 <li>
                     <a class="{{ (Route::getFacadeRoot()->current()->uri() == 'kind/' . $child->child_id .'/scan') ? 'selected' : '' }}" href="/kind/{{$child->child_id}}/scan"><img src="{{ URL::asset('images/icons/photo-camera.svg') }}" alt="Kinderen"></a>
                 </li>
+                <li>
+                    <a class="{{ (Route::getFacadeRoot()->current()->uri() == 'ouders/dashboard') ? 'selected' : '' }}" href="/ouders/kinderen"><img src="{{ URL::asset('images/icons/locked.svg') }}" alt="Kinderen"></a>
+                </li>
             </ul>
         </nav>
     </div>

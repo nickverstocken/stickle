@@ -16,7 +16,7 @@ class CreateStickersTable extends Migration
         Schema::create('stickers', function (Blueprint $table) {
             $table->increments('sticker_id');
             $table->string('uniqueCode')->nullable();
-            $table->boolean('isAlreadyScanned');
+            $table->boolean('isAlreadyScanned')->default(false);
             $table->integer('stickerBook_id')->unsigned();
             $table->timestamps();
 

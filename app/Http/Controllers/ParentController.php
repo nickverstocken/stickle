@@ -64,7 +64,7 @@ class ParentController extends Controller
         	$child->lastName = $request->lastName;
         	$child->gender = $request->gender;
         	$child->dateOfBirth = $request->dateOfBirth;
-        	$child->picturePath = 'no picture';
+        	$child->picturePath = null;
         	$child->rewardPoints = 0;
         	$child->parent_id = Auth::id();
             $child->save();
@@ -165,7 +165,7 @@ class ParentController extends Controller
             $child = Child::find($child_id);    
             $child->delete();
         }
-        return redirect('/');
+        return redirect('/ouders/kinderen');
     }
 
     //function to check if the child is from the logged in parant

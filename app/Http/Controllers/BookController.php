@@ -46,7 +46,7 @@ class BookController extends Controller
         	$book->author = $request->author;
         	$book->shortDescription = $request->shortDescription;
         	$book->numberOfPages = $request->numberOfPages;
-            $book->coverPath = "no cover";
+            $book->coverPath = null;
         	$book->addedBy_id = Auth::id();
             $book->save();
             $book_id = $book->readingBook_id;

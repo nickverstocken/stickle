@@ -35,7 +35,11 @@
                 <h2>Huidig boek</h2>
                 <div class="bookProfile">
                     @if (count($currentBook) === 1)
-                    <img class="bookImage" src="{{ URL::asset('images/books/polly.jpg') }}" alt="Book">
+                    <img class="bookImage" src="{{ $currentBook->coverPath }}" alt="Book">
+
+                        <div class="progress-bar">
+                            <div style="width:{{$currentBook->childrenReadingBook->first()->lastPageRead / $currentBook->numberOfPages * 100}}%" class="progress"></div>
+                        </div>
                     @else
                         <img class="bookImage" src="{{ URL::asset('images/books/default.png') }}" alt="Book">
                     @endif
@@ -46,13 +50,13 @@
 <h2>Jouw boeken</h2>
             <div class="booklogCarousel">
                 @if ($child->toArray()['children_reading_book'] )
-                    @foreach ($child->toArray()['children_reading_book'] as $book)
+                    @foreach ($child->childrenReadingBook as $book)
                         {{--         <div>{{$book->toArray()['children_reading_book']['lastPageRead']}} / {{$book->numberOfPages}}</div>--}}
-                        <div class="bookitem {{$book['currentlyReading'] == 1 ? 'currentlyReading' : ''}}">
-                            <img class="bookImage" src="{{ URL::asset( $book['book']['coverPath'] ) }}" alt="Book">
+                        <div class="bookitem {{$book->currentlyReading == 1 ? 'currentlyReading' : ''}}">
+                            <img class="bookImage" src="{{ URL::asset( $book->book->coverPath ) }}" alt="Book">
 
                             <div class="progress-bar">
-                                <div style="width:{{$book['lastPageRead'] / $book['book']['numberOfPages'] * 100}}%" class="progress"></div>
+                                <div style="width:{{$book->lastPageRead / $book->book->numberOfPages * 100}}%" class="progress"></div>
                             </div>
                         </div>
                     @endforeach

@@ -470,6 +470,18 @@ vertical-align: middle;
           border-radius: 10px;
           border:10px solid rgba(0,0,0,0.2);
         }
+        &.online{
+          .image:after{
+            content:'';
+            position:absolute;
+            width:20px;
+            height:20px;
+            border-radius: 50%;
+            background: $red;
+            top:0;
+            right:0;
+          }
+        }
         img {
           height: 100%;
           object-fit: cover;
@@ -850,8 +862,11 @@ position: relative;
           font-family: $fredericka-font;
         }
         .bookProfile{
+          position: relative;
           height:80%;
-
+          .progress-bar{
+            height:10px;
+          }
           img{
             border:10px solid $green_darkest;
             border-radius: 10px;
@@ -992,7 +1007,17 @@ position: relative;
     position: relative;
     margin-right: 15px;
     &.currentlyReading{
-
+      &:after{
+        position: absolute;
+        content: 'Huidig boek';
+        right:0;
+        border-radius: 0px 4px 0px 0px;
+        top:0;
+        background:rgba($orange,0.9);
+        font-size: 12px;
+        font-weight: 700;
+        padding:2px 5px;
+      }
     }
     img{
       border-radius: 5px;
