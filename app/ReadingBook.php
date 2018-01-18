@@ -16,4 +16,7 @@ class ReadingBook extends Model
         ->where('addedBy_id','=',$user_id)
         ->get();
     }
+    public function childrenReadingBook(){
+        return $this->hasMany('App\ChildrenReadingBook', 'book_id');
+    }
 }

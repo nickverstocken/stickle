@@ -16,7 +16,7 @@ class CreateChildrenReadingBooksTable extends Migration
         Schema::create('childrenReadingBooks', function (Blueprint $table) {
             $table->increments('childrenReadingBook_id');
             $table->integer('child_id')->unsigned();
-            $table->integer('readingBook_id')->unsigned();
+            $table->integer('book_id')->unsigned();
             $table->boolean('currentlyReading')->default(false);
             $table->integer('lastPageRead')->default(0);
             $table->timestamps();
@@ -25,9 +25,10 @@ class CreateChildrenReadingBooksTable extends Migration
             ->on('children')
             ->onDelete('cascade');
 
-            $table->foreign('readingBook_id')->references('readingBook_id')
+            $table->foreign('book_id')->references('readingBook_id')
             ->on('readingBooks')
             ->onDelete('cascade');
+            $table->unique(['child_id', 'book_id']);
         });
     }
 

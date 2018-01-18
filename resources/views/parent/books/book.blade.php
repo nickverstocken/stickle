@@ -4,7 +4,6 @@
     <div class="cardswrap">
         @foreach($booksOfUser as $book)
             <div class="card">
-
                 <div class="cardHeader">
                     <div class="actions">
                         <button onclick="editBook({{ json_encode($book) }})"><img src="{{ URL::asset('images/icons/edit.svg') }}" alt="Edit"></button>
@@ -14,9 +13,6 @@
                 <div class="cardImage">
                     <div class="image">
                     <img class="poster" src="{{ URL::asset( $book->coverPath ) }}" alt="Instellingen">
-                        <div class="progress-bar">
-                            <div style="width:60%" class="progress"></div>
-                        </div>
                     </div>
                     <div class="page">
                     Aantal bladzijden:  {{ $book->numberOfPages }}

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ChildrenReadingBook;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
@@ -30,9 +31,13 @@ class ParentController extends Controller
     public function showAllChildrenFromParent(){
         $child = new Child;
         $childrenOfParents = $child->getChildWithParentId(Auth::id());
-
+        $children = Child::where('parent_id', Auth::id())->with(['childrenReadingBook' => function($q) {
+            $q->with('Book');
+        }])->get();
+     //   dd($children->toArray());
+       //dd($children[0]->toArray()['children_reading_book']);
         return view('parent.kids.kids',[
-            'childrenOfParents' => $childrenOfParents,
+            'childrenOfParents' => $children,
         ]); 
     }
 

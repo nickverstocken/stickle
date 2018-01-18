@@ -10,7 +10,7 @@ use App\ChildrenReadingBook;
 use Auth;
 use Redirect;
 use Validator;
-
+use Response;
 
 class BookController extends Controller
 {
@@ -206,5 +206,39 @@ class BookController extends Controller
         }
         return False;
     }
+    public function searchBooks(Request $request) {
+        $searchVal = $request->get('searchVal');
+        $user = Auth::user();
+        $books = ReadingBook::where('addedBy_id', $user->id)
+            ->where(function($query) use ($searchVal)
+            {
+                $query->orWhere('title', 'like', '%'.$searchVal.'%')
+                    ->orWhere('author', 'like', '%' . $searchVal . '%')
+                    ->orWhere('shortDescription', 'like', '%' . $searchVal . '%');
+            })->get();
+        return response::json([
+                'success' => true,
+                'books' => $books
+            ]
+            , 200
+        );
+    }
+    public function linkBookToChild(Request $request) {
+        $bookId = $request->get('bookId');
+        $childId = $request->get('childId');
 
+        $readingBook = ChildrenReadingBook::where('child_id', $childId)->where('book_id', $bookId)->first();
+        if(!$readingBook){
+            $readingBook = new ChildrenReadingBook();
+            $readingBook->book_id = $bookId;
+            $readingBook->child_id = $childId;
+            $readingBook->save();
+        }
+        return response::json([
+                'success' => true,
+                'message' => 'Linked succesfully!'
+            ]
+            , 200
+        );
+    }
 }

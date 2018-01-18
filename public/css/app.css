@@ -586,13 +586,81 @@ textarea {
 }
 
 .content #kids .card {
+  max-width: 450px;
   width: 50%;
+}
+
+.content #kids .card .searchBooks {
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.content #kids .card .searchBooks ul {
+  position: absolute;
+  width: 100%;
+  z-index: 4;
+  color: #fff;
+  display: block;
+  max-height: 255px;
+  overflow-y: auto;
+}
+
+.content #kids .card .searchBooks ul li {
+  min-height: 50px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(31, 44, 61, 0.9);
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.content #kids .card .searchBooks ul li:last-child {
+  border-bottom: 0;
+}
+
+.content #kids .card .searchBooks ul li > span {
+  padding-left: 15px;
+}
+
+.content #kids .card .searchBooks ul li:hover {
+  background: rgba(40, 56, 78, 0.9);
+}
+
+.content #kids .card .searchBooks ul li div:last-child {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 auto;
+          flex: 1 auto;
+}
+
+.content #kids .card .searchBooks ul li h2 {
+  border: none;
+  font-weight: 700;
+  font-size: 20px;
+  padding-top: 0px;
+  padding-bottom: 5px;
+  line-height: 1;
+  margin: 0;
+}
+
+.content #kids .card .searchBooks ul li img {
+  display: block;
+  width: 70px;
+  height: 80px;
+  margin-right: 15px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .content #kids .cardImage .image {
   border-radius: 50%;
-  width: 250px;
-  height: 250px;
+  width: 150px;
+  height: 150px;
   border: 10px solid rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0px 0px;
           box-shadow: 0px 0px;
@@ -721,22 +789,6 @@ textarea {
   width: 100%;
 }
 
-.content .cardswrap .card .cardImage .progress-bar {
-  height: 4px;
-  position: absolute;
-  bottom: -7px;
-  z-index: 2;
-  width: 100%;
-}
-
-.content .cardswrap .card .cardImage .progress-bar .progress {
-  background: #EE7418;
-  opacity: 1;
-  width: 0;
-  border-radius: 14px;
-  height: 100%;
-}
-
 .content .cardswrap .card .cardImage .page {
   color: #fff;
   text-align: center;
@@ -850,6 +902,22 @@ textarea {
 
 .content .addButton .addBtn img {
   width: 30px;
+}
+
+.progress-bar {
+  height: 4px;
+  position: absolute;
+  bottom: 0px;
+  z-index: 2;
+  width: 100%;
+}
+
+.progress-bar .progress {
+  background: #EE7418;
+  opacity: 1;
+  width: 0;
+  border-radius: 14px;
+  height: 100%;
 }
 
 #childLoginWrap {
@@ -1247,33 +1315,6 @@ textarea {
   font-family: "Fredericka the Great", cursive;
 }
 
-.cardGridWrap#profileDash .profileBookLog .booklogCarousel {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  overflow-y: hidden;
-  overflow-x: auto;
-  padding-bottom: 15px;
-}
-
-.cardGridWrap#profileDash .profileBookLog .booklogCarousel .bookitem {
-  min-width: 100px;
-  width: 100px;
-  height: 130px;
-  margin-right: 15px;
-}
-
-.cardGridWrap#profileDash .profileBookLog .booklogCarousel .bookitem img {
-  border-radius: 5px;
-  width: 100%;
-  height: 100%;
-  border: 5px solid #0F6E75;
-  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
-          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
 .cardGridWrap .profileWrap {
   width: 120px;
   height: 120px;
@@ -1398,6 +1439,51 @@ textarea {
 .cardGridWrap .QRscan {
   margin: 0 auto;
   margin-bottom: 10px;
+}
+
+.booklogCarousel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: auto;
+  padding-bottom: 15px;
+  color: #fff;
+}
+
+.booklogCarousel .bookitem {
+  min-width: 100px;
+  width: 100px;
+  height: 130px;
+  position: relative;
+  margin-right: 15px;
+}
+
+.booklogCarousel .bookitem img {
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  border: 5px solid #0F6E75;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#childBooksReading.booklogCarousel {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#childBooksReading.booklogCarousel .bookitem {
+  width: 29%;
+  margin-bottom: 15px;
+}
+
+#childBooksReading.booklogCarousel .bookitem img {
+  border: 5px solid rgba(255, 255, 255, 0.2);
 }
 
 #scanWrap {

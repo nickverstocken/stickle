@@ -61,15 +61,46 @@ class ChildController extends Controller
 
         $parent = Auth::user();
         $childIdSession = session('childLoggedIn');
-        $child = Child::find($childIdSession);
-        $childBooks = $child->readingBooks;
-
+        $child = Child::find($childIdSession)->with(['childrenReadingBook' => function($q) {
+            $q->with(['Book'])->get();
+        }])->first();
+       $currentBook = $child->currentBook;
         if($child_id == $childIdSession){
             return view('child.home.home',[
                 'child' => $child,
+                'currentBook' => $currentBook,
+                'parent' => $parent
             ]);
         }else{
            // $parentKids = $parent->children;
+            return redirect('/kind/login');
+        }
+    }
+    public function getPrices($child_id){
+        $parent = Auth::user();
+        $childIdSession = session('childLoggedIn');
+        $child = Child::find($childIdSession);
+        if($child_id == $childIdSession){
+            return view('child.trophies.trophies',[
+                'child' => $child,
+                'parent' => $parent
+            ]);
+        }else{
+            // $parentKids = $parent->children;
+            return redirect('/kind/login');
+        }
+    }
+    public function getScan($child_id){
+        $parent = Auth::user();
+        $childIdSession = session('childLoggedIn');
+        $child = Child::find($childIdSession);
+        if($child_id == $childIdSession){
+            return view('child.scan.scancode',[
+                'child' => $child,
+                'parent' => $parent
+            ]);
+        }else{
+            // $parentKids = $parent->children;
             return redirect('/kind/login');
         }
     }

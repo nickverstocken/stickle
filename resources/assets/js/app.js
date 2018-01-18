@@ -188,4 +188,75 @@ window.closeModal = function($event){
         $('.modalBg').delay(2000).css({
             'z-index': '-1'
         });
-    }
+    };
+window.searchBooks = function(event, child_id){
+
+    delay(function(){
+        console.log($(event.target).val());
+        var searchVal = $(event.target).val();
+        $('#bookSearch' + child_id).empty();
+        if(searchVal){
+            $.get('/ouders/zoekboeken',
+                { searchVal: searchVal}
+            )
+                .done(function(data) {
+
+                    if(data.success){
+                        books = data.books;
+                        if(books.length != 0 ){
+                            for (index = 0; index < books.length; ++index) {
+                                $('#bookSearch' + child_id).append(
+                                    `<li onclick="linkBookToChild(${books[index].readingBook_id}, ${child_id})">
+                                       <div><img src="${books[index].coverPath}"></div>
+                                       <div>
+                                       <div><h2>${books[index].title}</h2></div>
+                                        <div>Auteur : ${books[index].author}</div>
+                                         <div>Pagina's : ${books[index].numberOfPages}</div>
+                                        </div>
+                                    </li>`);
+                            }
+                        }else{
+                            $('#bookSearch' + child_id).append('<li><span>Geen boeken gevonden</span></li>');
+                        }
+
+                    }else{
+                        alert(data.error);
+                    }
+                })
+                .fail(function() {
+                    alert( "Server error" );
+                });
+        }else{
+            $('#bookSearch' + child_id).empty();
+        }
+    }, 250 );
+}
+window.linkBookToChild = function(book_id, child_id){
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    console.log('book_id : ' + book_id);
+    console.log('child_id : ' + child_id);
+    $.post('/ouders/boeken/linknaarkind',
+        { childId: child_id, bookId: book_id}
+    )
+        .done(function(data) {
+            if(data.success){
+                document.location.reload();
+            }else{
+                alert(data.error);
+            }
+        })
+        .fail(function() {
+            alert( "Something went wrong!" );
+        });
+}
+var delay = (function(){
+    var timer = 0;
+    return function(callback, ms){
+        clearTimeout (timer);
+        timer = setTimeout(callback, ms);
+    };
+})();

@@ -18,6 +18,36 @@
                 <div class="cardInfo">
                     <h2>Naam</h2>
                     <input value="{{ $child->firstName }} {{ $child->lastName }}" readonly/>
+                    <h2>Boeken</h2>
+                    <div class="searchBooks">
+                        <input placeholder="Zoek Boeken die dit kind kan/mag lezen..." onkeyup="searchBooks(event, {{$child->child_id}})"/>
+                        <ul id="bookSearch{{$child->child_id}}" class="searchResults">
+
+                        </ul>
+                    </div>
+                    {{--        "children_reading_book" => array:7 [▼
+          "childrenReadingBook_id" => 1
+          "child_id" => 1
+          "readingBook_id" => 1
+          "currentlyReading" => 0
+          "lastPageRead" => 0
+          "created_at" => null
+          "updated_at" => null--}}
+                    <div id="childBooksReading" class="booklogCarousel">
+                        @if ($child->toArray()['children_reading_book'] )
+                        @foreach ($child->toArray()['children_reading_book'] as $book)
+                   {{--         <div>{{$book->toArray()['children_reading_book']['lastPageRead']}} / {{$book->numberOfPages}}</div>--}}
+                            <div class="bookitem {{$book['currentlyReading'] == 1 ? 'currentlyReading' : ''}}">
+                                <img class="bookImage" src="{{ URL::asset( $book['book']['coverPath'] ) }}" alt="Book">
+
+                                <div class="progress-bar">
+                                    <div style="width:{{$book['lastPageRead'] / $book['book']['numberOfPages'] * 100}}%" class="progress"></div>
+                                </div>
+                            </div>
+                        @endforeach
+                            @endif
+                    </div>
+
                 </div>
             </div>
         @endforeach

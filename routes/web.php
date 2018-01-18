@@ -30,12 +30,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/ouders/kinderen/wijzig/{id}','ParentController@editChild');
     Route::post('/ouders/kinderen/toevoegen','ParentController@addNewChild');
     Route::get('/ouders/kinderen/verwijder/{id}','ParentController@deleteChild');
+    Route::get('/ouders/zoekboeken', 'BookController@searchBooks');
     
     //Book routes
     Route::get('/ouders/boeken', 'BookController@showAllBooks');
     Route::post('/ouders/boeken/toevoegen','BookController@addNewBook');
     Route::post('/ouders/boeken/wijzig/{id}','BookController@editBook');
     Route::get('/ouders/boeken/verwijder/{id}','BookController@deleteBook');
+    Route::post('/ouders/boeken/linknaarkind', 'BookController@linkBookToChild');
     //endregion routes
 
     //region Child Routes
@@ -43,12 +45,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/kind/login', 'ChildController@index');
     Route::post('/kind/login/{stickerBookId}', 'ChildController@scanStickerBook');
     Route::get('/kind/{kindId}/dashboard', 'ChildController@getDashBoard');
-    Route::get('/kind/prijzen', function () {
-        return view('child.trophies.trophies');
-    });
-    Route::get('/kind/scan', function () {
-        return view('child.scan.scancode');
-    });
+    Route::get('/kind/{kindId}/prijzen', 'ChildController@getPrices');
+    Route::get('/kind/{kindId}/scan','ChildController@getScan');
     //endregion Child Routes
 });
 

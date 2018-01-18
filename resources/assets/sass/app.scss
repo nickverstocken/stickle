@@ -326,13 +326,66 @@ vertical-align: middle;
       }
     }
       .card{
+        max-width: 450px;
         width:50%;
+        .searchBooks{
+          padding-bottom: 10px;
+          position: relative;
+          ul{
+            position: absolute;
+            width:100%;
+            z-index: 4;
+            color: #fff;
+            display:block;
+            max-height: 255px;
+            overflow-y: auto;
+            li{
+              min-height: 50px;
+             border-bottom: 1px solid rgba(255,255,255,0.3);
+              background: rgba($bg_light, 0.9);
+              cursor:pointer;
+              display:flex;
+              align-items: center;
+              flex-wrap: wrap;
+              &:last-child{
+                border-bottom: 0;
+              }
+              & > span{
+                padding-left: 15px;
+              }
+
+              &:hover{
+                background: rgba(lighten($bg_light,5%), 0.9);
+              }
+              div:last-child{
+                flex:1 auto;
+              }
+              h2{
+                border: none;
+                font-weight: 700;
+                font-size: 20px;
+                padding-top: 0px;
+                padding-bottom: 5px;
+                line-height: 1;
+                margin:0;
+              }
+              img{
+                display: block;
+                width:70px;
+                height:80px;
+                margin-right: 15px;
+                object-fit: cover;
+              }
+
+            }
+          }
+        }
       }
     .cardImage{
       .image{
         border-radius: 50%;
-        width:250px;
-        height:250px;
+        width:150px;
+        height:150px;
         border:10px solid rgba(0,0,0,0.2);
         box-shadow: 0px 0px;
         img{
@@ -426,21 +479,6 @@ vertical-align: middle;
           width: 100%;
 
         }
-        .progress-bar{
-          height:4px;
-          position: absolute;
-          bottom:-7px;
-
-          z-index:2;
-          width:100%;
-          .progress{
-            background: $orange;
-            opacity:1;
-            width:0;
-            border-radius: 14px;
-            height:100%;
-          }
-        }
         .page{
           color:#fff;
           text-align: center;
@@ -530,6 +568,21 @@ position: relative;
     }
   }
 
+}
+.progress-bar{
+  height:4px;
+  position: absolute;
+  bottom:0px;
+
+  z-index:2;
+  width:100%;
+  .progress{
+    background: $orange;
+    opacity:1;
+    width:0;
+    border-radius: 14px;
+    height:100%;
+  }
 }
 #childLoginWrap{
   position: relative;
@@ -821,28 +874,10 @@ position: relative;
         line-height: 35px;
         font-family: $fredericka-font;
       }
-      .booklogCarousel{
-        display:flex;
-        overflow-y: hidden;
-        overflow-x: auto;
-        padding-bottom: 15px;
-        .bookitem{
-          min-width: 100px;
-          width:100px;
-          height:130px;
-          margin-right: 15px;
-          img{
-            border-radius: 5px;
-            width:100%;
-            height:100%;
-            border:5px solid $green_darkest;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
-            object-fit: cover;
-          }
-        }
-      }
+
     }
   }
+
   .profileWrap{
     width:120px;
     height:120px;
@@ -942,6 +977,43 @@ position: relative;
   .QRscan{
     margin: 0 auto;
     margin-bottom: 10px;
+  }
+}
+.booklogCarousel{
+  display:flex;
+  overflow-y: hidden;
+  overflow-x: auto;
+  padding-bottom: 15px;
+  color:#fff;
+  .bookitem{
+    min-width: 100px;
+    width:100px;
+    height:130px;
+    position: relative;
+    margin-right: 15px;
+    &.currentlyReading{
+
+    }
+    img{
+      border-radius: 5px;
+      width:100%;
+      height:100%;
+      border:5px solid $green_darkest;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
+      object-fit: cover;
+    }
+  }
+}
+#childBooksReading.booklogCarousel{
+  flex-wrap: wrap;
+  overflow-y: auto;
+  overflow-x: hidden;
+  .bookitem{
+    width:29%;
+    margin-bottom: 15px;
+    img{
+      border:5px solid rgba(255,255,255,0.2);
+    }
   }
 }
 #scanWrap{
