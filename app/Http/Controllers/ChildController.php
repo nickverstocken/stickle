@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\ChildrenReadingBook;
 use Illuminate\Http\Request;
 use Auth;
+use Mockery\Exception;
 use Response;
 use App\StickerBook;
 use App\Child;
+use DB;
 class ChildController extends Controller
 {
     public function index(Request $request){
@@ -60,11 +63,12 @@ class ChildController extends Controller
 
         $parent = Auth::user();
         $childIdSession = session('childLoggedIn');
-        $child = Child::where('child_id', $childIdSession)->first();
         $child = Child::where('child_id', $childIdSession)->with(['childrenReadingBook' => function($q) {
+            $q->orderBy('currentlyReading', 'desc');
             $q->with(['Book'])->get();
         }])->first();
-       $currentBook = $child->currentBook->first();
+       $currentBook = ChildrenReadingBook::where('child_id', $child_id)->where('currentlyReading', 1)->with('Book')->first();
+      // dd($currentBook->currentlyReading);
        //dd($currentBook->childrenReadingBook->first()->toArray());
         if($child_id == $childIdSession){
             return view('child.home.home',[
@@ -87,7 +91,6 @@ class ChildController extends Controller
                 'parent' => $parent
             ]);
         }else{
-            // $parentKids = $parent->children;
             return redirect('/kind/login');
         }
     }
@@ -101,8 +104,61 @@ class ChildController extends Controller
                 'parent' => $parent
             ]);
         }else{
-            // $parentKids = $parent->children;
             return redirect('/kind/login');
+        }
+    }
+    public function scanReward(Request $request, $stickerBookId, $rewardId){
+        $child_id = $request->get('childId');
+        $stickerBook = StickerBook::find($stickerBookId);
+        if(($stickerBook->child_id != $child_id)){
+            return response::json([
+                    'success' => false,
+                    'error' => 'Deze sticker hoort bij een ander stickerboek'
+                ]
+                , 200
+            );
+        }
+        $stickers = $stickerBook->stickers->where('sticker_id', $rewardId);
+        if($stickers->count() <= 0){
+            return response::json([
+                    'success' => false,
+                    'error' => 'Deze sticker bestaat niet'
+                ]
+                , 200
+            );
+        }
+        $stickers = $stickers->where('isAlreadyScanned', 0)->first();
+        if(!$stickers){
+            return response::json([
+                    'success' => false,
+                    'error' => 'Deze sticker is niet meer geldig'
+                ]
+                , 200
+            );
+        }
+        $child = Child::find($child_id);
+        $child->coins += 1;
+        $child->rewardPoints +=1;
+        $stickers->isAlreadyScanned = 1;
+        try{
+            DB::beginTransaction();
+            $child->save();
+            $stickers->save();
+            DB::commit();
+            return response::json([
+                    'success' => true,
+                    'url' => '/kind/' . $child_id . '/dashboard'
+                ]
+                , 200
+            );
+        }catch(Exception $e){
+            DB::rollBack();
+            return response::json([
+                    'success' => false,
+                    'error' => 'Er ging iets mis probeer het later opnieuw'
+                ]
+                , 200
+            );
         }
     }
 }

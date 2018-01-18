@@ -8,7 +8,7 @@
             Heb je een beloning gekregen? Goed zo! Je kan deze nu inscannen door op de knop : 'Scan nu' te klikken. Vervolgens krijg je direct je beloning en kan
             je kijken welke prijzen je kan kopen! En vooral hoe meer je leest hoe meer je kan scannen joepie!
         </p>
-        <button onclick="loadscanner()" class="button">Scan nu</button>
+        <button onclick="loadscanner({{$child->child_id}})" class="button">Scan nu</button>
     </div>
     <div class="QRscan">
         <span></span>

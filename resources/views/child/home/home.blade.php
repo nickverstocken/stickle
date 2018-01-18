@@ -5,12 +5,17 @@
         <div class="profileinfo">
             <div class="leftProfile">
                 <div class="profileWrap">
-                    <img class="profilepic" src="{{ URL::asset('images/kids/nick.jpg') }}" alt="Instellingen">
+                    @if ($child->picturePath)
+                        <img class="profilepic" src="{{ URL::asset( $child->picturePath ) }}" alt="profilePic">
+                    @else
+                        <img class="profilepic" src="{{ URL::asset('images/kids/defaultprofile-1.png') }}"
+                             alt="default profile picture">
+                    @endif
                 </div>
                 <h1>{{ $child->firstName }} {{ $child->lastName }}</h1>
                 <div class="helpDescription">
                     <p>
-                        Welkom terug {{ $child->firstName }}!
+                        Hallo {{ $child->firstName }}!
                     </p>
                 </div>
                 <div class="statistics">
@@ -34,11 +39,11 @@
             <div class="rightProfile">
                 <h2>Huidig boek</h2>
                 <div class="bookProfile">
-                    @if (count($currentBook) === 1)
-                    <img class="bookImage" src="{{ $currentBook->coverPath }}" alt="Book">
+                    @if ($currentBook)
+                    <img class="bookImage" src="{{ $currentBook->book->coverPath }}" alt="Book">
 
                         <div class="progress-bar">
-                            <div style="width:{{$currentBook->childrenReadingBook->first()->lastPageRead / $currentBook->numberOfPages * 100}}%" class="progress"></div>
+                            <div style="width:{{$currentBook->lastPageRead / $currentBook->book->numberOfPages * 100}}%" class="progress"></div>
                         </div>
                     @else
                         <img class="bookImage" src="{{ URL::asset('images/books/default.png') }}" alt="Book">
@@ -52,7 +57,7 @@
                 @if ($child->toArray()['children_reading_book'] )
                     @foreach ($child->childrenReadingBook as $book)
                         {{--         <div>{{$book->toArray()['children_reading_book']['lastPageRead']}} / {{$book->numberOfPages}}</div>--}}
-                        <div class="bookitem {{$book->currentlyReading == 1 ? 'currentlyReading' : ''}}">
+                        <div onclick="window.location = '/kind/{{$child->child_id}}/boek/{{$book->childrenReadingBook_id}}/zetalshuidig'" class="bookitem {{$book->currentlyReading == 1 ? 'currentlyReading' : ''}}">
                             <img class="bookImage" src="{{ URL::asset( $book->book->coverPath ) }}" alt="Book">
 
                             <div class="progress-bar">

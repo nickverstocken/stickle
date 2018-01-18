@@ -155,7 +155,12 @@ window.backChildLogin = function(){
         $('.backbtn').removeClass('show');
     });
 }
-window.loadscanner = function(){
+window.loadscanner = function(childId){
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     if(scanner){
         scanner.stop();
     }
@@ -163,7 +168,19 @@ window.loadscanner = function(){
     $('.QRscan').addClass('show');
     scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
     scanner.addListener('scan', function (content) {
-        console.log(content);
+        $.post(content,
+            { childId: childId}
+        )
+            .done(function(data) {
+                if(data.success){
+                    window.location = data.url;
+                }else{
+                    alert(data.error);
+                }
+            })
+            .fail(function() {
+                alert( "not a valid QR code" );
+            });
     });
     Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {

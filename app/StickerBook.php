@@ -11,4 +11,7 @@ class StickerBook extends Model
     public function child(){
         return $this->belongsTo('App\Child', 'child_id');
     }
+    public function stickers(){
+        return $this->hasMany(Sticker::class, 'stickerBook_id');
+    }
 }

@@ -5,7 +5,15 @@
         <nav>
             <ul>
                 <li>
-                    <a href="/child/dashboard"><img src="{{ URL::asset('images/kids/nick.jpg') }}" alt="Home"></a>
+                    @if ($child->picturePath)
+                        <a href="/kind/{{$child->child_id}}/dashboard"><img class="profilepic" src="{{ URL::asset( $child->picturePath ) }}" alt="profilePic"></a>
+
+                    @else
+                        <a href="/child/dashboard"><img class="profilepic" src="{{ URL::asset('images/kids/defaultprofile-1.png') }}"
+                                                        alt="default profile picture"></a>
+
+                    @endif
+
                     <div class="coins"> <img class="coinsImg" src="{{ URL::asset('images/icons/coins.svg') }}" alt="Coins">{{$child->coins}}</div>
                 </li>
                 <li>

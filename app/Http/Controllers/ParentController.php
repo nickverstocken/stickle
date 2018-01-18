@@ -32,6 +32,7 @@ class ParentController extends Controller
         $child = new Child;
         $childrenOfParents = $child->getChildWithParentId(Auth::id());
         $children = Child::where('parent_id', Auth::id())->with(['childrenReadingBook' => function($q) {
+            $q->orderBy('currentlyReading', 'desc');
             $q->with('Book');
         }])->get();
      //   dd($children->toArray());

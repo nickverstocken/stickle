@@ -38,6 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/ouders/boeken/wijzig/{id}','BookController@editBook');
     Route::get('/ouders/boeken/verwijder/{id}','BookController@deleteBook');
     Route::post('/ouders/boeken/linknaarkind', 'BookController@linkBookToChild');
+    Route::get('/kind/{kindId}/boek/{childReadingBookId}/zetalshuidig', 'BookController@setBookAsCurrent');
     //endregion routes
 
     //region Child Routes
@@ -47,6 +48,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/kind/{kindId}/dashboard', 'ChildController@getDashBoard');
     Route::get('/kind/{kindId}/prijzen', 'ChildController@getPrices');
     Route::get('/kind/{kindId}/scan','ChildController@getScan');
+    Route::post('/stickerbook/{stickerBookId}/reward/{rewardId}/scan', 'ChildController@scanReward');
     //endregion Child Routes
 });
 

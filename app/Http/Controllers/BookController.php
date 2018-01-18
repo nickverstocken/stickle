@@ -242,4 +242,17 @@ class BookController extends Controller
             , 200
         );
     }
+    public function setBookAsCurrent($childId, $childReadingBookId){
+        $readingBook = ChildrenReadingBook::where('childrenReadingBook_Id', $childReadingBookId)->first();
+        ChildrenReadingBook::where('child_id', $childId)->where('currentlyReading', 1)->update(['currentlyReading' => 0]);
+        if($readingBook){
+            if($readingBook->child_id == session('childLoggedIn')){
+                $readingBook->currentlyReading = true;
+                $readingBook->save();
+                return redirect('kind/' . $childId . '/dashboard');
+            }
+        }
+
+
+    }
 }
