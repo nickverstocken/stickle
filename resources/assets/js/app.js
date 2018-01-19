@@ -298,3 +298,4 @@ window.checkCanBuyPrice = function(childId, coins,rewardId, price){
             });
 
 }
+

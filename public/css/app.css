@@ -498,7 +498,7 @@ textarea {
 }
 
 .navbar-leftfixed {
-  z-index: 1;
+  z-index: 2;
   height: 100vh;
   width: 90px;
   position: fixed;
@@ -1378,15 +1378,12 @@ textarea {
 
 .cardGridWrap .cardGrid {
   padding-top: 20px;
-  -webkit-column-width: 250px;
-          column-width: 250px;
-  -webkit-column-count: 5;
-          column-count: 5;
-  max-width: 1325px;
-  -webkit-column-gap: 15px;
-          column-gap: 15px;
   overflow: hidden;
   margin: 30px auto;
+  max-width: 1200px;
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, auto));
 }
 
 .cardGridWrap .cardGrid .card {
@@ -1397,8 +1394,6 @@ textarea {
   background: #fff;
   max-width: 100%;
   width: 100%;
-  display: inline-block;
-  margin-bottom: 15px;
   border-radius: 10px;
 }
 
@@ -1477,6 +1472,12 @@ textarea {
   margin-bottom: 10px;
 }
 
+#prices {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 auto;
+          flex: 1 auto;
+}
+
 .booklogCarousel {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1492,6 +1493,8 @@ textarea {
 }
 
 .booklogCarousel .card {
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
   min-width: 162px;
   width: 162px;
   height: 130px;
@@ -1746,6 +1749,94 @@ textarea {
   #childLoginWrap {
     height: auto;
   }
+}
+
+.parentcode {
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  background: #147E87;
+  position: fixed;
+  top: 0;
+  max-width: 320px;
+  width: 100%;
+  z-index: 1;
+  left: -320px;
+  height: 100%;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-shadow: 5px -1px 24px -6px rgba(0, 0, 0, 0.55);
+  box-shadow: 5px -1px 24px -6px rgba(0, 0, 0, 0.55);
+}
+
+.parentcode .parentCodeWrap {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+.parentcode .head h2 {
+  display: block;
+  font-weight: 700;
+  font-size: 30px;
+  text-align: center;
+}
+
+.parentcode .code {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  margin-top: 35px;
+}
+
+.parentcode .code span {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 15px;
+  background: rgba(31, 44, 61, 0.7);
+  border-radius: 50%;
+}
+
+.parentcode .code span:last-child {
+  margin-right: 0px;
+}
+
+.parentcode .keyPad .grid {
+  width: 250px;
+  margin: 0 auto;
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: 70px 70px 70px;
+  grid-gap: 20px;
+}
+
+.parentcode .keyPad .grid .key {
+  border-radius: 50%;
+  text-align: center;
+  padding-top: 23px;
+  font-weight: 700;
+  height: 70px;
+  background: rgba(31, 44, 61, 0.2);
+}
+
+.parentcode .codeSubmit {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.parentcode .codeSubmit button {
+  width: 250px;
+  padding: 15px 0px;
+  border-radius: 10px;
+  background: rgba(31, 44, 61, 0.5);
+  color: #fff;
+  font-size: 25px;
 }
 
 ::-webkit-scrollbar {

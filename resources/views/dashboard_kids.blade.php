@@ -31,7 +31,9 @@
             </ul>
         </nav>
     </div>
-
+    <div id="keycode">
+        @include('child.parent_code.code')
+    </div>
     <div id="contentKids" class="content">
         @yield('dashboardcontent')
     </div>

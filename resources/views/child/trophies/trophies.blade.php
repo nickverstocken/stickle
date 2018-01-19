@@ -1,7 +1,7 @@
 @extends('dashboard_kids')
 
 @section('dashboardcontent')
-<div class="cardGridWrap">
+<div id="prices" class="cardGridWrap">
     <h1>Prijzen</h1>
     <div class="cardGrid">
         @foreach ($rewards as $reward)
