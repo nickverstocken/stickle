@@ -537,6 +537,7 @@ textarea {
   padding-top: 10px;
   padding-bottom: 5px;
   width: 50px;
+  cursor: pointer;
   margin: 0 auto;
   text-align: center;
   -webkit-transition: all 0.3s ease;
@@ -1752,8 +1753,8 @@ textarea {
 }
 
 .parentcode {
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
   background: #147E87;
   position: fixed;
   top: 0;
@@ -1770,6 +1771,10 @@ textarea {
       flex-wrap: wrap;
   -webkit-box-shadow: 5px -1px 24px -6px rgba(0, 0, 0, 0.55);
   box-shadow: 5px -1px 24px -6px rgba(0, 0, 0, 0.55);
+}
+
+.parentcode.show {
+  left: 91px;
 }
 
 .parentcode .parentCodeWrap {

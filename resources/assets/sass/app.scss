@@ -286,6 +286,7 @@ vertical-align: middle;
           padding-top:10px;
           padding-bottom: 5px;
           width: 50px;
+          cursor: pointer;
           margin: 0 auto;
           text-align: center;
           transition:all 0.3s ease;
@@ -1253,7 +1254,10 @@ position: relative;
   }
 }
 .parentcode{
-  transition: all 0.2s ease;
+  &.show{
+    left:91px;
+  }
+  transition: all 0.3s ease-in;
   background: $green_darker;
   position: fixed;
   top:0;

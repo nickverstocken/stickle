@@ -341,6 +341,9 @@ window.checkCanBuyPrice = function (childId, coins, rewardId, price) {
         alert("Something went wrong!");
     });
 };
+window.showKeyPad = function (event) {
+    $('.parentcode').toggleClass('show');
+};
 
 /***/ }),
 /* 2 */

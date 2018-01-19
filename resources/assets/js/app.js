@@ -298,4 +298,6 @@ window.checkCanBuyPrice = function(childId, coins,rewardId, price){
             });
 
 }
-
+window.showKeyPad = function(event){
+    $('.parentcode').toggleClass('show');
+}
