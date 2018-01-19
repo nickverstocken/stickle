@@ -69,7 +69,11 @@ class ChildController extends Controller
         $child = Child::where('child_id', $childIdSession)->with(['childrenReadingBook' => function($q) {
             $q->orderBy('currentlyReading', 'desc');
             $q->with(['Book'])->get();
+        }, 'childRewards' => function($q) {
+            $q->with('reward');
+            $q->where('updated_at', '>=', Carbon::now()->subDays(2));
         }])->first();
+       // dd($child->toArray());
        $currentBook = ChildrenReadingBook::where('child_id', $child_id)->where('currentlyReading', 1)->with('Book')->first();
       // dd($currentBook->currentlyReading);
        //dd($currentBook->childrenReadingBook->first()->toArray());
@@ -183,8 +187,26 @@ class ChildController extends Controller
                     ]
                     , 200
                 );
+            }else{
+                if($price > $child->coins){
+                    return response::json([
+                            'success' => false,
+                            'error' => 'Je hebt niet genoeg muntjes om deze prijs te kopen...'
+                        ]
+                        , 200
+                    );
+                }
+                $childrenReward->touch();
             }
         }else{
+            if($price > $child->coins){
+                return response::json([
+                        'success' => false,
+                        'error' => 'Je hebt niet genoeg muntjes om deze prijs te kopen...'
+                    ]
+                    , 200
+                );
+            }
             $childrenReward = new ChildrenReward;
             $childrenReward->child_id = $child_id;
             $childrenReward->reward_id = $reward_id;

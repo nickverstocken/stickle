@@ -68,6 +68,25 @@
                 @endif
             </div>
         </div>
+        <div class="profileBookLog">
+            <h2>Jouw prijzen</h2>
+            <div class="booklogCarousel">
+                @if ($child->toArray()['child_rewards'] )
+                    @foreach ($child->childRewards as $reward)
+                        <div onclick="window.location = '/kind/{{$child->child_id}}/prijs/{{$reward->reward_id}}'" class="card">
+                            <div class="cardHeader">
+                                <h3 title="{{$reward->reward->title}}">{{$reward->reward->title}}</h3>
+                            </div>
+                            <div class="cardtumb">
+                                <div class="image">
+                                    <img class="poster" src="https://img.youtube.com/vi/{{explode("v=", $reward->reward->link)[1]}}/0.jpg"alt="Instellingen">
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
     </div>
 
     <script src="{{ URL::asset('js/instascan/instascan.min.js') }}" type="text/javascript"></script>

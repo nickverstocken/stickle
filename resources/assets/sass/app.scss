@@ -884,6 +884,7 @@ position: relative;
     .profileBookLog{
       margin: 15px;
       padding:15px;
+      padding-bottom: 0px;
       background: rgba($green_darker, 0.8);
       border-radius: 10px;
       h2{
@@ -1011,12 +1012,48 @@ position: relative;
     margin-bottom: 10px;
   }
 }
+
 .booklogCarousel{
   display:flex;
   overflow-y: hidden;
   overflow-x: auto;
   padding-bottom: 15px;
   color:#fff;
+  div{
+    cursor: pointer;
+  }
+  .card{
+    min-width:162px;
+    width:162px;
+    height:130px;
+    margin-right: 15px;
+    border-radius: 5px;
+    border:5px solid $green_darkest;
+    background: #fff;
+    color:#313131;
+
+    .image{
+      height:85px;
+
+      overflow: hidden;
+    }
+   .cardHeader h3{
+     font-weight: 700;
+     white-space: nowrap;
+     width:150px;
+     line-height: 35px;
+     overflow: hidden;
+     text-overflow: ellipsis;
+      font-size: 17px;
+     text-align: center;
+    }
+    img{
+
+      width:100%;
+      height:100%;
+      object-fit: cover;
+    }
+  }
   .bookitem{
     min-width: 100px;
     width:100px;
@@ -1063,6 +1100,36 @@ position: relative;
   background: rgba($green_darker, 0.8);
   border-radius: 10px;
 }
+#reward{
+  flex: 1 auto;
+  max-width: 850px;
+  .card{
+    h1{
+      font-size: 60px;
+      padding-bottom: 50px;
+
+    }
+    .iframe{
+      position: relative;
+      padding-bottom: 56.25%;
+      padding-top: 35px;
+      height: 0;
+      overflow: hidden;
+      background:rgba($green_darker, 0.8);
+      border:10px solid $green_darkest;
+      border-radius: 10px;
+      iframe{
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+  }
+}
+
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   h1{
@@ -1084,6 +1151,9 @@ position: relative;
 }
 @media only screen and (max-width: 767px) {
   body{
+    height:auto;
+  }
+  #contentParents{
     height:auto;
   }
   .navbar-leftfixed{
@@ -1109,7 +1179,7 @@ position: relative;
     .cardswrap{
       display:block;
       height:auto;
-
+      margin-bottom: 0px;
       .card{
         position: relative;
         display: flex;
@@ -1180,6 +1250,7 @@ position: relative;
     height:auto;
   }
 }
+
 ::-webkit-scrollbar {
   width: 2px;
   height:2px;

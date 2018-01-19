@@ -283,7 +283,6 @@ window.checkCanBuyPrice = function(childId, coins,rewardId, price){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    if(coins >= price){
         $.post('/kind/koopprijs',
             { childId: childId, rewardPrice: price, rewardId: rewardId}
         )
@@ -297,7 +296,5 @@ window.checkCanBuyPrice = function(childId, coins,rewardId, price){
             .fail(function() {
                 alert( "Something went wrong!" );
             });
-    }else{
-        alert('Je hebt niet genoeg muntjes om deze prijs te kopen...');
-    }
+
 }
