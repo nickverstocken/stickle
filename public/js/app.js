@@ -79,7 +79,7 @@ window.$ = window.jQuery = __webpack_require__(2);
 $('#addBookBtn').click(function () {
     $('#bookModal').css({
         'opacity': '1',
-        'z-index': '2'
+        'z-index': '4'
     });
     $('#bookModalBg').css({
         'opacity': '1',
@@ -89,7 +89,7 @@ $('#addBookBtn').click(function () {
 $('#addChildBtn').click(function () {
     $('#childModal').css({
         'opacity': '1',
-        'z-index': '2'
+        'z-index': '4'
     });
     $('#childModalBg').css({
         'opacity': '1',
@@ -107,7 +107,7 @@ window.editBook = function (data) {
 
     $('#editbookModal').css({
         'opacity': '1',
-        'z-index': '2'
+        'z-index': '4'
     });
     $('#editbookModalBg').css({
         'opacity': '1',
@@ -128,7 +128,7 @@ window.editChild = function (data) {
 
     $('#editChildModal').css({
         'opacity': '1',
-        'z-index': '2'
+        'z-index': '4'
     });
     $('#editChildModalBg').css({
         'opacity': '1',
@@ -284,7 +284,7 @@ window.searchBooks = function (event, child_id) {
                     books = data.books;
                     if (books.length != 0) {
                         for (index = 0; index < books.length; ++index) {
-                            $('#bookSearch' + child_id).append('<li onclick="linkBookToChild(' + books[index].readingBook_id + ', ' + child_id + ')">\n                                       <div><img src="' + books[index].coverPath + '"></div>\n                                       <div>\n                                       <div><h2>' + books[index].title + '</h2></div>\n                                        <div>Auteur : ' + books[index].author + '</div>\n                                         <div>Pagina\'s : ' + books[index].numberOfPages + '</div>\n                                        </div>\n                                    </li>');
+                            $('#bookSearch' + child_id).append('<li onclick="linkBookToChild(' + books[index].readingBook_id + ', ' + child_id + ')">\n                                       <div><img src="' + (books[index].coverPath ? books[index].coverPath : '/images/books/nocover.png') + '"></div>\n                                       <div>\n                                       <div><h2>' + books[index].title + '</h2></div>\n                                        <div>Auteur : ' + books[index].author + '</div>\n                                         <div>Pagina\'s : ' + books[index].numberOfPages + '</div>\n                                        </div>\n                                    </li>');
                         }
                     } else {
                         $('#bookSearch' + child_id).append('<li><span>Geen boeken gevonden</span></li>');
@@ -310,6 +310,25 @@ window.linkBookToChild = function (book_id, child_id) {
     console.log('child_id : ' + child_id);
     $.post('/ouders/boeken/linknaarkind', { childId: child_id, bookId: book_id }).done(function (data) {
         if (data.success) {
+            document.location.reload();
+        } else {
+            alert(data.error);
+        }
+    }).fail(function () {
+        alert("Something went wrong!");
+    });
+};
+window.removeBookLink = function (event, childrenReadingBook_id) {
+    event.preventDefault();
+    ///ouders/boeken/verwijderLink/{childrenReadingBook_id}
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.post('/ouders/boeken/verwijderLink/' + childrenReadingBook_id).done(function (data) {
+        if (data.success) {
+            console.log(data);
             document.location.reload();
         } else {
             alert(data.error);

@@ -1479,6 +1479,19 @@ textarea {
           flex: 1 auto;
 }
 
+#childBooks.booklogCarousel {
+  padding-bottom: 40px;
+}
+
+#childBooks.booklogCarousel h3 {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .booklogCarousel {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1537,11 +1550,28 @@ textarea {
   margin-right: 15px;
 }
 
+.booklogCarousel .bookitem button {
+  background: none;
+  width: 20px;
+  height: 20px;
+  border: 0;
+  outline: 0;
+  right: -7px;
+  top: -7px;
+  position: absolute;
+}
+
+.booklogCarousel .bookitem button img {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: 0 !important;
+}
+
 .booklogCarousel .bookitem.currentlyReading:after {
   position: absolute;
   content: 'Huidig boek';
-  right: 0;
-  border-radius: 0px 4px 0px 0px;
+  left: 0;
+  border-radius: 4px 0px 0px 0px;
   top: 0;
   background: rgba(238, 116, 24, 0.9);
   font-size: 12px;
@@ -1565,15 +1595,25 @@ textarea {
       flex-wrap: wrap;
   overflow-y: auto;
   overflow-x: hidden;
+  padding-top: 10px;
 }
 
 #childBooksReading.booklogCarousel .bookitem {
+  cursor: default;
   width: 29%;
-  margin-bottom: 15px;
+  margin-bottom: 40px;
 }
 
 #childBooksReading.booklogCarousel .bookitem img {
   border: 5px solid rgba(255, 255, 255, 0.2);
+}
+
+#childBooksReading.booklogCarousel .bookitem .bookTitle h3 {
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 #scanWrap {

@@ -44,11 +44,19 @@
                         @if ($child->childrenReadingBook )
                             @foreach ($child->childrenReadingBook as $book)
                                 <div class="bookitem {{$book->currentlyReading == 1 ? 'currentlyReading' : ''}}">
-                                    <img class="bookImage" src="{{ URL::asset( $book->book->coverPath ) }}" alt="Book">
-
+                                    <button type="button" alt="delete" onclick="removeBookLink(event, {{$book->childrenReadingBook_id}})"><img src="{{URL::asset('images/icons/error.svg')}}"> </button>
+                                    @if ($book->book->coverPath)
+                                        <img class="bookImage" src="{{ URL::asset( $book->book->coverPath ) }}" alt="{{$book->book->title}}">
+                                    @else
+                                        <img class="bookImage" src="{{ URL::asset('images/books/nocover.png') }}"
+                                             alt="{{$book->book->title}}">
+                                    @endif
                                     <div class="progress-bar">
                                         <div style="width:{{$book->lastPageRead / $book->book->numberOfPages * 100}}%"
                                              class="progress"></div>
+                                    </div>
+                                    <div class="bookTitle">
+                                        <h3>{{$book->book->title}}</h3>
                                     </div>
                                 </div>
                             @endforeach

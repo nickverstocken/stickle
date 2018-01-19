@@ -12,7 +12,12 @@
                 </div>
                 <div class="cardImage">
                     <div class="image">
-                    <img class="poster" src="{{ URL::asset( $book->coverPath ) }}" alt="Instellingen">
+                        @if ($book->coverPath)
+                            <img class="poster" src="{{ URL::asset( $book->coverPath ) }}" alt="{{$book->title}}">
+                        @else
+                            <img class="poster" src="{{ URL::asset('images/books/nocover.png') }}"
+                                 alt="{{$book->title}}">
+                        @endif
                     </div>
                     <div class="page">
                     Aantal bladzijden:  {{ $book->numberOfPages }}

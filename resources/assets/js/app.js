@@ -2,7 +2,7 @@ window.$ = window.jQuery = require('jquery');
 $('#addBookBtn').click(function () {
     $('#bookModal').css({
         'opacity': '1',
-        'z-index': '2'
+        'z-index': '4'
     });
     $('#bookModalBg').css({
         'opacity': '1',
@@ -12,7 +12,7 @@ $('#addBookBtn').click(function () {
 $('#addChildBtn').click(function () {
     $('#childModal').css({
         'opacity': '1',
-        'z-index': '2'
+        'z-index': '4'
     });
     $('#childModalBg').css({
         'opacity': '1',
@@ -30,7 +30,7 @@ window.editBook = function(data) {
 
     $('#editbookModal').css({
         'opacity': '1',
-        'z-index': '2'
+        'z-index': '4'
     });
     $('#editbookModalBg').css({
         'opacity': '1',
@@ -52,7 +52,7 @@ window.editChild = function(data) {
 
     $('#editChildModal').css({
         'opacity': '1',
-        'z-index': '2'
+        'z-index': '4'
     });
     $('#editChildModalBg').css({
         'opacity': '1',
@@ -224,7 +224,7 @@ window.searchBooks = function(event, child_id){
                             for (index = 0; index < books.length; ++index) {
                                 $('#bookSearch' + child_id).append(
                                     `<li onclick="linkBookToChild(${books[index].readingBook_id}, ${child_id})">
-                                       <div><img src="${books[index].coverPath}"></div>
+                                       <div><img src="${books[index].coverPath ? books[index].coverPath : '/images/books/nocover.png'}"></div>
                                        <div>
                                        <div><h2>${books[index].title}</h2></div>
                                         <div>Auteur : ${books[index].author}</div>
@@ -261,6 +261,27 @@ window.linkBookToChild = function(book_id, child_id){
     )
         .done(function(data) {
             if(data.success){
+                document.location.reload();
+            }else{
+                alert(data.error);
+            }
+        })
+        .fail(function() {
+            alert( "Something went wrong!" );
+        });
+}
+window.removeBookLink = function(event,childrenReadingBook_id){
+    event.preventDefault();
+///ouders/boeken/verwijderLink/{childrenReadingBook_id}
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.post('/ouders/boeken/verwijderLink/' + childrenReadingBook_id)
+        .done(function(data) {
+            if(data.success){
+                console.log(data);
                 document.location.reload();
             }else{
                 alert(data.error);

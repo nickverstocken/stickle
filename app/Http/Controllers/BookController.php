@@ -242,6 +242,26 @@ class BookController extends Controller
             , 200
         );
     }
+    public function removeLinkToChild($childrenReadingBook_id){
+        $childrenReadingBook = ChildrenReadingBook::find($childrenReadingBook_id);
+        $child = $childrenReadingBook->child;
+        $parent = Auth::user();
+        if($parent->id == $child->parent->id){
+            $childrenReadingBook->delete();
+            return response::json([
+                    'success' => true,
+                    'message' => 'Unlinked succesfully!'
+                ]
+                , 200
+            );
+        }
+        return response::json([
+                'success' => false,
+                'message' => 'Je bent niet gemachtigd dit te doen'
+            ]
+            , 200
+        );
+    }
     public function setBookAsCurrent($childId, $childReadingBookId){
         $readingBook = ChildrenReadingBook::where('childrenReadingBook_Id', $childReadingBookId)->first();
         ChildrenReadingBook::where('child_id', $childId)->where('currentlyReading', 1)->update(['currentlyReading' => 0]);

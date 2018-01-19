@@ -1015,6 +1015,17 @@ position: relative;
 #prices{
   flex:1 auto;
 }
+#childBooks.booklogCarousel{
+  padding-bottom: 40px;
+  h3{
+    width:90%;
+    margin:0 auto;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
 .booklogCarousel{
   display:flex;
   overflow-y: hidden;
@@ -1063,12 +1074,27 @@ position: relative;
     height:130px;
     position: relative;
     margin-right: 15px;
+    button{
+      background: none;
+      width:20px;
+      height:20px;
+      border: 0;
+      outline:0;
+      right:-7px;
+      top:-7px;
+      position: absolute;
+      img{
+        box-shadow: none;
+        border:0 !important;
+
+      }
+    }
     &.currentlyReading{
       &:after{
         position: absolute;
         content: 'Huidig boek';
-        right:0;
-        border-radius: 0px 4px 0px 0px;
+        left:0;
+        border-radius: 4px 0px 0px 0px;
         top:0;
         background:rgba($orange,0.9);
         font-size: 12px;
@@ -1090,11 +1116,22 @@ position: relative;
   flex-wrap: wrap;
   overflow-y: auto;
   overflow-x: hidden;
+  padding-top: 10px;
   .bookitem{
+    cursor: default;
     width:29%;
-    margin-bottom: 15px;
+    margin-bottom: 40px;
     img{
       border:5px solid rgba(255,255,255,0.2);
+    }
+    .bookTitle{
+      h3{
+        text-align: center;
+        width:100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
     }
   }
 }

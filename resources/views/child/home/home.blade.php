@@ -53,13 +53,18 @@
         </div>
         <div class="profileBookLog">
 <h2>Jouw boeken</h2>
-            <div class="booklogCarousel">
+            <div id="childBooks" class="booklogCarousel">
                 @if ($child->toArray()['children_reading_book'] )
                     @foreach ($child->childrenReadingBook as $book)
                         {{--         <div>{{$book->toArray()['children_reading_book']['lastPageRead']}} / {{$book->numberOfPages}}</div>--}}
                         <div onclick="window.location = '/kind/{{$child->child_id}}/boek/{{$book->childrenReadingBook_id}}/zetalshuidig'" class="bookitem {{$book->currentlyReading == 1 ? 'currentlyReading' : ''}}">
-                            <img class="bookImage" src="{{ URL::asset( $book->book->coverPath ) }}" alt="Book">
-
+                            @if ($book->book->coverPath)
+                                <img class="bookImage" src="{{ URL::asset( $book->book->coverPath ) }}" alt="{{$book->book->title}}">
+                            @else
+                                <img class="bookImage" src="{{ URL::asset('images/books/nocover.png') }}"
+                                     alt="{{$book->book->title}}">
+                            @endif
+                            <h3>{{$book->book->title}}</h3>
                             <div class="progress-bar">
                                 <div style="width:{{$book->lastPageRead / $book->book->numberOfPages * 100}}%" class="progress"></div>
                             </div>
