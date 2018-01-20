@@ -677,7 +677,7 @@ textarea {
 }
 
 .content #kids .card .searchBooks ul li .openBookBtn img {
-  width: 50px;
+  width: 30px;
   -o-object-fit: contain;
      object-fit: contain;
 }

@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
     
     //Book routes
     Route::get('/ouders/boeken', 'BookController@showAllBooks');
+    Route::get('/ouders/boeken/open/{id}', 'BookController@getBook');
     Route::post('/ouders/boeken/toevoegen','BookController@addNewBook');
     Route::post('/ouders/boeken/wijzig/{id}','BookController@editBook');
     Route::get('/ouders/boeken/verwijder/{id}','BookController@deleteBook');

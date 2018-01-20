@@ -5,7 +5,7 @@
             <div class="close closeModal" onclick="closeModal(this);">
                 <img src="{{ URL::asset('images/icons/error.svg') }}" alt="Close">
             </div>
-            <h3>Boek wijzigen</h3>
+            <h3 id="bookTitle"></h3>
         </div>
         <div class="modalContent">
             <div class="contentContainer">

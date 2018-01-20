@@ -37,16 +37,23 @@ window.editBook = function(data) {
         'z-index': '1'
     });    
 }
-window.openBook = function(data) {
-    console.log(data);
- $('#openbookModal').css({
-     'opacity': '1',
-     'z-index': '4'
- });
- $('#openbookModalBg').css({
-     'opacity': '1',
-     'z-index': '1'
- });    
+window.openBook = function(book_id) {
+    console.log(book_id);
+    $.get('/ouders/boeken/open/'.book_id, function(data) {
+            console.log(data.first);
+            //$('#openbookModal#bookTitle').val(data.book.title);
+            $('#openbookModal').css({
+                'opacity': '1',
+                'z-index': '4'
+                });
+                $('#openbookModalBg').css({
+                'opacity': '1',
+                'z-index': '1'
+            });
+        }).fail(function() {
+            alert( "Server error" );
+    });
+    
 }
 window.editChild = function(data) {
     $('#editKidForm #firstName').val(data.firstName);
@@ -242,8 +249,8 @@ window.searchBooks = function(event, child_id){
                                          <div>Pagina's : ${books[index].numberOfPages}</div>
                                         </div>
                                         <div class="openBookButton">
-                                            <a class="openBookBtn" onclick="openBook('${books[index]}')"> <img class="poster" src="/images/icons/view.svg"
-                                                                                    alt="Watch Book"></a>
+                                            <a class="openBookBtn" onclick="openBook(${books[index].readingBook_id})"> <img class="poster" src="/images/icons/view.svg"
+                                                                                    alt="Watch Book"></a
                                         </div>
                                     </li>`);
                             }

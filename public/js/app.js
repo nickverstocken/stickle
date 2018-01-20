@@ -114,15 +114,21 @@ window.editBook = function (data) {
         'z-index': '1'
     });
 };
-window.openBook = function (data) {
-    console.log(data);
-    $('#openbookModal').css({
-        'opacity': '1',
-        'z-index': '4'
-    });
-    $('#openbookModalBg').css({
-        'opacity': '1',
-        'z-index': '1'
+window.openBook = function (book_id) {
+    console.log(book_id);
+    $.get('/ouders/boeken/open/'.book_id, function (data) {
+        console.log(data.first);
+        //$('#openbookModal#bookTitle').val(data.book.title);
+        $('#openbookModal').css({
+            'opacity': '1',
+            'z-index': '4'
+        });
+        $('#openbookModalBg').css({
+            'opacity': '1',
+            'z-index': '1'
+        });
+    }).fail(function () {
+        alert("Server error");
     });
 };
 window.editChild = function (data) {
@@ -296,7 +302,7 @@ window.searchBooks = function (event, child_id) {
                     books = data.books;
                     if (books.length != 0) {
                         for (index = 0; index < books.length; ++index) {
-                            $('#bookSearch' + child_id).append('<li>\n                                       <div onclick="linkBookToChild(' + books[index].readingBook_id + ', ' + child_id + ')" ><img src="' + (books[index].coverPath ? books[index].coverPath : '/images/books/nocover.png') + '"></div>\n                                       <div onclick="linkBookToChild(' + books[index].readingBook_id + ', ' + child_id + ')">\n                                       <div><h2>' + books[index].title + '</h2></div>\n                                        <div>Auteur : ' + books[index].author + '</div>\n                                         <div>Pagina\'s : ' + books[index].numberOfPages + '</div>\n                                        </div>\n                                        <div class="openBookButton">\n                                            <a class="openBookBtn" onclick="openBook(\'' + books[index] + '\')"> <img class="poster" src="/images/icons/view.svg"\n                                                                                    alt="Watch Book"></a>\n                                        </div>\n                                    </li>');
+                            $('#bookSearch' + child_id).append('<li>\n                                       <div onclick="linkBookToChild(' + books[index].readingBook_id + ', ' + child_id + ')" ><img src="' + (books[index].coverPath ? books[index].coverPath : '/images/books/nocover.png') + '"></div>\n                                       <div onclick="linkBookToChild(' + books[index].readingBook_id + ', ' + child_id + ')">\n                                       <div><h2>' + books[index].title + '</h2></div>\n                                        <div>Auteur : ' + books[index].author + '</div>\n                                         <div>Pagina\'s : ' + books[index].numberOfPages + '</div>\n                                        </div>\n                                        <div class="openBookButton">\n                                            <a class="openBookBtn" onclick="openBook(' + books[index].readingBook_id + ')"> <img class="poster" src="/images/icons/view.svg"\n                                                                                    alt="Watch Book"></a\n                                        </div>\n                                    </li>');
                         }
                     } else {
                         $('#bookSearch' + child_id).append('<li><span>Geen boeken gevonden</span></li>');

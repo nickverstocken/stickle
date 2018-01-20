@@ -29,6 +29,17 @@ class BookController extends Controller
         ]);
     }
 
+    public function getBook($book_id){
+        $book = ReadingBook::where('readingBook_id', $book_id);
+        dd($book->title);
+        return response::json([
+            'success' => true,
+            'book' => $book
+        ]
+        , 200
+        );
+    }
+
     public function addNewBook(Request $request)
     {
         $validator = Validator::make($request->all(), [
