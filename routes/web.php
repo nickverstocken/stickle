@@ -38,6 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/ouders/boeken/toevoegen','BookController@addNewBook');
     Route::post('/ouders/boeken/wijzig/{id}','BookController@editBook');
     Route::get('/ouders/boeken/verwijder/{id}','BookController@deleteBook');
+    Route::post('/ouders/boeken/veranderlaatstepagina','BookController@changeLastPageOfReadingBook');
     Route::post('/ouders/boeken/linknaarkind', 'BookController@linkBookToChild');
     Route::post('/ouders/boeken/verwijderLink/{childrenReadingBook_id}', 'BookController@removeLinkToChild');
     Route::get('/kind/{kindId}/boek/{childReadingBookId}/zetalshuidig', 'BookController@setBookAsCurrent');

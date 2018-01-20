@@ -1626,6 +1626,7 @@ textarea {
 
 #childBooksReading.booklogCarousel .bookitem img {
   border: 5px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
 }
 
 #childBooksReading.booklogCarousel .bookitem .bookTitle h3 {

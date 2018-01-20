@@ -55,6 +55,21 @@ window.openBook = function(book_id) {
     });
     
 }
+window.openLastPageRead = function(book_id, name, numberOfPages) {
+    $('#lastPageText').text('Geef de laatste pagina in die '+name+' heeft gelezen (van in totaal '+numberOfPages+').');
+    $('#child_id').val(child_id);
+    $('#child_id').val(book_id);
+
+    $('#lastPageReadModal').css({
+        'opacity': '1',
+        'z-index': '4'
+    });
+    $('#lastPageReadModalBg').css({
+        'opacity': '1',
+        'z-index': '1'
+    });
+    
+}
 window.editChild = function(data) {
     $('#editKidForm #firstName').val(data.firstName);
     $('#editKidForm #lastName').val(data.lastName);    

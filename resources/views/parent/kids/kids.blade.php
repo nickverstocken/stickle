@@ -46,9 +46,9 @@
                                 <div class="bookitem {{$book->currentlyReading == 1 ? 'currentlyReading' : ''}}">
                                     <button type="button" alt="delete" onclick="removeBookLink(event, {{$book->childrenReadingBook_id}})"><img src="{{URL::asset('images/icons/error.svg')}}"> </button>
                                     @if ($book->book->coverPath)
-                                        <img class="bookImage" src="{{ URL::asset( $book->book->coverPath ) }}" alt="{{$book->book->title}}">
+                                        <img onclick="openLastPageRead({{$book->book->readingBook_id}},'{{$book->child->firstName}}','{{$book->book->numberOfPages}}')" class="bookImage" src="{{ URL::asset( $book->book->coverPath ) }}" alt="{{$book->book->title}}">
                                     @else
-                                        <img class="bookImage" src="{{ URL::asset('images/books/nocover.png') }}"
+                                        <img onclick="openLastPageRead({{$book->book->readingBook_id}},'{{$book->child->firstName}}','{{$book->book->numberOfPages}}')" class="bookImage" src="{{ URL::asset('images/books/nocover.png') }}"
                                              alt="{{$book->book->title}}">
                                     @endif
                                     <div class="progress-bar">
@@ -79,4 +79,5 @@
     @include('layouts.modals.newChild')
     @include('layouts.modals.editChild')
     @include('layouts.modals.openBook')
+    @include('layouts.modals.lastPageRead')
 @stop
