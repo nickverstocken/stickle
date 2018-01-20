@@ -37,8 +37,8 @@ window.editBook = function(data) {
         'z-index': '1'
     });    
 }
-window.openBook = function(book_id) {
-    console.log(book_id);
+window.openBook = function(book) {
+    console.log(book);
     $('#openbookModal').css({
         'opacity': '1',
         'z-index': '4'
@@ -47,7 +47,13 @@ window.openBook = function(book_id) {
         'opacity': '1',
         'z-index': '1'
     });
-    
+    $('#openbookModal #bookTitle').text(book.title);
+    $('#openbookModal #bookTitletext').text('Titel : ' + book.title);
+    $('#openbookModal #author').text('Auteur : ' + book.author);
+    $('#openbookModal #pages').text("Aantal pagina's : " + book.numberOfPages);
+    $('#openbookModal #description').text(book.shortDescription);
+    $('#openbookModal #bookImage').attr('src', book.coverPath ? book.coverPath : '/images/books/nocover.png');
+
 }
 window.openLastPageRead = function(book, name) {
    $('#lastPageText').text('Geef de laatste pagina in die '+ name +' heeft gelezen (van in totaal '+ book.book.numberOfPages+').');
@@ -64,7 +70,6 @@ window.openLastPageRead = function(book, name) {
     $("#changeLastPage").attr('onclick', `changeLastPageRead(${book.childrenReadingBook_id})`);
 }
 window.changeLastPageRead = function(childrenReadingBook_id) {
-///ouders/boeken/veranderlaatstepagina/{readingBookId}
     var lastpage = $('#lastPageReadModal #newLastPageRead').val();
     var childrenReadingBookId = childrenReadingBook_id;
     $.ajaxSetup({
@@ -259,7 +264,6 @@ window.closeModal = function($event){
 window.searchBooks = function(event, child_id){
 
     delay(function(){
-        console.log($(event.target).val());
         var searchVal = $(event.target).val();
         $('#bookSearch' + child_id).empty();
         if(searchVal){
@@ -281,10 +285,14 @@ window.searchBooks = function(event, child_id){
                                          <div>Pagina's : ${books[index].numberOfPages}</div>
                                         </div>
                                         <div class="openBookButton">
-                                            <a class="openBookBtn" onclick='openBook(${JSON.stringify(books[index])})'> <img class="poster" src="/images/icons/view.svg"
+                                            <a id="openBook${index}" class="openBookBtn"> <img class="poster" src="/images/icons/view.svg"
                                                                                     alt="Watch Book"></a
                                         </div>
                                     </li>`);
+                                var element = document.getElementById('openBook' + index);
+                               element.onclick = function() {
+                                   openBook(books[this.id.split('openBook')[1]]);
+                               }
                             }
                         }else{
                             $('#bookSearch' + child_id).append('<li><span>Geen boeken gevonden</span></li>');
@@ -308,8 +316,6 @@ window.linkBookToChild = function(book_id, child_id){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    console.log('book_id : ' + book_id);
-    console.log('child_id : ' + child_id);
     $.post('/ouders/boeken/linknaarkind',
         { childId: child_id, bookId: book_id}
     )
@@ -326,7 +332,6 @@ window.linkBookToChild = function(book_id, child_id){
 }
 window.removeBookLink = function(event,childrenReadingBook_id){
     event.preventDefault();
-///ouders/boeken/verwijderLink/{childrenReadingBook_id}
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -335,7 +340,6 @@ window.removeBookLink = function(event,childrenReadingBook_id){
     $.post('/ouders/boeken/verwijderLink/' + childrenReadingBook_id)
         .done(function(data) {
             if(data.success){
-                console.log(data);
                 document.location.reload();
             }else{
                 alert(data.error);

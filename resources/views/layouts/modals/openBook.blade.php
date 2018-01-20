@@ -8,29 +8,18 @@
         </div>
         <div class="modalContent">
             <div class="contentContainer">
-                <form id="editBookForm" name="editBookForm"  method="POST" enctype="multipart/form-data">
-                    {{ csrf_field() }}
                     <div class="card">
-                            <h4>Afbeelding van het boek</h4>
-                            <input type="file" name="bookCover" id="bookCover" class="input">
+                           <img id="bookImage">
                         </div>
                     <div class="card">
-                        <h4>Titel</h4>
-                        <input required name="title" type="text" class="input" id="title" placeholder="Boek titel*">
+                        <h4 id="bookTitletext">Titel</h4>
+                        <h4 id="author">Auteur</h4>
+                        <h4 id="pages">Aantal bladzijden</h4>
                     </div>
-                    <div class="card">
-                        <h4>Auteur</h4>
-                        <input required name="author" type="text" id="author" placeholder="Auteur*" autocorrect="off" autocapitalize="off" spellcheck="off" class="input">
-                    </div>                    
                     <div class="card">
                         <h4>Korte samenvatting</h4>
-                        <textarea required name="shortDescription" type="text" class="input" id="description" placeholder="Korte beschrijving*" class="input"></textarea>
+                        <div id="description"></div>
                     </div>
-                    <div class="card">
-                        <h4>Aantal bladzijden</h4>
-                        <input required name="numberOfPages" type="number" class="input" id="numberOfPages" placeholder="Aantal bladzijden*">
-                    </div>
-                </form>
             </div>
         </div>
     </div>
