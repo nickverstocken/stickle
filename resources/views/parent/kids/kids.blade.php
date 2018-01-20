@@ -43,7 +43,7 @@
                     <div id="childBooksReading" class="booklogCarousel">
                         @if ($child->childrenReadingBook )
                             @foreach ($child->childrenReadingBook as $book)
-                                <div class="bookitem {{$book->currentlyReading == 1 ? 'currentlyReading' : ''}}">
+                                <div class="bookitem {{$book->currentlyReading == 1 ? 'currentlyReading' : ''}} {{$book->isFinished == 1 ? 'finished' : ''}}">
                                     <button type="button" alt="delete" onclick="removeBookLink(event, {{$book->childrenReadingBook_id}})"><img src="{{URL::asset('images/icons/error.svg')}}"> </button>
                                     @if ($book->book->coverPath)
                                         <img onclick="openLastPageRead({{$book}}, '{{$child->firstName}}')" class="bookImage" src="{{ URL::asset( $book->book->coverPath ) }}" alt="{{$book->book->title}}">

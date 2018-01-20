@@ -272,6 +272,9 @@ class BookController extends Controller
             $readingBook = ChildrenReadingBook::where('childrenReadingBook_Id', $childReadingBookId)->first();
             if($readingBook){
                 if($readingBook->book->numberOfPages >= $lastpageRead){
+                    if($readingBook->book->numberOfPages == $lastpageRead){
+                        $readingBook->isFinished = true;
+                    }
                     $readingBook->lastPageRead = $lastpageRead;
                     $readingBook->save();
                     return response::json([

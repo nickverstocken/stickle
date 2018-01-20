@@ -18,6 +18,7 @@ class CreateChildrenReadingBooksTable extends Migration
             $table->integer('child_id')->unsigned();
             $table->integer('book_id')->unsigned();
             $table->boolean('currentlyReading')->default(false);
+            $table->boolean('isFinished')->default(false);
             $table->integer('lastPageRead')->default(0);
             $table->timestamps();
 
