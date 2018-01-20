@@ -1599,6 +1599,11 @@ textarea {
   border: 0 !important;
 }
 
+.booklogCarousel .bookitem.finished {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+}
+
 .booklogCarousel .bookitem.currentlyReading:after {
   position: absolute;
   content: 'Huidig boek';
@@ -1826,15 +1831,25 @@ textarea {
 }
 
 .backgroundAnimalsCode {
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
   position: fixed;
   height: 100%;
   width: 320px;
   z-index: 1;
   opacity: 0;
+  left: -320px;
 }
 
-.backgroundAnimalsCode .show {
+.backgroundAnimalsCode.show {
   opacity: 1;
+  left: 300px;
+}
+
+.backgroundAnimalsCode.show .animal-bg {
+  width: 180px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
 }
 
 .parentcode {
@@ -1922,6 +1937,7 @@ textarea {
 }
 
 .parentcode .codeSubmit button {
+  cursor: pointer;
   width: 125px;
   padding: 10px 0px;
   border-radius: 10px;

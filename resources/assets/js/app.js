@@ -379,6 +379,7 @@ window.checkCanBuyPrice = function(childId, coins,rewardId, price){
 }
 window.showKeyPad = function(event){
     $('.parentcode').toggleClass('show');
+    $('.backgroundAnimalsCode').toggleClass('show');
 };
 keycode = [];
 window.pushCode = function(event, key){
@@ -422,6 +423,7 @@ window.pushCode = function(event, key){
                 });
                 $('#doneKey').removeClass('orange');
                 $('.parentcode').removeClass('show');
+                $('.backgroundAnimalsCode').removeClass('show');
                 break;
             }
             case 'done' : {

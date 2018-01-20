@@ -1106,6 +1106,11 @@ position: relative;
 
       }
     }
+    &.finished{
+
+        filter: grayscale(1);
+
+    }
     &.currentlyReading{
       &:after{
         position: absolute;
@@ -1309,14 +1314,21 @@ position: relative;
   }
 }
 .backgroundAnimalsCode{
-  .show{
+  &.show{
     opacity: 1;
+    left:300px;
+    .animal-bg{
+      width:180px;
+      transform:rotate(45deg);
+    }
   }
+  transition: all 0.3s ease-in;
   position: fixed;
   height:100%;
   width:320px;
   z-index: 1;
   opacity: 0;
+  left:-320px;
 }
 .parentcode{
   &.show{
@@ -1390,6 +1402,7 @@ position: relative;
     text-align: center;
     margin-top: 50px;
     button{
+      cursor:pointer;
       width:125px;
       padding:10px 0px;
       border-radius: 10px;

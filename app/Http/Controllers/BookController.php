@@ -274,6 +274,8 @@ class BookController extends Controller
                 if($readingBook->book->numberOfPages >= $lastpageRead){
                     if($readingBook->book->numberOfPages == $lastpageRead){
                         $readingBook->isFinished = true;
+                    }else{
+                        $readingBook->isFinished = false;
                     }
                     $readingBook->lastPageRead = $lastpageRead;
                     $readingBook->save();
