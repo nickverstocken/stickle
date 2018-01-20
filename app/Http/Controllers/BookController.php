@@ -182,30 +182,6 @@ class BookController extends Controller
             return Redirect::back();
         }
     }
-
-    public function changeLastPageOfReadingBook(Request $request){
-        $validator = Validator::make($request->all(), [
-            'readingBook_id' => 'required|numeric',
-            'child_id' => 'required|numeric',
-            'newLastPageRead' => 'required|numeric',
-        ]);
-
-        if ($validator->passes()) {
-            $readingBook_id = $request->readingBook_id;
-            $child_id = $request->child_id;
-
-            if ($this->isBookFromUser($readingBook_id)){
-                $ChildrenReadingBookLink = App\ChildrenReadingBook::where('readingBook_id', $readingBook_id)
-                    ->where('child_id', $child_id);
-                $ChildrenReadingBookLink->lastPageRead = $request->lastPageRead;
-                $ChildrenReadinBookLink->save();
-                return Redirect::back();
-            }
-            return redirect('/');
-        }
-        return Redirect::back()->withErrors($validator);
-    }
-
     //function to check if Book is from logged in parent
     public function isBookFromUser($readingBook_id){
         $book = new ReadingBook;
@@ -283,7 +259,51 @@ class BookController extends Controller
                 return redirect('kind/' . $childId . '/dashboard');
             }
         }
-
-
     }
+    public function changeLastPageOfReadingBook(Request $request){
+        $validator = Validator::make($request->all(), [
+            'childReadingBookId' => 'required|numeric',
+            'last_page' => 'required|numeric',
+        ]);
+
+        if ($validator->passes()) {
+            $lastpageRead = $request->get('last_page');
+            $childReadingBookId = $request->get('childReadingBookId');
+            $readingBook = ChildrenReadingBook::where('childrenReadingBook_Id', $childReadingBookId)->first();
+            if($readingBook){
+                if($readingBook->book->numberOfPages >= $lastpageRead){
+                    $readingBook->lastPageRead = $lastpageRead;
+                    $readingBook->save();
+                    return response::json([
+                            'success' => true,
+                            'url' => 'ouders/kinderen'
+                        ]
+                        , 200
+                    );
+                }else{
+                    return response::json([
+                            'success' => false,
+                            'error' => 'Het boek heeft maar ' . $readingBook->book->numberOfPages . 'bladzijden u gaf een getal in dat groter is dan het aantal bladzijden'
+                        ]
+                        , 200
+                    );
+                }
+
+            }else{
+                return response::json([
+                        'success' => false,
+                        'error' => 'Er ging iets mis'
+                    ]
+                    , 200
+                );
+            }
+        }
+        return response::json([
+                'success' => false,
+                'error' => 'De input die u gaf is niet juist'
+            ]
+            , 200
+        );
+    }
+
 }

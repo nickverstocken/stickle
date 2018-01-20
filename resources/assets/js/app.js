@@ -49,10 +49,9 @@ window.openBook = function(book_id) {
     });
     
 }
-window.openLastPageRead = function(book_id, name, numberOfPages) {
-    $('#lastPageText').text('Geef de laatste pagina in die '+name+' heeft gelezen (van in totaal '+numberOfPages+').');
-    $('#child_id').val(child_id);
-    $('#child_id').val(book_id);
+window.openLastPageRead = function(book, name) {
+   $('#lastPageText').text('Geef de laatste pagina in die '+ name +' heeft gelezen (van in totaal '+ book.book.numberOfPages+').');
+    $('#lastPageReadModal #bookTitle').text(book.book.title);
 
     $('#lastPageReadModal').css({
         'opacity': '1',
@@ -62,7 +61,31 @@ window.openLastPageRead = function(book_id, name, numberOfPages) {
         'opacity': '1',
         'z-index': '1'
     });
-    
+    $("#changeLastPage").attr('onclick', `changeLastPageRead(${book.childrenReadingBook_id})`);
+}
+window.changeLastPageRead = function(childrenReadingBook_id) {
+///ouders/boeken/veranderlaatstepagina/{readingBookId}
+    var lastpage = $('#lastPageReadModal #newLastPageRead').val();
+    var childrenReadingBookId = childrenReadingBook_id;
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    console.log(childrenReadingBookId);
+    $.post('/ouders/boeken/veranderlaatstepagina/',
+        { last_page: lastpage, childReadingBookId: childrenReadingBookId}
+    )
+        .done(function(data) {
+            if(data.success){
+               document.location.reload();
+            }else{
+                alert(data.error);
+            }
+        })
+        .fail(function(erorr) {
+            alert( 'Er is iets msigelopen probeer het mlater opnieuw' );
+        });
 }
 window.editChild = function(data) {
     $('#editKidForm #firstName').val(data.firstName);
