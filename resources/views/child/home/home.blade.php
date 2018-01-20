@@ -40,8 +40,12 @@
                 <h2>Huidig boek</h2>
                 <div class="bookProfile">
                     @if ($currentBook)
-                    <img class="bookImage" src="{{ $currentBook->book->coverPath }}" alt="Book">
-
+                        @if ($currentBook->book->coverPath)
+                            <img class="bookImage" src="{{ URL::asset( $currentBook->book->coverPath ) }}" alt="{{$currentBook->book->title }}">
+                        @else
+                            <img class="bookImage" src="{{ URL::asset('images/books/nocover.png') }}"
+                                 alt="{{$currentBook->book->title}}">
+                        @endif
                         <div class="progress-bar">
                             <div style="width:{{$currentBook->lastPageRead / $currentBook->book->numberOfPages * 100}}%" class="progress"></div>
                         </div>
@@ -86,6 +90,9 @@
                                 <div class="image">
                                     <img class="poster" src="https://img.youtube.com/vi/{{explode("v=", $reward->reward->link)[1]}}/0.jpg"alt="Instellingen">
                                 </div>
+                            </div>
+                            <div class="progress-bar">
+                                <div style="width:{{($reward->updated_at->diffInSeconds(\Carbon\Carbon::now())) / 172800 * 100 }}%" class="progress"></div>
                             </div>
                         </div>
                     @endforeach

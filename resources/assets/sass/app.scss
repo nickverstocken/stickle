@@ -1059,7 +1059,10 @@ position: relative;
     border:5px solid $green_darkest;
     background: #fff;
     color:#313131;
-
+  position: relative;
+    .progress-bar{
+      bottom:-4px;
+    }
     .image{
       height:85px;
 

@@ -1544,6 +1544,11 @@ textarea {
   border: 5px solid #0F6E75;
   background: #fff;
   color: #313131;
+  position: relative;
+}
+
+.booklogCarousel .card .progress-bar {
+  bottom: -4px;
 }
 
 .booklogCarousel .card .image {
