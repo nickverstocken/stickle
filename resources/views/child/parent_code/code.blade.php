@@ -3,28 +3,32 @@
         <div class="head">
             <h2>Alleen voor ouders</h2>
         </div>
-        <div class="code">
+        <div id="codeString" class="code">
             <span></span><span></span><span></span><span></span>
         </div>
         <div class="keyPad">
             <div class="grid">
-                <div class="key">1</div>
-                <div class="key">2</div>
-                <div class="key">3</div>
-                <div class="key">4</div>
-                <div class="key">5</div>
-                <div class="key">6</div>
-                <div class="key">7</div>
-                <div class="key">8</div>
-                <div class="key">9</div>
-                <div class="key">x</div>
-                <div class="key">0</div>
-                <div class="key">&#8592;</div>
+                <div onclick="pushCode(event,1)" class="key">1</div>
+                <div onclick="pushCode(event,2)" class="key">2</div>
+                <div onclick="pushCode(event,3)" class="key">3</div>
+                <div onclick="pushCode(event,4)" class="key">4</div>
+                <div onclick="pushCode(event,5)" class="key">5</div>
+                <div onclick="pushCode(event,6)" class="key">6</div>
+                <div onclick="pushCode(event,7)" class="key">7</div>
+                <div onclick="pushCode(event,8)" class="key">8</div>
+                <div onclick="pushCode(event,9)" class="key">9</div>
+                <div onclick="pushCode(event,'clear')" class="key">x</div>
+                <div onclick="pushCode(event,0)" class="key">0</div>
+                <div onclick="pushCode(event,'back')" class="key">&#8592;</div>
             </div>
         </div>
         <div class="codeSubmit">
-            <button>Klaar</button>
+            <button onclick="pushCode(event,'cancel')">Annuleer</button>  <button id="doneKey" onclick="pushCode(event,'done')">Klaar</button>
         </div>
     </div>
-
+</div>
+<div class="backgroundAnimalsCode">
+    <img class="animal-bg olifant" src="{{ URL::asset('images/olifant.svg') }}" alt="Olifant">
+    <img class="animal-bg krokodil" src="{{ URL::asset('images/krokodil.svg') }}" alt="Olifant">
+    <img class="animal-bg giraf" src="{{ URL::asset('images/giraf.svg') }}" alt="Giraf">
 </div>

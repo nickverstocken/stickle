@@ -1,6 +1,5 @@
 <div id="openbookModal" class="modalContainer">
     <div class="modal">
-
         <div class="modalHeader">
             <div class="close closeModal" onclick="closeModal(this);">
                 <img src="{{ URL::asset('images/icons/error.svg') }}" alt="Close">
@@ -31,12 +30,7 @@
                         <h4>Aantal bladzijden</h4>
                         <input required name="numberOfPages" type="number" class="input" id="numberOfPages" placeholder="Aantal bladzijden*">
                     </div>
-                    
                 </form>
-                <div id="editActions" class="actions">
-                    <button  form="editBookForm" class="button">Wijzig</button>
-                    <button  id="deleteButton" class="button cancel closeModal">Verwijder</button>
-                </div>
             </div>
         </div>
     </div>

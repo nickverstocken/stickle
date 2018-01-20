@@ -116,19 +116,13 @@ window.editBook = function (data) {
 };
 window.openBook = function (book_id) {
     console.log(book_id);
-    $.get('/ouders/boeken/open/'.book_id, function (data) {
-        console.log(data.first);
-        //$('#openbookModal#bookTitle').val(data.book.title);
-        $('#openbookModal').css({
-            'opacity': '1',
-            'z-index': '4'
-        });
-        $('#openbookModalBg').css({
-            'opacity': '1',
-            'z-index': '1'
-        });
-    }).fail(function () {
-        alert("Server error");
+    $('#openbookModal').css({
+        'opacity': '1',
+        'z-index': '4'
+    });
+    $('#openbookModalBg').css({
+        'opacity': '1',
+        'z-index': '1'
     });
 };
 window.openLastPageRead = function (book_id, name, numberOfPages) {
@@ -316,7 +310,7 @@ window.searchBooks = function (event, child_id) {
                     books = data.books;
                     if (books.length != 0) {
                         for (index = 0; index < books.length; ++index) {
-                            $('#bookSearch' + child_id).append('<li>\n                                       <div onclick="linkBookToChild(' + books[index].readingBook_id + ', ' + child_id + ')" ><img src="' + (books[index].coverPath ? books[index].coverPath : '/images/books/nocover.png') + '"></div>\n                                       <div onclick="linkBookToChild(' + books[index].readingBook_id + ', ' + child_id + ')">\n                                       <div><h2>' + books[index].title + '</h2></div>\n                                        <div>Auteur : ' + books[index].author + '</div>\n                                         <div>Pagina\'s : ' + books[index].numberOfPages + '</div>\n                                        </div>\n                                        <div class="openBookButton">\n                                            <a class="openBookBtn" onclick="openBook(' + books[index].readingBook_id + ')"> <img class="poster" src="/images/icons/view.svg"\n                                                                                    alt="Watch Book"></a\n                                        </div>\n                                    </li>');
+                            $('#bookSearch' + child_id).append('<li>\n                                       <div onclick="linkBookToChild(' + books[index].readingBook_id + ', ' + child_id + ')" ><img src="' + (books[index].coverPath ? books[index].coverPath : '/images/books/nocover.png') + '"></div>\n                                       <div onclick="linkBookToChild(' + books[index].readingBook_id + ', ' + child_id + ')">\n                                       <div><h2>' + books[index].title + '</h2></div>\n                                        <div>Auteur : ' + books[index].author + '</div>\n                                         <div>Pagina\'s : ' + books[index].numberOfPages + '</div>\n                                        </div>\n                                        <div class="openBookButton">\n                                            <a class="openBookBtn" onclick=\'openBook(' + JSON.stringify(books[index]) + ')\'> <img class="poster" src="/images/icons/view.svg"\n                                                                                    alt="Watch Book"></a\n                                        </div>\n                                    </li>');
                         }
                     } else {
                         $('#bookSearch' + child_id).append('<li><span>Geen boeken gevonden</span></li>');
@@ -394,6 +388,84 @@ window.checkCanBuyPrice = function (childId, coins, rewardId, price) {
 };
 window.showKeyPad = function (event) {
     $('.parentcode').toggleClass('show');
+};
+keycode = [];
+window.pushCode = function (event, key) {
+    $(event.target).addClass('flash');
+    setTimeout(function () {
+        $(event.target).removeClass('flash');
+    }, 200);
+    if (!isNaN(key)) {
+        if (this.keycode.length < 4) {
+            this.keycode.push(key);
+            $('#codeString span:nth-child(' + this.keycode.length + ')').css({
+                background: '#EE7418'
+            });
+            $('#doneKey').removeClass('orange');
+        }
+        if (this.keycode.length === 4) {
+            $('#doneKey').addClass('orange');
+        }
+    } else {
+        switch (key) {
+            case 'back':
+                {
+                    $('#codeString span:nth-child(' + this.keycode.length + ')').css({
+                        background: '#1F2C3D'
+                    });
+                    this.keycode.pop();
+                    $('#doneKey').removeClass('orange');
+                    break;
+                }
+            case 'clear':
+                {
+                    this.keycode = [];
+                    $('#codeString span').css({
+                        background: '#1F2C3D'
+                    });
+                    $('#doneKey').removeClass('orange');
+                    break;
+                }
+            case 'cancel':
+                {
+                    this.keycode = [];
+                    $('#codeString span').css({
+                        background: '#1F2C3D'
+                    });
+                    $('#doneKey').removeClass('orange');
+                    $('.parentcode').removeClass('show');
+                    break;
+                }
+            case 'done':
+                {
+                    if (this.keycode.length === 4) {
+                        ///kind/{kindId}/checkouderspincode
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+                        $.post('/kind/checkouderspincode', { code: this.keycode.join('') }).done(function (data) {
+                            if (data.success) {
+                                window.location = data.url;
+                            } else {
+
+                                $('#doneKey').removeClass('orange');
+                                alert(data.error);
+                            }
+                        }).fail(function () {
+
+                            alert("Something went wrong");
+                        });
+                    }
+                    this.keycode = [];
+                    $('#codeString span').css({
+                        background: '#1F2C3D'
+                    });
+                    break;
+                }
+        }
+    }
 };
 
 /***/ }),

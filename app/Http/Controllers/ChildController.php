@@ -73,10 +73,7 @@ class ChildController extends Controller
             $q->with('reward');
             $q->where('updated_at', '>=', Carbon::now()->subDays(2));
         }])->first();
-       // dd($child->toArray());
        $currentBook = ChildrenReadingBook::where('child_id', $child_id)->where('currentlyReading', 1)->with('Book')->first();
-      // dd($currentBook->currentlyReading);
-       //dd($currentBook->childrenReadingBook->first()->toArray());
         if($child_id == $childIdSession){
             return view('child.home.home',[
                 'child' => $child,
@@ -84,7 +81,6 @@ class ChildController extends Controller
                 'parent' => $parent
             ]);
         }else{
-           // $parentKids = $parent->children;
             return redirect('/kind/login');
         }
     }
@@ -242,5 +238,25 @@ class ChildController extends Controller
             'parent' => $parent,
             'reward' => $price->reward
         ]);
+    }
+    public function checkParentCode(Request $request){
+        $parent = Auth::user();
+        $child = $request->get('child_id');
+        $enteredCode = $request->get('code');
+        if($parent->parentPincode == $enteredCode){
+            return response::json([
+                    'success' => true,
+                    'url' => '/ouders/kinderen'
+                ]
+                , 200
+            );  
+        }else{
+            return response::json([
+                    'success' => false,
+                    'error' => 'Onjuiste pincode'
+                ]
+                , 200
+            );
+        }
     }
 }
