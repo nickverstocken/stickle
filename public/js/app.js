@@ -381,6 +381,84 @@ window.checkCanBuyPrice = function (childId, coins, rewardId, price) {
 window.showKeyPad = function (event) {
     $('.parentcode').toggleClass('show');
 };
+keycode = [];
+window.pushCode = function (event, key) {
+    $(event.target).addClass('flash');
+    setTimeout(function () {
+        $(event.target).removeClass('flash');
+    }, 200);
+    if (!isNaN(key)) {
+        if (this.keycode.length < 4) {
+            this.keycode.push(key);
+            $('#codeString span:nth-child(' + this.keycode.length + ')').css({
+                background: '#EE7418'
+            });
+            $('#doneKey').removeClass('orange');
+        }
+        if (this.keycode.length === 4) {
+            $('#doneKey').addClass('orange');
+        }
+    } else {
+        switch (key) {
+            case 'back':
+                {
+                    $('#codeString span:nth-child(' + this.keycode.length + ')').css({
+                        background: '#1F2C3D'
+                    });
+                    this.keycode.pop();
+                    $('#doneKey').removeClass('orange');
+                    break;
+                }
+            case 'clear':
+                {
+                    this.keycode = [];
+                    $('#codeString span').css({
+                        background: '#1F2C3D'
+                    });
+                    $('#doneKey').removeClass('orange');
+                    break;
+                }
+            case 'cancel':
+                {
+                    this.keycode = [];
+                    $('#codeString span').css({
+                        background: '#1F2C3D'
+                    });
+                    $('#doneKey').removeClass('orange');
+                    $('.parentcode').removeClass('show');
+                    break;
+                }
+            case 'done':
+                {
+                    if (this.keycode.length === 4) {
+                        ///kind/{kindId}/checkouderspincode
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+                        $.post('/kind/checkouderspincode', { code: this.keycode.join('') }).done(function (data) {
+                            if (data.success) {
+                                window.location = data.url;
+                            } else {
+
+                                $('#doneKey').removeClass('orange');
+                                alert(data.error);
+                            }
+                        }).fail(function () {
+
+                            alert("Something went wrong");
+                        });
+                    }
+                    this.keycode = [];
+                    $('#codeString span').css({
+                        background: '#1F2C3D'
+                    });
+                    break;
+                }
+        }
+    }
+};
 
 /***/ }),
 /* 2 */
