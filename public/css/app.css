@@ -951,7 +951,7 @@ textarea {
   height: 4px;
   position: absolute;
   bottom: 0px;
-  z-index: 2;
+  z-index: 1;
   width: 100%;
 }
 
