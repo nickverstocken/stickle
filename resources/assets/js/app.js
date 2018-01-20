@@ -249,7 +249,7 @@ window.searchBooks = function(event, child_id){
                                          <div>Pagina's : ${books[index].numberOfPages}</div>
                                         </div>
                                         <div class="openBookButton">
-                                            <a class="openBookBtn" onclick="openBook(${books[index].readingBook_id})"> <img class="poster" src="/images/icons/view.svg"
+                                            <a class="openBookBtn" onclick='openBook(${JSON.stringify(books[index])})'> <img class="poster" src="/images/icons/view.svg"
                                                                                     alt="Watch Book"></a
                                         </div>
                                     </li>`);
