@@ -362,9 +362,9 @@ vertical-align: middle;
               &:hover{
                 background: rgba(lighten($bg_light,5%), 0.9);
               }
-              div:last-child{
+              div:nth-child(2){
                 flex:1 auto;
-
+                width:50%;
               }
               h2{
                 border: none;

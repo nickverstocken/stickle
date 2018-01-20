@@ -116,19 +116,13 @@ window.editBook = function (data) {
 };
 window.openBook = function (book_id) {
     console.log(book_id);
-    $.get('/ouders/boeken/open/'.book_id, function (data) {
-        console.log(data.first);
-        //$('#openbookModal#bookTitle').val(data.book.title);
-        $('#openbookModal').css({
-            'opacity': '1',
-            'z-index': '4'
-        });
-        $('#openbookModalBg').css({
-            'opacity': '1',
-            'z-index': '1'
-        });
-    }).fail(function () {
-        alert("Server error");
+    $('#openbookModal').css({
+        'opacity': '1',
+        'z-index': '4'
+    });
+    $('#openbookModalBg').css({
+        'opacity': '1',
+        'z-index': '1'
     });
 };
 window.editChild = function (data) {
