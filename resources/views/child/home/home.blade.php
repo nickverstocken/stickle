@@ -61,11 +61,11 @@
                 @if ($child->toArray()['children_reading_book'] )
                     @foreach ($child->childrenReadingBook as $book)
                         {{--         <div>{{$book->toArray()['children_reading_book']['lastPageRead']}} / {{$book->numberOfPages}}</div>--}}
-                        <div onclick="window.location = '/kind/{{$child->child_id}}/boek/{{$book->childrenReadingBook_id}}/zetalshuidig'" class="bookitem {{$book->currentlyReading == 1 ? 'currentlyReading' : ''}} {{$book->isFinished == 1 ? 'finished' : ''}}">
+                        <div  class="bookitem {{$book->currentlyReading == 1 ? 'currentlyReading' : ''}} {{$book->isFinished == 1 ? 'finished' : ''}}">
                             @if ($book->book->coverPath)
-                                <img class="bookImage" src="{{ URL::asset( $book->book->coverPath ) }}" alt="{{$book->book->title}}">
+                                <img onclick="window.location = '/kind/{{$child->child_id}}/boek/{{$book->childrenReadingBook_id}}/zetalshuidig'" class="bookImage" src="{{ URL::asset( $book->book->coverPath ) }}" alt="{{$book->book->title}}">
                             @else
-                                <img class="bookImage" src="{{ URL::asset('images/books/nocover.png') }}"
+                                <img onclick="window.location = '/kind/{{$child->child_id}}/boek/{{$book->childrenReadingBook_id}}/zetalshuidig'" class="bookImage" src="{{ URL::asset('images/books/nocover.png') }}"
                                      alt="{{$book->book->title}}">
                             @endif
                             <h3>{{$book->book->title}}</h3>
