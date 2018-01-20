@@ -11,6 +11,7 @@ use App\User;
 use Validator;
 use Auth;
 use Redirect;
+use Carbon\Carbon;
 
 class ParentController extends Controller
 {
@@ -54,7 +55,7 @@ class ParentController extends Controller
             'firstName' => 'required|string|max:255',
             'lastName' => 'required|string|max:255',
             'gender' => 'required|string|max:25',
-            'dateOfBirth' => 'required|date',
+            'dateOfBirth' => 'required|date|before:'.Carbon::now(),
             'picture' => 'image'
         ]);
 
@@ -107,25 +108,12 @@ class ParentController extends Controller
         return redirect('/');
     }
 
-    public function getChildData($child_id)    
-    {
-        //If doesn't work for a reason
-        //if ($this->isChildFromParent($child_id)){
-            $child = Child::find($child_id);
-            return response()->json($child);
-       /*  }
-        else{
-            //return "Child does not belong to user";
-            return $child_id;
-        } */
-    }
-
     public function editChild($child_id, Request $request){
         $validator = Validator::make($request->all(), [
             'firstName' => 'required|string|max:255',
             'lastName' => 'required|string|max:255',
             'gender' => 'required|string|max:25',
-            'dateOfBirth' => 'required|date',
+            'dateOfBirth' => 'required|date|before:'.Carbon::now(),
             'picture' => 'image'
         ]);
 
@@ -136,6 +124,7 @@ class ParentController extends Controller
             $child->lastName = $request->lastName;
             $child->gender = $request->gender;
             $child->dateOfBirth = $request->dateOfBirth;
+            $child->save();
 
             $file = $request->picture;
 

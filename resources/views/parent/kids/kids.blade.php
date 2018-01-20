@@ -78,4 +78,5 @@
     </div>
     @include('layouts.modals.newChild')
     @include('layouts.modals.editChild')
+    @include('layouts.modals.openBook')
 @stop

@@ -35,8 +35,18 @@ window.editBook = function(data) {
     $('#editbookModalBg').css({
         'opacity': '1',
         'z-index': '1'
-    });
-    
+    });    
+}
+window.openBook = function(data) {
+    console.log(data);
+ $('#openbookModal').css({
+     'opacity': '1',
+     'z-index': '4'
+ });
+ $('#openbookModalBg').css({
+     'opacity': '1',
+     'z-index': '1'
+ });    
 }
 window.editChild = function(data) {
     $('#editKidForm #firstName').val(data.firstName);
@@ -60,6 +70,7 @@ window.editChild = function(data) {
     });
  
 }
+
 window.selectChild = function(childId) {
     $.ajaxSetup({
         headers: {
@@ -223,12 +234,16 @@ window.searchBooks = function(event, child_id){
                         if(books.length != 0 ){
                             for (index = 0; index < books.length; ++index) {
                                 $('#bookSearch' + child_id).append(
-                                    `<li onclick="linkBookToChild(${books[index].readingBook_id}, ${child_id})">
-                                       <div><img src="${books[index].coverPath ? books[index].coverPath : '/images/books/nocover.png'}"></div>
-                                       <div>
+                                    `<li>
+                                       <div onclick="linkBookToChild(${books[index].readingBook_id}, ${child_id})" ><img src="${books[index].coverPath ? books[index].coverPath : '/images/books/nocover.png'}"></div>
+                                       <div onclick="linkBookToChild(${books[index].readingBook_id}, ${child_id})">
                                        <div><h2>${books[index].title}</h2></div>
                                         <div>Auteur : ${books[index].author}</div>
                                          <div>Pagina's : ${books[index].numberOfPages}</div>
+                                        </div>
+                                        <div class="openBookButton">
+                                            <a class="openBookBtn" onclick="openBook('${books[index]}')"> <img class="poster" src="/images/icons/view.svg"
+                                                                                    alt="Watch Book"></a>
                                         </div>
                                     </li>`);
                             }
