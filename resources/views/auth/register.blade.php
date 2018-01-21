@@ -18,9 +18,9 @@
                     <p id="registerError"></p>
                     <form id="frmRegister" method="POST" action="{{ route('register') }}" >
                         {{ csrf_field() }}
-                        <input type="text" id="firstname" placeholder="Voornaam" name="firstname" required  >
-                        <input type="text" id="lastname" placeholder="Achternaam" name="lastname" required >
-                        <input type="email" id="email" placeholder="Email" name="email" required >
+                        <input type="text" id="firstname" placeholder="Voornaam" name="firstname" value="{{old('firstname')}}" required  >
+                        <input type="text" id="lastname" placeholder="Achternaam" name="lastname" value="{{old('lastname')}}" required >
+                        <input type="email" id="email" placeholder="Email" name="email" value="{{old('email')}}" required >
                         <input type="password" id="password" placeholder="Wachtwoord" name="password">
                         <input type="password" id="password_comfirmation" placeholder="Bevestig wachtwoord" name="password_confirmation">
                         <input type="hidden" id="pincode" name="pincode" value="" id="pincode">
