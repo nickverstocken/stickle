@@ -55,7 +55,7 @@ window.handleInputChange = function(event){
 
     const pattern = /image-*/;
     if (!file.type.match(pattern)) {
-        alert('invalid format');
+        showError('Upload fout', 'Alleen afbeeldingen uploaden a.u.b.');
         return;
     }
     $('.inputImage').animate({
@@ -112,7 +112,6 @@ window.changeLastPageRead = function(childrenReadingBook_id) {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    console.log(childrenReadingBookId);
     $.post('/ouders/boeken/veranderlaatstepagina/',
         { last_page: lastpage, childReadingBookId: childrenReadingBookId}
     )
@@ -120,11 +119,11 @@ window.changeLastPageRead = function(childrenReadingBook_id) {
             if(data.success){
                document.location.reload();
             }else{
-                alert(data.error);
+                showError('Pagina fout', data.error);
             }
         })
         .fail(function(erorr) {
-            alert( 'Er is iets msigelopen probeer het mlater opnieuw' );
+            showError('Pagina fout','Er is iets msigelopen probeer het mlater opnieuw');
         });
 }
 window.editChild = function(data) {
@@ -200,21 +199,21 @@ window.selectChild = function(childId) {
                 if(data.success){
                     window.location = data.url;
                 }else{
-                    alert(data.error);
+                   showError('Login error', data.error);
                 }
             })
             .fail(function() {
-                alert( "not a valid QR code" );
+                showError('Login error',"not a valid QR code");
             });
     });
     Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
             scanner.start(cameras[0]);
         } else {
-            console.error('No cameras found.');
+            showError('Camera fout', "Geen camera's gevonden");
         }
     }).catch(function (e) {
-        console.error(e);
+        showError('Camera fout', e);
     });
 
 }
@@ -266,21 +265,21 @@ window.loadscanner = function(childId){
                 if(data.success){
                     window.location = data.url;
                 }else{
-                    alert(data.error);
+                    showError('Sticker fout', data.error);
                 }
             })
             .fail(function() {
-                alert( "not a valid QR code" );
+                showError('Sticker fout', "Geen geldig QR code...");
             });
     });
     Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
             scanner.start(cameras[0]);
         } else {
-            console.error('No cameras found.');
+            showError('Camera fout', "Geen camera gevonden...");
         }
     }).catch(function (e) {
-        console.error(e);
+        showError('Camera fout', e);
     });
 }
 window.closeModal = function($event){
@@ -297,6 +296,20 @@ window.closeModal = function($event){
             'z-index': '-1'
         });
     };
+window.closeError = function($event){
+    $('.errorContainer').css({
+        'opacity': '0'
+    });
+    $('.errorModalBg').css({
+        'opacity': '0'
+    });
+    $('.errorContainer').delay(2000).css({
+        'z-index': '-1'
+    });
+    $('.errorModalBg').delay(2000).css({
+        'z-index': '-1'
+    });
+};
 window.searchBooks = function(event, child_id){
 
     delay(function(){
@@ -335,11 +348,12 @@ window.searchBooks = function(event, child_id){
                         }
 
                     }else{
+                        showError('Boeken fout', data.error);
                         alert(data.error);
                     }
                 })
                 .fail(function() {
-                    alert( "Server error" );
+                    showError('Boeken fout', "Er ging iets mis ");
                 });
         }else{
             $('#bookSearch' + child_id).empty();
@@ -359,11 +373,11 @@ window.linkBookToChild = function(book_id, child_id){
             if(data.success){
                 document.location.reload();
             }else{
-                alert(data.error);
+                showError('Boeken link fout', data.error);
             }
         })
         .fail(function() {
-            alert( "Something went wrong!" );
+            showError('Boeken link fout', "Er ging iets mis probeer het later opnieuw...");
         });
 }
 window.removeBookLink = function(event,childrenReadingBook_id){
@@ -378,11 +392,11 @@ window.removeBookLink = function(event,childrenReadingBook_id){
             if(data.success){
                 document.location.reload();
             }else{
-                alert(data.error);
+                showError('Boeken link fout', data.error);
             }
         })
         .fail(function() {
-            alert( "Something went wrong!" );
+            showError('Boeken link fout', "Er ging iets mis probeer het later opnieuw...");
         });
 }
 var delay = (function(){
@@ -405,11 +419,11 @@ window.checkCanBuyPrice = function(childId, coins,rewardId, price){
                 if(data.success){
                     window.location = data.url;
                 }else{
-                    alert(data.error);
+                    showError('Koop prijs fout', data.error);
                 }
             })
             .fail(function() {
-                alert( "Something went wrong!" );
+                showError('Boeken link fout', "Er ging iets mis probeer het later opnieuw...");
             });
 
 }
@@ -489,12 +503,11 @@ window.pushCode = function(event, key){
                             }else{
 
                                 $('#doneKey').removeClass('orange');
-                                alert(data.error);
+                                showError('Picode fout', data.error);
                             }
                         })
                         .fail(function() {
-
-                            alert( "Something went wrong" );
+                            showError('Picode fout', "Er ging iets mis probeer het later opnieuw...");
                         });
                 }
                 this.keycode =[];
@@ -555,4 +568,16 @@ window.openParentSettings = function() {
      'z-index': '1'
  });
  
+}
+function showError(title, msg){
+    $('.errorContainer').css({
+        'opacity': '1',
+        'z-index': '5'
+    });
+    $('.errorModalBg').css({
+        'opacity': '1',
+        'z-index': '1'
+    });
+    $('.errorTitle').text(title);
+    $('.errorMsg').text(msg);
 }

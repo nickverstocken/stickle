@@ -9,5 +9,5 @@
             </div>
         </div>
     </div>
-
+    @include('layouts.modals.error')
 @stop

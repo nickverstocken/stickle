@@ -101,6 +101,6 @@
             </div>
         </div>
     </div>
-
+    @include('layouts.modals.error')
     <script src="{{ URL::asset('js/instascan/instascan.min.js') }}" type="text/javascript"></script>
 @stop

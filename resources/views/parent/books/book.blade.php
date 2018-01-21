@@ -41,6 +41,7 @@
     <div class="addButton">
         <a id="addBookBtn" class="addBtn"> <img class="poster" src="{{ URL::asset('images/icons/add.svg') }}" alt="Instellingen"></a>
     </div>
+    @include('layouts.modals.error')
     @include('layouts.modals.book')
     @include('layouts.modals.editBook')
 @stop

@@ -30,3 +30,4 @@
 <div class="backgroundAnimalsCode">
     <img class="animal-bg giraf" src="{{ URL::asset('images/giraf.svg') }}" alt="Giraf">
 </div>
+@include('layouts.modals.error')

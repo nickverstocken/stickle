@@ -28,7 +28,7 @@ class ChildController extends Controller
         if(!$stickerBook){
             return response::json([
                     'success' => false,
-                    'error' => 'Dit stickerboek bestaat niet'
+                    'error' => 'Dit stickerboek bestaat niet...'
                 ]
                 , 200
             );
@@ -55,7 +55,7 @@ class ChildController extends Controller
             }else{
                 return response::json([
                         'success' => false,
-                        'error' => 'Dit stickerboek hoort niet bij jou'
+                        'error' => 'Dit stickerboek hoort niet bij jou...'
                     ]
                     , 200
                 );
@@ -120,7 +120,7 @@ class ChildController extends Controller
         if(($stickerBook->child_id != $child_id)){
             return response::json([
                     'success' => false,
-                    'error' => 'Deze sticker hoort bij een ander stickerboek'
+                    'error' => 'Deze sticker hoort bij een ander stickerboek!'
                 ]
                 , 200
             );
@@ -129,7 +129,7 @@ class ChildController extends Controller
         if($stickers->count() <= 0){
             return response::json([
                     'success' => false,
-                    'error' => 'Deze sticker bestaat niet'
+                    'error' => 'Deze sticker bestaat niet!'
                 ]
                 , 200
             );
@@ -138,7 +138,7 @@ class ChildController extends Controller
         if(!$stickers){
             return response::json([
                     'success' => false,
-                    'error' => 'Deze sticker is niet meer geldig'
+                    'error' => 'Deze sticker is niet meer geldig...'
                 ]
                 , 200
             );

@@ -82,6 +82,7 @@
                                                                   src="{{ URL::asset('images/icons/photo-camera-1.svg') }}"
                                                                   alt="Instellingen"></a>
     </div>
+    @include('layouts.modals.error')
     @include('layouts.modals.newChild')
     @include('layouts.modals.editChild')
     @include('layouts.modals.openBook')
