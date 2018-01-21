@@ -21,7 +21,7 @@
                 <div class="statistics">
                     <div class="statisticItem">
                         <img class="statisticIcon" src="{{ URL::asset('images/icons/agenda.svg') }}" alt="Instellingen">
-                        <p>8</p>
+                        <p>{{$booksRead}}</p>
                         <p>Boeken gelezen</p>
                     </div>
                     <div class="statisticItem">

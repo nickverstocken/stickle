@@ -74,9 +74,11 @@ class ChildController extends Controller
             $q->where('updated_at', '>=', Carbon::now()->subDays(2));
         }])->first();
        $currentBook = ChildrenReadingBook::where('child_id', $child_id)->where('currentlyReading', 1)->with('Book')->first();
+       $booksRead = ChildrenReadingBook::where('child_id', $child_id)->where('isFinished', 1)->with('Book')->count();
         if($child_id == $childIdSession){
             return view('child.home.home',[
                 'child' => $child,
+                'booksRead' => $booksRead,
                 'currentBook' => $currentBook,
                 'parent' => $parent
             ]);
