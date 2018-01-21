@@ -1848,6 +1848,32 @@ textarea {
           transform: rotate(45deg);
 }
 
+#login #keycode {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: -1;
+}
+
+#login #keycode .backgroundAnimalsCode {
+  display: none;
+}
+
+#login #keycode.show {
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 5;
+  opacity: 1;
+}
+
+#login .parentcode {
+  background: #30445f;
+}
+
+#login .parentcode.show {
+  left: 0;
+}
+
 .parentcode {
   -webkit-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;

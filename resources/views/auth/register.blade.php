@@ -42,8 +42,9 @@
                 <img class="animal-bg giraf" src="{{ URL::asset('images/giraf.svg') }}" alt="Giraf">
             </div>
         </div>
+        <div id="keycode">
+            @include('auth.pincodeRegister')
+        </div>
     </div>
-    <div id="keycode">
-        @include('auth.pincodeRegister')
-    </div>
+
 @stop

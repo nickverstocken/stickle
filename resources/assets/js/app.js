@@ -430,10 +430,12 @@ window.checkCanBuyPrice = function(childId, coins,rewardId, price){
 window.showKeyPad = function(event){
     $('.parentcode').toggleClass('show');
     $('.backgroundAnimalsCode').toggleClass('show');
+    $('#keycode').toggleClass('show');
 };
 window.showRegisterKeyPad = function(event){
     if( $("#firstname").val() && $("#lastname").val() && $("#email").val() && $("#password").val() && $("#password_comfirmation").val()) {
         $('.parentcode').toggleClass('show');
+        $('#keycode').toggleClass('show');
         $('.backgroundAnimalsCode').toggleClass('show');
     } else{
         $('#registerError').text('Alle velden moeten ingevuld zijn.');
@@ -484,6 +486,7 @@ window.pushCode = function(event, key){
                 });
                 $('#doneKey').removeClass('orange');
                 $('.parentcode').removeClass('show');
+                $('#keycode').removeClass('show');
                 $('.backgroundAnimalsCode').removeClass('show');
                 break;
             }

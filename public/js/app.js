@@ -461,10 +461,12 @@ window.checkCanBuyPrice = function (childId, coins, rewardId, price) {
 window.showKeyPad = function (event) {
     $('.parentcode').toggleClass('show');
     $('.backgroundAnimalsCode').toggleClass('show');
+    $('#keycode').toggleClass('show');
 };
 window.showRegisterKeyPad = function (event) {
     if ($("#firstname").val() && $("#lastname").val() && $("#email").val() && $("#password").val() && $("#password_comfirmation").val()) {
         $('.parentcode').toggleClass('show');
+        $('#keycode').toggleClass('show');
         $('.backgroundAnimalsCode').toggleClass('show');
     } else {
         $('#registerError').text('Alle velden moeten ingevuld zijn.');
@@ -517,6 +519,7 @@ window.pushCode = function (event, key) {
                     });
                     $('#doneKey').removeClass('orange');
                     $('.parentcode').removeClass('show');
+                    $('#keycode').removeClass('show');
                     $('.backgroundAnimalsCode').removeClass('show');
                     break;
                 }
@@ -590,7 +593,6 @@ window.pushCode = function (event, key) {
         }
     }
 };
-<<<<<<< Updated upstream
 window.openParentSettings = function () {
     $('#editParentModal').css({
         'opacity': '1',
@@ -601,7 +603,6 @@ window.openParentSettings = function () {
         'z-index': '1'
     });
 };
-=======
 function showError(title, msg) {
     $('.errorContainer').css({
         'opacity': '1',
@@ -614,7 +615,6 @@ function showError(title, msg) {
     $('.errorTitle').text(title);
     $('.errorMsg').text(msg);
 }
->>>>>>> Stashed changes
 
 /***/ }),
 /* 2 */
