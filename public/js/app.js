@@ -496,7 +496,6 @@ window.pushCode = function (event, key) {
             $('#doneKey').addClass('orange');
         }
     } else {
-        console.log('keypress');
         switch (key) {
             case 'back':
                 {
@@ -542,10 +541,10 @@ window.pushCode = function (event, key) {
                             } else {
 
                                 $('#doneKey').removeClass('orange');
-                                showError('Picode fout', data.error);
+                                showError('Pincode fout', data.error);
                             }
                         }).fail(function () {
-                            showError('Picode fout', "Er ging iets mis probeer het later opnieuw...");
+                            showError('Pincode fout', "Er ging iets mis probeer het later opnieuw...");
                         });
                     }
                     this.keycode = [];
@@ -557,9 +556,7 @@ window.pushCode = function (event, key) {
             case 'check':
                 {
                     if (this.keycode.length === 4) {
-                        console.log('binnen');
                         this.keyCodeToComfirm = this.keycode;
-                        console.log(this.keyCodeToComfirm);
                         $('#doneKey').removeClass('orange');
                         this.keycode = [];
                         $('#codeString span').css({
@@ -575,10 +572,7 @@ window.pushCode = function (event, key) {
             case 'comfirm':
                 {
                     if (this.keycode.length === 4) {
-                        console.log(this.keyCodeToComfirm);
-                        console.log(this.keycode);
                         if (this.keyCodeToComfirm.join('') === this.keycode.join('')) {
-                            console.log('tzelfde');
                             $("#frmRegister").submit();
                         } else {
                             this.keyCodeToComfirm = [];
@@ -592,6 +586,95 @@ window.pushCode = function (event, key) {
                             $("#pincodeText").text('Je pincode was niet hetzelfde. Geef opnieuw in.');
                         }
                     }
+                    break;
+                }
+            case 'old':
+                {
+                    if (this.keycode.length === 4) {
+                        console.log('binnen');
+                        if ($("#oldPincode").val() === this.keycode.join('')) {
+                            $('#doneKey').removeClass('orange');
+                            this.keycode = [];
+                            $('#codeString span').css({
+                                background: '#1F2C3D'
+                            });
+                            $("#doneKey").attr("onclick", "pushCode(event,'checkEdit')");
+                            $("#doneKey").text("Klaar");
+                            $("#pincode").val(this.keyCodeToComfirm.join(''));
+                            $("#pincodeText").text('Voer je nieuwe pincode in.');
+                        } else {
+                            $('#doneKey').removeClass('orange');
+                            this.keycode = [];
+                            $('#codeString span').css({
+                                background: '#1F2C3D'
+                            });
+                            showError('Pincode fout', 'Je pincode klopt niet.');
+                        }
+                    }
+                    break;
+                }
+            case 'checkEdit':
+                {
+                    if (this.keycode.length === 4) {
+                        this.keyCodeToComfirm = this.keycode;
+                        $('#doneKey').removeClass('orange');
+                        this.keycode = [];
+                        $('#codeString span').css({
+                            background: '#1F2C3D'
+                        });
+                        $("#doneKey").attr("onclick", "pushCode(event,'comfirmEdit')");
+                        $("#doneKey").text("Bevestig");
+                        $("#pincodeText").text('Bevestig je nieuwe pincode');
+                    }
+                    break;
+                }
+            case 'comfirmEdit':
+                {
+                    if (this.keycode.length === 4) {
+                        if (this.keyCodeToComfirm.join('') === this.keycode.join('')) {
+                            console.log(this.keycode.join(''));
+                            $.ajaxSetup({
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                }
+                            });
+                            $.post('/pincodewijzigen', { code: this.keycode.join('') }).done(function (data) {
+                                showError('Pincode wijzigen', 'Je pincode is gewijzigd.');
+                                pushCode(event, 'cancelEdit');
+                            }).fail(function (data) {
+                                showError('Pincode fout', "Er ging iets mis probeer het later opnieuw...");
+                                pushCode(event, 'cancelEdit');
+                            });
+                        } else {
+                            this.keyCodeToComfirm = [];
+                            $('#doneKey').removeClass('orange');
+                            this.keycode = [];
+                            $('#codeString span').css({
+                                background: '#1F2C3D'
+                            });
+                            $("#doneKey").attr("onclick", "pushCode(event,'checkEdit')");
+                            $("#doneKey").text("Klaar");
+                            $("#pincodeText").text('Voer je nieuwe pincode in.');
+                            showError('Pincode fout', 'Je pincode was niet hetzelfde. Geef opnieuw in.');
+                        }
+                    }
+                    break;
+                }
+            case 'cancelEdit':
+                {
+                    this.keycode = [];
+                    $('#codeString span').css({
+                        background: '#1F2C3D'
+                    });
+                    $('#doneKey').removeClass('orange');
+                    $('.parentcode').removeClass('show');
+                    $('#keycode').removeClass('show');
+                    $('.backgroundAnimalsCode').removeClass('show');
+                    setTimeout(function () {
+                        $("#pincodeText").text('Voer je oude pincode in.');
+                        $("#doneKey").attr("onclick", "pushCode(event,'old')");
+                    }, 1000);
+
                     break;
                 }
 

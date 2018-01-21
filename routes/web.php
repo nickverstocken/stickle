@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth'], function () {
     //account routes
 	Route::post('/accountwijzigen','parentController@editAccount');
     Route::get('/verwijderaccount','parentController@deleteAccount');
+    Route::post('/pincodewijzigen','parentController@editPincode');
     //region parent Routes
     //Children routes
     Route::get('/ouders/kinderen', 'ParentController@showAllChildrenFromParent');

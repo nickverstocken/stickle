@@ -12,6 +12,7 @@ use Validator;
 use Auth;
 use Redirect;
 use Carbon\Carbon;
+use Response;
 
 class ParentController extends Controller
 {
@@ -34,6 +35,32 @@ class ParentController extends Controller
             return redirect('/');
         }
         return Redirect::back()->withErrors($validator);
+
+    }
+
+    public function editPincode(Request $request){
+        $validator = Validator::make($request->all(), [
+            'code' => 'required|numeric'
+        ]);
+        if($validator->passes()){
+            $enteredCode = $request->get('code');
+            Auth::user()->parentPincode = $enteredCode;
+            Auth::user()->save();
+            return response::json([
+                    'success' => true,
+                ]
+                , 200
+            );
+        }
+        $errors = $validation->errors();
+        $errors =  json_decode($errors); 
+
+        return response()->json([
+            'success' => false,
+            'message' => $errors
+        ], 422);
+          
+        
 
     }
 

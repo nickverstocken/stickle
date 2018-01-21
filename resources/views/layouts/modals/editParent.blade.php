@@ -25,7 +25,7 @@
                         <h4>Wachtwoord</h4>
                         <input type="password" id="password" placeholder="Wachtwoord" name="password">
                         <input type="password" id="password_comfirmation" placeholder="Bevestig wachtwoord" name="password_confirmation">
-                        <input type="hidden" id="pincode" name="pincode" value="" id="pincode">
+                        <input type="hidden" id="oldPincode" name="pincode" value="{{Auth::user()->parentPincode}}" id="pincode">
                     </div>
                 </form>
                 

@@ -1,7 +1,7 @@
 <div onkeypress="typeCode($event)" class="parentcode">
     <div class="parentCodeWrap">
         <div class="head">
-            <h2>Voer je oude pincode in.</h2>
+            <h2 id="pincodeText">Voer je oude pincode in.</h2>
         </div>
         <div id="codeString" class="code">
             <span></span><span></span><span></span><span></span>
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="codeSubmit">
-            <button onclick="pushCode(event,'cancel')">Annuleer</button>  <button id="doneKey" onclick="pushCode(event,'old')">Klaar</button>
+            <button onclick="pushCode(event,'cancelEdit')">Annuleer</button>  <button id="doneKey" onclick="pushCode(event,'old')">Klaar</button>
         </div>
     </div>
 </div>

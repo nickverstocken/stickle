@@ -10,15 +10,9 @@
             <li>
                 <a class="{{ (Route::getFacadeRoot()->current()->uri() == 'ouders/boeken') ? 'selected' : '' }}" href="/ouders/boeken"><img src="{{ URL::asset('images/icons/agenda.svg') }}" alt="Boeken"></a>
             </li>
-            <li>
-<<<<<<< HEAD
-                <a id="parentSettingBtn" class="" onclick="openParentSettings()"><img src="{{ URL::asset('images/icons/settings-4.svg') }}" alt="Kinderen"></a>
-=======
-                <a class="{{ (Route::getFacadeRoot()->current()->uri() == 'ouders/kinderen') ? 'selected' : '' }}" href="/ouders/kinderen"><img src="{{ URL::asset('images/icons/user-4.svg') }}" alt="Kinderen"></a>
-            </li>
+            
             <li>
                 <a id="parentSettingBtn" class="" onclick="openParentSettings()"><img src="{{ URL::asset('images/icons/settings-8.svg') }}" alt="Kinderen"></a>
->>>>>>> d0801f5ffff91e9b6fecf35ab21daf269a259d1a
             </li>
             <li>
                 <a class="{{ (\Request::route()->getName() == 'this.route') ? 'active' : '' }}" href="/logout"><img src="{{ URL::asset('images/icons/exit-2.svg') }}" alt="Logout"></a>
