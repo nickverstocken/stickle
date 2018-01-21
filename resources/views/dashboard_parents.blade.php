@@ -14,6 +14,9 @@
                 <a class="{{ (Route::getFacadeRoot()->current()->uri() == 'ouders/kinderen') ? 'selected' : '' }}" href="/ouders/kinderen"><img src="{{ URL::asset('images/icons/user-4.svg') }}" alt="Kinderen"></a>
             </li>
             <li>
+                <a id="parentSettingBtn" class="" onclick="openParentSettings()"><img src="{{ URL::asset('images/icons/settings-4.svg') }}" alt="Kinderen"></a>
+            </li>
+            <li>
                 <a class="{{ (\Request::route()->getName() == 'this.route') ? 'active' : '' }}" href="/logout"><img src="{{ URL::asset('images/icons/exit-2.svg') }}" alt="Logout"></a>
             </li>
         </ul>
@@ -22,4 +25,5 @@
     <div id="contentParents" class="content">
         @yield('dashboardcontent')
     </div>
+    @include('layouts.modals.editParent')
 @stop
