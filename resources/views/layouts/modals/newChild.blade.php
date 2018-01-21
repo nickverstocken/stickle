@@ -23,11 +23,6 @@
                         <input required name="lastName" id="lastName" type="text" placeholder="Achternaam*" autocorrect="off" autocapitalize="off" spellcheck="off" class="input">
                     </div>
                     <div class="card">
-                        <h4>Jongen of meisje?</h4>
-                        <input required name="gender" type="radio" class="input" id="gender" value="male">Jongen <br>
-                        <input required name="gender" type="radio" class="input" id="gender" value="female">Meisje
-                    </div>
-                    <div class="card">
                         <h4>Geboortedatum</h4>
                         <input required name="dateOfBirth" id="dateOfBirth" type="date" class="input">
                     </div>

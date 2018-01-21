@@ -54,7 +54,6 @@ class ParentController extends Controller
     	$validator = Validator::make($request->all(), [
             'firstName' => 'required|string|max:255',
             'lastName' => 'required|string|max:255',
-            'gender' => 'required|string|max:25',
             'dateOfBirth' => 'required|date|before:'.Carbon::now(),
             'picture' => 'image'
         ]);
@@ -64,7 +63,6 @@ class ParentController extends Controller
         	$child = new Child;
         	$child->firstName = $request->firstName;
         	$child->lastName = $request->lastName;
-        	$child->gender = $request->gender;
         	$child->dateOfBirth = $request->dateOfBirth;
         	$child->picturePath = null;
         	$child->rewardPoints = 0;
@@ -112,7 +110,6 @@ class ParentController extends Controller
         $validator = Validator::make($request->all(), [
             'firstName' => 'required|string|max:255',
             'lastName' => 'required|string|max:255',
-            'gender' => 'required|string|max:25',
             'dateOfBirth' => 'required|date|before:'.Carbon::now(),
             'picture' => 'image'
         ]);
@@ -122,7 +119,6 @@ class ParentController extends Controller
             $child = Child::find($child_id);
             $child->firstName = $request->firstName;
             $child->lastName = $request->lastName;
-            $child->gender = $request->gender;
             $child->dateOfBirth = $request->dateOfBirth;
             $child->save();
 

@@ -566,7 +566,7 @@ window.pushCode = function (event, key) {
                             $('#codeString span').css({
                                 background: '#1F2C3D'
                             });
-                            $("doneKey").attr("onclick", "pushCode(event,'check')");
+                            $("#doneKey").attr("onclick", "pushCode(event,'check')");
                             $("#doneKey").text("Klaar");
                             $("#pincodeText").text('Je pincode was niet hetzelfde. Geef opnieuw in.');
                         }
@@ -576,6 +576,16 @@ window.pushCode = function (event, key) {
 
         }
     }
+};
+window.openParentSettings = function () {
+    $('#editParentModal').css({
+        'opacity': '1',
+        'z-index': '4'
+    });
+    $('#editParentModalBg').css({
+        'opacity': '1',
+        'z-index': '1'
+    });
 };
 
 /***/ }),
