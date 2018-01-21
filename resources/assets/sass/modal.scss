@@ -95,21 +95,19 @@
           background: #fff;
           position:relative;
         img{
-            width:100%;
-            height:250px;
+            width:150px;
+            height:200px;
             object-fit: cover;
             transition: all 0.2s ease;
           border:10px solid rgba(0,0,0,0.1);
           display: block;
+          margin:0 auto;
           margin-bottom: 15px;
           &.profile{
             width:150px;
             height:150px;
             border-radius: 50%;
-
-            margin:0 auto;
             display:block;
-            margin-bottom: 15px;
           }
         }
         h4{
