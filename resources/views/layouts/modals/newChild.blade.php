@@ -15,16 +15,16 @@
                     <div class="card">
                         <h4>Foto kind</h4>
                         <img class="profile inputImage" src="{{ URL::asset('images/kids/defaultprofile-1.png')  }} ">
-                        <input onchange="handleInputChange(event)"  type="file" name="picture" id="picture" class="input">
+                        <input onchange="handleInputChange(event)"  type="file" name="picture" class="input">
                     </div>
                     <div class="card">
                         <h4>Naam</h4>
-                        <input required name="firstName" id="firstName" type="text" placeholder="Voornaam*" autocorrect="off" autocapitalize="off" spellcheck="off" class="input">
-                        <input required name="lastName" id="lastName" type="text" placeholder="Achternaam*" autocorrect="off" autocapitalize="off" spellcheck="off" class="input">
+                        <input required name="firstName" type="text" placeholder="Voornaam*" autocorrect="off" autocapitalize="off" spellcheck="off" class="input">
+                        <input required name="lastName" type="text" placeholder="Achternaam*" autocorrect="off" autocapitalize="off" spellcheck="off" class="input">
                     </div>
                     <div class="card">
                         <h4>Geboortedatum</h4>
-                        <input required name="dateOfBirth" id="dateOfBirth" type="date" class="input">
+                        <input required name="dateOfBirth" type="date" class="input">
                     </div>
                 </form>
                 <div class="actions">

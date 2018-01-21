@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="codeSubmit">
-            <button onclick="pushCode(event,'cancel')">Annuleer</button>  <button id="doneKey" onclick="pushCode(event,'check')">Klaar</button>
+            <button onclick="pushCode(event,'cancelRegister')">Annuleer</button>  <button id="doneKey" onclick="pushCode(event,'check')">Klaar</button>
         </div>
     </div>
 </div>

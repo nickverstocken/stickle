@@ -533,7 +533,7 @@ window.pushCode = function(event, key){
                     $("#doneKey").attr("onclick","pushCode(event,'comfirm')");
                     $("#doneKey").text("Bevestig");
                     $("#pincode").val(this.keyCodeToComfirm.join(''));
-                    $("#pincodeText").text('Bevestig je pincode');
+                    $("#pincodeText").text('Bevestig je pincode.');
                 }
                 break;
             }
@@ -624,6 +624,23 @@ window.pushCode = function(event, key){
                         showError('Pincode fout', 'Je pincode was niet hetzelfde. Geef opnieuw in.');
                     }              
                 }
+                break;
+            }
+            case 'cancelRegister': {
+                this.keycode = [];
+                $(`#codeString span`).css({
+                    background: '#1F2C3D'
+                });
+                $('#doneKey').removeClass('orange');
+                $('.parentcode').removeClass('show');
+                $('#keycode').removeClass('show');
+                $('.backgroundAnimalsCode').removeClass('show');
+                setTimeout(function() {
+                    $("#pincodeText").text('Kies een Parental Control pincode.');
+                    $("#doneKey").attr("onclick","pushCode(event,'check')");
+                    $("#doneKey").text("Klaar");
+                }, 1000);
+                
                 break;
             }
             case 'cancelEdit': {
