@@ -21,8 +21,8 @@ class ParentController extends Controller
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,'.Auth::id(),
-            'password' => 'required|string|min:6|confirmed',
-            'password_confirmation' => 'required|string|min:6|same:password',
+            'password' => 'confirmed',
+            'password_confirmation' => 'same:password',
         ]);
 
         if ($validator->passes()) {            
