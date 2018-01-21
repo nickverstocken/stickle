@@ -444,6 +444,7 @@ window.showRegisterKeyPad = function(event){
 window.showEditKeyPad = function(event){
         $('.parentcode').toggleClass('show');
         $('.backgroundAnimalsCode').toggleClass('show');
+    $('#keycode').toggleClass('show');
 };
 
 keycode = [];
@@ -677,12 +678,13 @@ window.openParentSettings = function() {
 window.showError = function(title, msg){
     $('.errorContainer').css({
         'opacity': '1',
-        'z-index': '5'
+        'z-index': '99'
     });
     $('.errorModalBg').css({
         'opacity': '1',
-        'z-index': '1'
+        'z-index': '98'
     });
+    $('.errorMsg').empty();
     $('.errorTitle').text(title);
     $('.errorMsg').append($.parseHTML(msg));
 }

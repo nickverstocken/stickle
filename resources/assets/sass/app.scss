@@ -263,7 +263,7 @@ vertical-align: middle;
   }
 }
 .navbar-leftfixed{
-  z-index:3;
+  z-index:50;
   height:100vh;
   width:90px;
   position: fixed;
@@ -1213,18 +1213,8 @@ position: relative;
 }
 #login {
   #keycode{
-    position: fixed;
-    width:100%;
-    height:100%;
-    opacity: 0;
-    z-index:-1;
     .backgroundAnimalsCode{
       display: none;
-    }
-    &.show{
-      background:rgba(0,0,0,0.3);
-
-      opacity: 1;
     }
   }
   .parentcode{
@@ -1232,11 +1222,21 @@ position: relative;
     &.show{
       left:0;
     }
-
   }
 }
+#keycode{
+  opacity: 0;
+  transition: all 0.2s ease-in;
+}
 #keycode.show{
-  z-index: 5 !important;
+  position: fixed;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.3);
+  opacity: 1;
+  top:0;
+  left:0;
+  z-index: 10 !important;
 }
 .parentcode{
   &.show{
@@ -1398,7 +1398,7 @@ position: relative;
     height:auto;
   }
   .navbar-leftfixed{
-    z-index:5;
+    z-index:50;
     height:90px;
     width:100%;
     top:0;

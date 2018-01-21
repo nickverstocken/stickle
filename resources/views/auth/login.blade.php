@@ -5,15 +5,6 @@
         <div class="mainwrap">
             <div class="intro">
                 <h1>Login</h1>
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
                 <div class="form">
                     <form id="frmLogin" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
