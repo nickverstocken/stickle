@@ -19,6 +19,16 @@ $('#addChildBtn').click(function () {
         'z-index': '1'
     });
 });
+$('.next').click(function(){
+    var far = $( '.scrollcontainer' ).width() - 30;
+    var pos = $('.scrollcontainer').scrollLeft() + far;
+    $('.scrollcontainer').animate( { scrollLeft: pos }, 500 );
+});
+$('.prev').click(function(){
+    var far = $( '.scrollcontainer' ).width() - 30;
+    var pos = $('.scrollcontainer').scrollLeft() - far;
+    $('.scrollcontainer').animate( { scrollLeft: pos }, 500 );
+});
 var scanner;
 window.editBook = function(data) {
        $('#editBookForm #title').val(data.title);
@@ -460,3 +470,4 @@ window.pushCode = function(event, key){
         }
     }
 }
+

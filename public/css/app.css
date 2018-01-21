@@ -1520,6 +1520,7 @@ textarea {
 }
 
 .booklogCarousel {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1691,145 +1692,6 @@ textarea {
   height: 100%;
 }
 
-@media only screen and (max-width: 768px) {
-  /* For mobile phones: */
-
-  h1 {
-    font-size: 5rem;
-  }
-
-  .mainwrap {
-    margin: 0px 5px;
-    width: 100%;
-  }
-
-  .mainwrap h1 {
-    position: relative;
-    z-index: 1;
-    margin-top: 20px;
-  }
-
-  .mainwrap .buttons {
-    margin-bottom: 20px;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  body {
-    height: auto;
-  }
-
-  #contentParents {
-    height: auto;
-  }
-
-  .navbar-leftfixed {
-    z-index: 1;
-    height: 90px;
-    width: 100%;
-    top: 0;
-    position: fixed;
-  }
-
-  .navbar-leftfixed nav ul li {
-    display: inline-block;
-    margin-bottom: 0px;
-    margin-left: 15px;
-  }
-
-  .content {
-    height: auto;
-    margin-left: 0px;
-    margin-top: 90px;
-  }
-
-  .content .cardswrap {
-    display: block;
-    height: auto;
-    margin-bottom: 0px;
-  }
-
-  .content .cardswrap .card {
-    position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-flow: column;
-            flex-flow: column;
-    height: 100%;
-    width: 33.33%;
-    min-width: 100%;
-    border-left: 1px solid #121F30;
-  }
-
-  .content .cardswrap .card:last-child {
-    border-right: 1px solid #121F30;
-  }
-
-  .content .cardswrap .card .cardHeader {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 1 auto;
-            flex: 0 1 auto;
-    padding: 20px 0;
-    -ms-flex-item-align: center;
-        align-self: center;
-  }
-
-  .content .cardswrap .card .cardHeader h1 {
-    text-align: center;
-    font-size: 30px;
-  }
-
-  .content .cardswrap .card .cardInfo textarea {
-    height: 100%;
-    min-height: 150px;
-  }
-}
-
-@media only screen and (max-device-width: 414px) {
-  .main {
-    overflow: hidden;
-  }
-
-  .main .animal-bg.olifant {
-    display: none;
-  }
-
-  .main .animal-bg.krokodil {
-    -webkit-transform: rotate(50deg);
-            transform: rotate(50deg);
-    left: auto;
-    right: -30px;
-    top: -25px;
-  }
-
-  #login .intro {
-    border-radius: 4px;
-  }
-
-  #login .animal-bg.hagedis {
-    display: none;
-  }
-
-  #login .animal-bg.olifant {
-    display: none;
-  }
-
-  #login .animal-bg.krokodil {
-    display: none;
-  }
-
-  #login .animal-bg.giraf {
-    display: none;
-  }
-
-  #childLoginWrap {
-    height: auto;
-  }
-}
-
 .backgroundAnimalsCode {
   -webkit-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
@@ -1948,6 +1810,205 @@ textarea {
 
 .parentcode .codeSubmit button.orange {
   background: #EE7418;
+}
+
+.arrow {
+  cursor: pointer;
+  position: fixed;
+  z-index: 1;
+  height: 55px;
+  top: calc(25% - 55px);
+  width: 55px;
+  opacity: 0.2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: rgba(255, 255, 255, 0.5);
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.arrow:hover {
+  opacity: 1;
+}
+
+.arrow img {
+  width: 40px;
+}
+
+.arrow.next {
+  right: 0;
+}
+
+.arrow.prev {
+  left: 90px;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+
+  h1 {
+    font-size: 5rem;
+  }
+
+  .mainwrap {
+    margin: 0px 5px;
+    width: 100%;
+  }
+
+  .mainwrap h1 {
+    position: relative;
+    z-index: 1;
+    margin-top: 20px;
+  }
+
+  .mainwrap .buttons {
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  body {
+    height: auto;
+  }
+
+  .arrow {
+    visibility: hidden;
+  }
+
+  .arrow.prev {
+    left: 0px;
+  }
+
+  .backgroundAnimalsCode.show {
+    left: 210px;
+  }
+
+  .parentcode {
+    height: calc(100% - 90px);
+    bottom: 0;
+    top: auto;
+  }
+
+  .parentcode.show {
+    left: 0px;
+  }
+
+  #contentParents {
+    height: auto;
+  }
+
+  .navbar-leftfixed {
+    z-index: 5;
+    height: 90px;
+    width: 100%;
+    top: 0;
+    position: fixed;
+  }
+
+  .navbar-leftfixed nav ul li {
+    display: inline-block;
+    margin-bottom: 0px;
+    margin-left: 15px;
+  }
+
+  .content {
+    height: auto;
+    margin-left: 0px;
+    margin-top: 90px;
+    min-height: calc(100vh - 90px);
+  }
+
+  .content .cardswrap {
+    display: block;
+    height: auto;
+    margin-bottom: 0px;
+  }
+
+  .content .cardswrap .card {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column;
+            flex-flow: column;
+    height: 100%;
+    width: 33.33%;
+    min-width: 100%;
+    border-left: 1px solid #121F30;
+  }
+
+  .content .cardswrap .card:last-child {
+    border-right: 1px solid #121F30;
+  }
+
+  .content .cardswrap .card .cardHeader {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 auto;
+            flex: 0 1 auto;
+    padding: 20px 0;
+    -ms-flex-item-align: center;
+        align-self: center;
+  }
+
+  .content .cardswrap .card .cardHeader h1 {
+    text-align: center;
+    font-size: 30px;
+  }
+
+  .content .cardswrap .card .cardInfo textarea {
+    height: 100%;
+    min-height: 150px;
+  }
+}
+
+@media only screen and (max-device-width: 414px) {
+  .main {
+    overflow: hidden;
+  }
+
+  .main .animal-bg.olifant {
+    display: none;
+  }
+
+  .main .animal-bg.krokodil {
+    -webkit-transform: rotate(50deg);
+            transform: rotate(50deg);
+    left: auto;
+    right: -30px;
+    top: -25px;
+  }
+
+  #login .intro {
+    border-radius: 4px;
+  }
+
+  #login .animal-bg.hagedis {
+    display: none;
+  }
+
+  #login .animal-bg.olifant {
+    display: none;
+  }
+
+  #login .animal-bg.krokodil {
+    display: none;
+  }
+
+  #login .animal-bg.giraf {
+    display: none;
+  }
+
+  #childLoginWrap {
+    height: auto;
+  }
 }
 
 ::-webkit-scrollbar {

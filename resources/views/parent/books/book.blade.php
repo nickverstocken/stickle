@@ -1,7 +1,7 @@
 @extends('dashboard_parents')
 
 @section('dashboardcontent')
-    <div class="cardswrap">
+    <div class="cardswrap scrollcontainer">
         @foreach($booksOfUser as $book)
             <div class="card">
                 <div class="cardHeader">
@@ -31,6 +31,12 @@
                 </div>
             </div>
         @endforeach
+            <div class="arrow prev">
+                <img src="{{ URL::asset('images/icons/back.svg') }}" alt="scroll backward">
+            </div>
+        <div class="arrow next">
+            <img src="{{ URL::asset('images/icons/next.svg') }}" alt="scroll forward">
+        </div>
     </div>
     <div class="addButton">
         <a id="addBookBtn" class="addBtn"> <img class="poster" src="{{ URL::asset('images/icons/add.svg') }}" alt="Instellingen"></a>

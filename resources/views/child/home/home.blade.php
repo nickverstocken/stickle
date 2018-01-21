@@ -57,7 +57,7 @@
         </div>
         <div class="profileBookLog">
 <h2>Jouw boeken</h2>
-            <div id="childBooks" class="booklogCarousel">
+            <div id="childBooks" class="booklogCarousel scrollcontainer">
                 @if ($child->toArray()['children_reading_book'] )
                     @foreach ($child->childrenReadingBook as $book)
                         {{--         <div>{{$book->toArray()['children_reading_book']['lastPageRead']}} / {{$book->numberOfPages}}</div>--}}
@@ -75,6 +75,7 @@
                         </div>
                     @endforeach
                 @endif
+
             </div>
         </div>
         <div class="profileBookLog">
