@@ -709,7 +709,7 @@ window.openParentSettings = function () {
         'z-index': '1'
     });
 };
-function showError(title, msg) {
+window.showError = function (title, msg) {
     $('.errorContainer').css({
         'opacity': '1',
         'z-index': '5'
@@ -720,7 +720,7 @@ function showError(title, msg) {
     });
     $('.errorTitle').text(title);
     $('.errorMsg').text(msg);
-}
+};
 
 /***/ }),
 /* 2 */

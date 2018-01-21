@@ -37,3 +37,4 @@
         </div>
     </div>
 @stop
+@include('layouts.modals.error')

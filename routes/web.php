@@ -22,9 +22,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/ouders/dashboard', 'HomeController@dashboard');
     
     //account routes
-	Route::post('/accountwijzigen','parentController@editAccount');
-    Route::get('/verwijderaccount','parentController@deleteAccount');
-    Route::post('/pincodewijzigen','parentController@editPincode');
+	Route::post('/accountwijzigen','ParentController@editAccount');
+    Route::get('/verwijderaccount','ParentController@deleteAccount');
+    Route::post('/pincodewijzigen','ParentController@editPincode');
     //region parent Routes
     //Children routes
     Route::get('/ouders/kinderen', 'ParentController@showAllChildrenFromParent');

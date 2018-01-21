@@ -5,15 +5,6 @@
         <div class="mainwrap">
             <div class="intro">
                 <h1>Registreer</h1>
-                @if ($errors->any())
-                            <script>
-                                require('app.js');
-                                showError('Registreer fout', 'Fouten tijdens registreren');
-                            </script>
-                        {{--    @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach--}}
-                @endif
                 <div class="form">
                     <p id="registerError"></p>
                     <form id="frmRegister" method="POST" action="{{ route('register') }}" >
@@ -46,5 +37,7 @@
             @include('auth.pincodeRegister')
         </div>
     </div>
+
+    @include('layouts.modals.error')
 
 @stop

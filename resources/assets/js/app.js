@@ -674,7 +674,7 @@ window.openParentSettings = function() {
  });
  
 }
-function showError(title, msg){
+window.showError = function(title, msg){
     $('.errorContainer').css({
         'opacity': '1',
         'z-index': '5'
