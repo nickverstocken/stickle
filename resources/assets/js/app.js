@@ -464,7 +464,6 @@ window.pushCode = function(event, key){
             }
             case 'done' : {
                 if(this.keycode.length === 4){
-                    ///kind/{kindId}/checkouderspincode
                     $.ajaxSetup({
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
