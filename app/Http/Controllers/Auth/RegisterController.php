@@ -53,6 +53,7 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'password_confirmation' => 'required|string|min:6|same:password',
+            'pincode' => 'required|numeric',
         ]);
     }
 
@@ -68,7 +69,8 @@ class RegisterController extends Controller
             'firstName' => $data['firstname'],
             'lastName' => $data['lastname'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password'])
+            'password' => bcrypt($data['password']),
+            'parentPincode' => $data['pincode']
         ]);
     }
 }

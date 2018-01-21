@@ -15,20 +15,23 @@
                     </div>
                 @endif
                 <div class="form">
+                    <p id="registerError"></p>
                     <form id="frmRegister" method="POST" action="{{ route('register') }}" >
                         {{ csrf_field() }}
-                        <input type="text" placeholder="Voornaam" name="firstname" required >
-                        <input type="text" placeholder="Achternaam" name="lastname" required >
-                        <input type="email" placeholder="Email" name="email" required >
-                        <input type="password" placeholder="Wachtwoord" name="password">
-                        <input type="password" placeholder="Bevestig wachtwoord" name="password_confirmation">
+                        <input type="text" id="firstname" placeholder="Voornaam" name="firstname" required  >
+                        <input type="text" id="lastname" placeholder="Achternaam" name="lastname" required >
+                        <input type="email" id="email" placeholder="Email" name="email" required >
+                        <input type="password" id="password" placeholder="Wachtwoord" name="password">
+                        <input type="password" id="password_comfirmation" placeholder="Bevestig wachtwoord" name="password_confirmation">
+                        <input type="hidden" id="pincode" name="pincode" value="" id="pincode">
                     </form>
 
                 </div>
                 <div class="buttons">
 
                     <a href="/login" class="button">Log in</a>
-                    <button type="submit" form="frmRegister" class="button orange">Registreer</button>
+                    <!--<button  type="submit" form="frmRegister" class="button orange">Registreer</button>-->
+                    <button onclick="showRegisterKeyPad()" class="button orange">Registreer</button>
                 </div>
                 <img class="animal-bg hagedis" src="{{ URL::asset('images/hagedis.svg') }}" alt="Hagedis">
 
@@ -39,5 +42,8 @@
                 <img class="animal-bg giraf" src="{{ URL::asset('images/giraf.svg') }}" alt="Giraf">
             </div>
         </div>
+    </div>
+    <div id="keycode">
+        @include('auth.pincodeRegister')
     </div>
 @stop

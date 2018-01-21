@@ -417,7 +417,17 @@ window.showKeyPad = function(event){
     $('.parentcode').toggleClass('show');
     $('.backgroundAnimalsCode').toggleClass('show');
 };
+window.showRegisterKeyPad = function(event){
+    if( $("#firstname").val() && $("#lastname").val() && $("#email").val() && $("#password").val() && $("#password_comfirmation").val()) {
+        $('.parentcode').toggleClass('show');
+        $('.backgroundAnimalsCode').toggleClass('show');
+    } else{
+        $('#registerError').text('Alle velden moeten ingevuld zijn.');
+    }
+    
+};
 keycode = [];
+keyCodeToComfirm = [];
 window.pushCode = function(event, key){
     $(event.target).addClass('flash');
     setTimeout(function() {
@@ -435,6 +445,7 @@ window.pushCode = function(event, key){
             $('#doneKey').addClass('orange');
         }
     }else{
+        console.log('keypress');
         switch (key){
             case 'back':{
                 $(`#codeString span:nth-child(${this.keycode.length})`).css({
@@ -492,6 +503,45 @@ window.pushCode = function(event, key){
                 });
                 break;
             }
+            case 'check' : {
+                if(this.keycode.length === 4){
+                    console.log('binnen');
+                    this.keyCodeToComfirm = this.keycode;
+                    console.log(this.keyCodeToComfirm);
+                    $('#doneKey').removeClass('orange');
+                    this.keycode =[];
+                    $(`#codeString span`).css({
+                        background: '#1F2C3D'
+                    });
+                    $("#doneKey").attr("onclick","pushCode(event,'comfirm')");
+                    $("#doneKey").text("Bevestig");
+                    $("#pincode").val(this.keyCodeToComfirm.join(''));
+                    $("#pincodeText").text('Bevestig je pincode');
+                }
+                break;
+            }
+            case 'comfirm' : {
+                if(this.keycode.length === 4){
+                    console.log(this.keyCodeToComfirm);
+                    console.log(this.keycode);
+                    if(this.keyCodeToComfirm.join('') === this.keycode.join('')){
+                        console.log('tzelfde');                         	
+                        $( "#frmRegister" ).submit();
+                    } else{
+                        this.keyCodeToComfirm = [];
+                        $('#doneKey').removeClass('orange');
+                        this.keycode =[];
+                        $(`#codeString span`).css({
+                            background: '#1F2C3D'
+                        });
+                        $("doneKey").attr("onclick","pushCode(event,'check')");
+                        $("#doneKey").text("Klaar");
+                        $("#pincodeText").text('Je pincode was niet hetzelfde. Geef opnieuw in.');
+                    }              
+                }
+                break;
+            }
+            
         }
     }
 }
