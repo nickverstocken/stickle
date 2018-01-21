@@ -7,7 +7,7 @@
                 <h1>Registreer</h1>
                 @if ($errors->any())
                             <script>
-                                require('')
+                                require('app.js');
                                 showError('Registreer fout', 'Fouten tijdens registreren');
                             </script>
                         {{--    @foreach ($errors->all() as $error)

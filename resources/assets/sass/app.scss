@@ -1235,9 +1235,13 @@ position: relative;
 
   }
 }
+#keycode.show{
+  z-index: 5 !important;
+}
 .parentcode{
   &.show{
     left:90px;
+    z-index: 5;
   }
   transition: all 0.3s ease-in;
   background: $green_darker;
@@ -1245,7 +1249,7 @@ position: relative;
   top:0;
   max-width: 320px;
   width:100%;
-  z-index: 5;
+  z-index: 2;
   left:-320px;
   height:100%;
   color:#fff;

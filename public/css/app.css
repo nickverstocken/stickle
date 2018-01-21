@@ -1873,6 +1873,10 @@ textarea {
   left: 0;
 }
 
+#keycode.show {
+  z-index: 5 !important;
+}
+
 .parentcode {
   -webkit-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
@@ -1881,7 +1885,7 @@ textarea {
   top: 0;
   max-width: 320px;
   width: 100%;
-  z-index: 5;
+  z-index: 2;
   left: -320px;
   height: 100%;
   color: #fff;
@@ -1896,6 +1900,7 @@ textarea {
 
 .parentcode.show {
   left: 90px;
+  z-index: 5;
 }
 
 .parentcode .parentCodeWrap {
