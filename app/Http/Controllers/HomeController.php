@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::check()){
-            return redirect('/ouders/dashboard');
+            return redirect('/ouders/kinderen');
         }else{
             return view('home');
         }
@@ -26,9 +26,5 @@ class HomeController extends Controller
     {
         Auth::logout();
         return redirect('/');        
-    }
-
-    public function dashboard(){
-        return view('dashboard_parents');
     }
 }

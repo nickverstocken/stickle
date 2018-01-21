@@ -5,13 +5,10 @@
     <nav>
         <ul>
             <li>
-                <a class="{{ (Route::getFacadeRoot()->current()->uri() == 'ouders/dashboard') ? 'selected' : '' }}" href="/ouders/dashboard"><img src="{{ URL::asset('images/icons/home-1.svg') }}" alt="Home"></a>
+                <a class="{{ (Route::getFacadeRoot()->current()->uri() == 'ouders/kinderen') ? 'selected' : '' }}" href="/ouders/kinderen"><img src="{{ URL::asset('images/icons/user-4.svg') }}" alt="Kinderen"></a>
             </li>
             <li>
                 <a class="{{ (Route::getFacadeRoot()->current()->uri() == 'ouders/boeken') ? 'selected' : '' }}" href="/ouders/boeken"><img src="{{ URL::asset('images/icons/agenda.svg') }}" alt="Boeken"></a>
-            </li>
-            <li>
-                <a class="{{ (Route::getFacadeRoot()->current()->uri() == 'ouders/kinderen') ? 'selected' : '' }}" href="/ouders/kinderen"><img src="{{ URL::asset('images/icons/user-4.svg') }}" alt="Kinderen"></a>
             </li>
             <li>
                 <a id="parentSettingBtn" class="" onclick="openParentSettings()"><img src="{{ URL::asset('images/icons/settings-4.svg') }}" alt="Kinderen"></a>
