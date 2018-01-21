@@ -6,13 +6,13 @@
             <div class="intro">
                 <h1>Registreer</h1>
                 @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
+                            <script>
+                                require('')
+                                showError('Registreer fout', 'Fouten tijdens registreren');
+                            </script>
+                        {{--    @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
+                            @endforeach--}}
                 @endif
                 <div class="form">
                     <p id="registerError"></p>

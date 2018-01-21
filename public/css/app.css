@@ -1862,7 +1862,6 @@ textarea {
 
 #login #keycode.show {
   background: rgba(0, 0, 0, 0.3);
-  z-index: 5;
   opacity: 1;
 }
 
@@ -1882,7 +1881,7 @@ textarea {
   top: 0;
   max-width: 320px;
   width: 100%;
-  z-index: 2;
+  z-index: 5;
   left: -320px;
   height: 100%;
   color: #fff;
