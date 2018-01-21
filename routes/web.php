@@ -22,7 +22,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/ouders/dashboard', 'HomeController@dashboard');
     
     //account routes
-	Route::get('/accountwijzigen','parentController@openEditAccount');
+	Route::post('/accountwijzigen','parentController@editAccount');
     Route::get('/verwijderaccount','parentController@deleteAccount');
     //region parent Routes
     //Children routes

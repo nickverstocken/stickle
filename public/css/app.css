@@ -199,6 +199,17 @@
   color: #fff;
 }
 
+.modalContainer .modalContent .contentContainer .button.orange {
+  background: #EE7418;
+  border: 1px solid #EE7418;
+}
+
+.modalContainer .modalContent .contentContainer .button.orange:hover {
+  background: none;
+  border: 1px solid #EE7418;
+  color: #EE7418;
+}
+
 .modalBg {
   position: fixed;
   top: 0;

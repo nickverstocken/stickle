@@ -439,9 +439,13 @@ window.showRegisterKeyPad = function(event){
         $('.backgroundAnimalsCode').toggleClass('show');
     } else{
         $('#registerError').text('Alle velden moeten ingevuld zijn.');
-    }
-    
+    }    
 };
+window.showEditKeyPad = function(event){
+        $('.parentcode').toggleClass('show');
+        $('.backgroundAnimalsCode').toggleClass('show');
+};
+
 keycode = [];
 keyCodeToComfirm = [];
 window.pushCode = function(event, key){

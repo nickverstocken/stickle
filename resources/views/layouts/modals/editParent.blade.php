@@ -6,11 +6,11 @@
             <div class="close closeModal" onclick="closeModal(this);">
                 <img src="{{ URL::asset('images/icons/error.svg') }}" alt="Close">
             </div>
-            <h3>Kind Wijzigen</h3>
+            <h3>Account Wijzigen</h3>
         </div>
         <div class="modalContent">
             <div class="contentContainer">
-                <form id="editParentForm" name="editKidForm"  method="POST" enctype="multipart/form-data">
+                <form id="editParentForm" name="editParentForm"  method="POST" enctype="multipart/form-data" action="/accountwijzigen">
                     {{ csrf_field() }}
                     <div class="card">
                         <h4>Naam</h4>
@@ -19,10 +19,7 @@
                     </div>
                     <div class="card">
                         <h4>Email</h4>
-                        <input class="input" type="email" id="email" placeholder="Email" name="email" autocorrect="off" autocapitalize="off" spellcheck="off" required >
-                        <input class="input" type="password" id="password" placeholder="Wachtwoord" name="password">
-                        <input class="input" type="password" id="password_comfirmation" placeholder="Bevestig wachtwoord" name="password_confirmation">
-                        <input class="input" type="hidden" id="pincode" name="pincode" value="" id="pincode">
+                        <input class="input" type="email" id="email" placeholder="Email" value="{{Auth::user()->email}}" name="email" autocorrect="off" autocapitalize="off" spellcheck="off" required >
                     </div>
                     <div class="card">
                         <h4>Wachtwoord</h4>
@@ -30,13 +27,14 @@
                         <input type="password" id="password_comfirmation" placeholder="Bevestig wachtwoord" name="password_confirmation">
                         <input type="hidden" id="pincode" name="pincode" value="" id="pincode">
                     </div>
-
-
                 </form>
+                
                 <div class="actions">
+                    <button onclick="showEditKeyPad()" class="button orange">Pin Wijzigen</button>
                     <button form="editParentForm" class="button">Wijzigen</button>
-                    <button id="deleteButton" class="button cancel closeModal">Verwijder</button>
+                    <a id="deleteButton" href="/verwijderaccount" class="button cancel closeModal">Verwijder</a>
                 </div>
+                
             </div>
         </div>
     </div>

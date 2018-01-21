@@ -15,17 +15,31 @@ use Carbon\Carbon;
 
 class ParentController extends Controller
 {
-    public function openEditAccount(){
-        $user = User::find(Auth::id());
-        return view('auth.editAccount',[
-            'user' => $user
-            ]);
+    public function editAccount(Request $request){
+        $validator = Validator::make($request->all(), [
+            'firstname' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,'.Auth::id(),
+            'password' => 'required|string|min:6|confirmed',
+            'password_confirmation' => 'required|string|min:6|same:password',
+        ]);
+
+        if ($validator->passes()) {            
+            Auth::user()->firstName = $request->firstname;
+            Auth::user()->lastName = $request->lastname;
+            Auth::user()->email = $request->email;
+            Auth::user()->password = bcrypt($request->password);
+            Auth::user()->save();
+
+            return redirect('/');
+        }
+        return Redirect::back()->withErrors($validator);
+
     }
 
     public function deleteAccount(){
 
-        $user = User::find(Auth::id());    
-        $user->delete();
+        Auth::user()->delete();
         return redirect('/');
     }
 
