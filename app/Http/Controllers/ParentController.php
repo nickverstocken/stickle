@@ -20,9 +20,8 @@ class ParentController extends Controller
         $validator = Validator::make($request->all(), [
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,'.Auth::id(),
-            'password' => 'confirmed',
-            'password_confirmation' => 'same:password',
+            'email' => 'required|email|max:255|unique:users,email,'.Auth::id(),
+            'password' => 'nullable|min:6|confirmed'
         ]);
 
         if ($validator->passes()) {            

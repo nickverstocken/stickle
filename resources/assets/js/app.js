@@ -438,7 +438,7 @@ window.showRegisterKeyPad = function(event){
         $('#keycode').toggleClass('show');
         $('.backgroundAnimalsCode').toggleClass('show');
     } else{
-        $('#registerError').text('Alle velden moeten ingevuld zijn.');
+        showError('Fout', 'Alle velden moeten ingevuld zijn.');
     }    
 };
 window.showEditKeyPad = function(event){
@@ -684,5 +684,5 @@ window.showError = function(title, msg){
         'z-index': '1'
     });
     $('.errorTitle').text(title);
-    $('.errorMsg').text(msg);
+    $('.errorMsg').append($.parseHTML(msg));
 }

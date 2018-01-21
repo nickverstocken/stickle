@@ -17,13 +17,9 @@
         </div>
 <script src="{{ URL::asset('js/app.js') }}" type="text/javascript"></script>
         @if ($errors->any())
-          @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
             <script>
-                showError('Fout', '{{ join('\n', $errors->all())}}');
+                showError('Fout', '{!! join("<br />", $errors->all()) !!}');
             </script>
-
         @endif
 
     </body>
