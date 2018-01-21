@@ -114,7 +114,7 @@ window.editBook = function (data) {
     $('#editBookForm #numberOfPages').val(data.numberOfPages);
     $("#editBookForm").attr('action', '/ouders/boeken/wijzig/' + data.readingBook_id);
     $("#deleteButton").attr('onclick', 'window.location = "/ouders/boeken/verwijder/' + +data.readingBook_id + '"');
-
+    $('#editBookForm #imgBook').attr('src', data.coverPath ? data.coverPath : '/images/books/nocover.png');
     $('#editbookModal').css({
         'opacity': '1',
         'z-index': '4'
@@ -124,6 +124,29 @@ window.editBook = function (data) {
         'z-index': '1'
     });
 };
+window.handleInputChange = function (event) {
+    console.log('input changed');
+    var file = event.dataTransfer ? event.dataTransfer.files[0] : event.target.files[0];
+
+    var pattern = /image-*/;
+    if (!file.type.match(pattern)) {
+        alert('invalid format');
+        return;
+    }
+    $('.inputImage').animate({
+        opacity: 0
+    }, 200);
+    var reader = new FileReader();
+    reader.onload = _handleReaderLoaded.bind(this);
+    reader.readAsDataURL(file);
+};
+function _handleReaderLoaded(e) {
+    var reader = e.target;
+    $('.inputImage').attr('src', reader.result);
+    $('.inputImage').animate({
+        opacity: 1
+    }, 500);
+}
 window.openBook = function (book) {
     console.log(book);
     $('#openbookModal').css({
@@ -178,6 +201,7 @@ window.editChild = function (data) {
     $('#editKidForm #firstName').val(data.firstName);
     $('#editKidForm #lastName').val(data.lastName);
     $('#editKidForm #dateOfBirth').val(data.dateOfBirth);
+    $('#editKidForm #imgChild').attr('src', data.picturePath ? data.picturePath : '/images/kids/defaultprofile-1.png');
     $("#editKidForm").attr('action', '/ouders/kinderen/wijzig/' + data.child_id);
     $("#deleteButton").attr('onclick', 'window.location = "/ouders/kinderen/verwijder/' + data.child_id + '"');
     if (data.gender == 'male') {

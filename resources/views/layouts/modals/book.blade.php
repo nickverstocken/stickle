@@ -14,7 +14,8 @@
                     {{ csrf_field() }}
                     <div class="card">
                         <h4>Afbeelding van het boek</h4>
-                        <input type="file" name="bookCover" id="bookCover" class="input">
+                        <img class="inputImage" id="imgBooknew" src="{{ URL::asset('images/books/nocover.png') }}">
+                        <input onchange="handleInputChange(event)"  type="file" name="bookCover" id="bookCover" class="input">
                     </div>
                     <div class="card">
                         <h4>Titel</h4>

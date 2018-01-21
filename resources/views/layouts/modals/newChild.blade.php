@@ -14,7 +14,8 @@
                     {{ csrf_field() }}
                     <div class="card">
                         <h4>Foto kind</h4>
-                        <input type="file" name="picture" id="picture" class="input">
+                        <img class="profile inputImage" src="{{ URL::asset('images/kids/defaultprofile-1.png')  }} ">
+                        <input onchange="handleInputChange(event)"  type="file" name="picture" id="picture" class="input">
                     </div>
                     <div class="card">
                         <h4>Naam</h4>

@@ -94,7 +94,24 @@
           transition: .6s ease;
           background: #fff;
           position:relative;
+        img{
+            width:100%;
+            height:250px;
+            object-fit: cover;
+            transition: all 0.2s ease;
+          border:10px solid rgba(0,0,0,0.1);
+          display: block;
+          margin-bottom: 15px;
+          &.profile{
+            width:150px;
+            height:150px;
+            border-radius: 50%;
 
+            margin:0 auto;
+            display:block;
+            margin-bottom: 15px;
+          }
+        }
         h4{
           font-weight: 700;
           padding-bottom: 12px;
@@ -185,9 +202,4 @@
     }
 
   }
-}
-#bookImage{
-  width:100%;
-  height:250px;
-  object-fit: cover;
 }
