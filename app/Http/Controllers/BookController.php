@@ -73,7 +73,7 @@ class BookController extends Controller
 
                 $extension = pathinfo(storage_path().$file->getClientOriginalName(), PATHINFO_EXTENSION);
                 $img = $img->stream();               
-                $filename = 'public/books/' . $book_id . '.' .$extension;
+                $filename = 'books/' . $book_id . '.' .$extension;
                 Storage::disk('local')->put($filename, $img);
                 $book->coverPath = Storage::url($filename);
                 $book->save();
@@ -111,7 +111,7 @@ class BookController extends Controller
             
                 $extension = pathinfo(storage_path().$file->getClientOriginalName(), PATHINFO_EXTENSION);
                 $img = $img->stream();               
-                $filename = 'public/books/' . $book->readingBook_id . '.' .$extension;
+                $filename = 'books/' . $book->readingBook_id . '.' .$extension;
                 Storage::disk('local')->put($filename, $img);
                 $book->coverPath =  Storage::url($filename);
             }

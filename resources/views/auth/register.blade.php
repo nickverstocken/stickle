@@ -20,7 +20,7 @@
                 </div>
                 <div class="buttons">
 
-                    <a href="/login" class="button">Log in</a>
+                    <a href="./login" class="button">Log in</a>
                     <!--<button  type="submit" form="frmRegister" class="button orange">Registreer</button>-->
                     <button onclick="showRegisterKeyPad()" class="button orange">Registreer</button>
                 </div>

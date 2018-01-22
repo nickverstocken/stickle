@@ -29,7 +29,7 @@ class stickerSeeder extends Seeder
             $inserted = Sticker::create($sticker);
             $img = Image::make(base64_encode(QrCode::format('png')->size(300)->color(15,110,117)->margin(1)->generate('{ "reward": { "stickerBookId": "'. $inserted->stickerBook_id .'", "rewardId": "'. $inserted->sticker_id .'" } }')));
             $img = $img->stream();
-            Storage::disk('local')->put('public/qrcodes/stickerbook' . $inserted->stickerBook_id . '/' . $inserted->sticker_id . '.png', $img);
+            Storage::disk('local')->put('/qrcodes/stickerbook' . $inserted->stickerBook_id . '/' . $inserted->sticker_id . '.png', $img);
         }
     }
 }

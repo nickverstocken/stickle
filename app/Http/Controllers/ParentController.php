@@ -121,7 +121,7 @@ class ParentController extends Controller
 
                 $extension = pathinfo(storage_path().$file->getClientOriginalName(), PATHINFO_EXTENSION);
                 $img = $img->stream();               
-                $filename = 'public/children/' . $child_id . '.' .$extension;
+                $filename = 'kids/' . $child_id . '.' .$extension;
                 Storage::disk('local')->put($filename, $img);
                 $child->picturePath =  Storage::url($filename);
                 $child->save();
@@ -173,7 +173,7 @@ class ParentController extends Controller
 
                 $extension = pathinfo(storage_path().$file->getClientOriginalName(), PATHINFO_EXTENSION);
                 $img = $img->stream();               
-                $filename = 'public/children/' . $child_id . '.' .$extension;
+                $filename = 'kids/' . $child_id . '.' .$extension;
                 Storage::disk('local')->put($filename, $img);
                 $child->picturePath =  Storage::url($filename);
                 $child->save();

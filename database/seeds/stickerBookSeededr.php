@@ -20,7 +20,7 @@ class stickerBookSeededr extends Seeder
             $inserted = StickerBook::create($stickerBook);
             $img = Image::make(base64_encode(QrCode::format('png')->size(300)->color(31,44,61)->margin(1)->generate('{ "login": { "stickerBookId": "' . $inserted->stickerBook_id . '" } }')));
             $img = $img->stream();
-            Storage::disk('local')->put('public/qrcodes/stickerbooklogin' . $inserted->stickerBook_id . '.png', $img);
+            Storage::disk('local')->put('/qrcodes/stickerbooklogin' . $inserted->stickerBook_id . '.png', $img);
         }
     }
 }

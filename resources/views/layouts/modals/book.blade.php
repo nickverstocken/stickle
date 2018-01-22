@@ -10,7 +10,7 @@
         </div>
         <div class="modalContent">
             <div class="contentContainer">
-                <form id="addBookForm" name="addBookForm" method="POST" enctype="multipart/form-data" action="/ouders/boeken/toevoegen">
+                <form id="addBookForm" name="addBookForm" method="POST" enctype="multipart/form-data" action="{{ url('ouders/boeken/toevoegen') }}">
                     {{ csrf_field() }}
                     <div class="card">
                         <h4>Afbeelding van het boek</h4>
