@@ -18,11 +18,11 @@ class stickerSeeder extends Seeder
         //{ "reward": { "stickerBookId": "1", "rewardId": "2" } }
         $stickers = [];
 
-        for($i = 1; $i <= 15; $i++) {
+        for($i = 1; $i <= 50; $i++) {
             $stickers[] = ['stickerBook_id' => 1];
 
         }
-        for ($i = 1;$i <= 25; $i++) {
+        for ($i = 1;$i <= 50; $i++) {
         $stickers[] = ['stickerBook_id' => 2];
 }
         foreach ($stickers as $sticker) {

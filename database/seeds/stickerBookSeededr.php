@@ -13,8 +13,8 @@ class stickerBookSeededr extends Seeder
     {
         DB::table('stickerBooks')->delete();
         $stickerBooks = [
-            ['numberOfStickers' => 15],
-            ['numberOfStickers' => 25]
+            ['numberOfStickers' => 50],
+            ['numberOfStickers' => 50]
         ];
         foreach ($stickerBooks as $stickerBook) {
             $inserted = StickerBook::create($stickerBook);
