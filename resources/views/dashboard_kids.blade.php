@@ -28,6 +28,9 @@
                 <li>
                     <a onclick="showKeyPad()"><img src="{{ URL::asset('images/icons/locked.svg') }}" alt="Kinderen"></a>
                 </li>
+                <li>
+                    <a class="{{ (\Request::route()->getName() == 'this.route') ? 'active' : '' }}" href="/kind/logout"><img src="{{ URL::asset('images/icons/exit-2.svg') }}" alt="Logout"></a>
+                </li>
             </ul>
         </nav>
     </div>

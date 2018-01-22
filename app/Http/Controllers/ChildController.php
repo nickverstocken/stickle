@@ -261,4 +261,8 @@ class ChildController extends Controller
             );
         }
     }
+    public function logout(Request $request){
+        session()->forget('childLoggedIn');
+        return redirect('/kind/login');
+    }
 }

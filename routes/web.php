@@ -55,6 +55,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/stickerbook/{stickerBookId}/reward/{rewardId}/scan', 'ChildController@scanReward');
     Route::post('/kind/koopprijs', 'ChildController@buyPrice');
     Route::get('/kind/{kindId}/prijs/{priceId}', 'ChildController@viewPrice');
+    Route::get('/kind/logout', 'ChildController@logout');
     //checkParentCode
     Route::post('/kind/checkouderspincode', 'ChildController@checkParentCode');
     //endregion Child Routes
