@@ -2,6 +2,9 @@
 
 use Illuminate\Database\Seeder;
 use App\Sticker;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 class stickerSeeder extends Seeder
 {
     /**
@@ -12,27 +15,21 @@ class stickerSeeder extends Seeder
     public function run()
     {
         DB::table('stickers')->delete();
-        $stickers = [
-            ['stickerBook_id' => 1],
-            ['stickerBook_id' => 1],
-            ['stickerBook_id' => 1],
-            ['stickerBook_id' => 1],
-            ['stickerBook_id' => 1],
-            ['stickerBook_id' => 1],
-            ['stickerBook_id' => 1],
-            ['stickerBook_id' => 2],
-            ['stickerBook_id' => 2],
-            ['stickerBook_id' => 2],
-            ['stickerBook_id' => 2],
-            ['stickerBook_id' => 2],
-            ['stickerBook_id' => 2],
-            ['stickerBook_id' => 2],
-            ['stickerBook_id' => 2],
-            ['stickerBook_id' => 2],
-            ['stickerBook_id' => 2],
-        ];
+        //{ "reward": { "stickerBookId": "1", "rewardId": "2" } }
+        $stickers = [];
+
+        for($i = 1; $i <= 15; $i++) {
+            $stickers[] = ['stickerBook_id' => 1];
+
+        }
+        for ($i = 1;$i <= 25; $i++) {
+        $stickers[] = ['stickerBook_id' => 2];
+}
         foreach ($stickers as $sticker) {
-            Sticker::create($sticker);
+            $inserted = Sticker::create($sticker);
+            $img = Image::make(base64_encode(QrCode::format('png')->size(200)->margin(1)->generate('{ "reward": { "stickerBookId": "'. $inserted->stickerBook_id .'", "rewardId": "'. $inserted->sticker_id .'" } }')));
+            $img = $img->stream();
+            Storage::disk('local')->put('public/qrcodes/stickerbook' . $inserted->stickerBook_id . '/' . $inserted->sticker_id . '.png', $img);
         }
     }
 }

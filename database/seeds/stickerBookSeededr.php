@@ -17,7 +17,10 @@ class stickerBookSeededr extends Seeder
             ['numberOfStickers' => 25]
         ];
         foreach ($stickerBooks as $stickerBook) {
-            StickerBook::create($stickerBook);
+            $inserted = StickerBook::create($stickerBook);
+            $img = Image::make(base64_encode(QrCode::format('png')->size(200)->margin(1)->generate('{ "login": { "stickerBookId": "' . $inserted->stickerBook_id . '" } }')));
+            $img = $img->stream();
+            Storage::disk('local')->put('public/qrcodes/stickerbooklogin' . $inserted->stickerBook_id . '.png', $img);
         }
     }
 }
