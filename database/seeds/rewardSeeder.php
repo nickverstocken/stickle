@@ -22,7 +22,12 @@ class rewardSeeder extends Seeder
             ['link' => 'https://www.youtube.com/watch?v=o_S4t2b1YBI','title' => 'Bumba aflevering 64', 'price'=> 1],
             ['link' => 'https://www.youtube.com/watch?v=r_j1GzIFCEk','title' => 'Peppa Big aflevering 3', 'price'=> 3],
             ['link' => 'https://www.youtube.com/watch?v=hyTNGkBSjyo','title' => 'Pingu aflevering 1', 'price'=> 1],
-            ['link' => 'https://www.youtube.com/watch?v=84H_fZ7bRXY','title' => 'Pingu aflevering 2', 'price'=> 1]
+            ['link' => 'https://www.youtube.com/watch?v=84H_fZ7bRXY','title' => 'Pingu aflevering 2', 'price'=> 1],
+            ['link' => 'https://www.yiv.com/games/Speed-Racer/index.html', 'title' => 'Street Racer spelletje', 'price' => 5, 'kind' => 'game', 'picturePath' => '/images/games/speedRacer.png'],
+            ['link' => 'http://cdn.gameplayer.io/embed/576742227280298086/?ref=html5gameshub.com', 'title' => 'Tomb runner spelletje', 'price' => 10, 'kind' => 'game', 'picturePath' => '/images/games/tombrunner.jpg'],
+            ['link' => 'http://cdn.gameplayer.io/embed/576742227280298414/?ref=html5gameshub.com', 'title' => 'Sun Beams spelletje', 'price' => 5, 'kind' => 'game', 'picturePath' => '/images/games/sunbeams.png'],
+            ['link' => 'http://cdn.gameplayer.io/embed/576742227280294550/?ref=html5gameshub.com', 'title' => 'Frizzle Fraz spelletje', 'price' => 5, 'kind' => 'game', 'picturePath' => '/images/games/frizzlefraz.png'],
+            ['link' => 'http://cloudgames.com/games/html5/giant-hamster-run-en-s/index.html', 'title' => 'Giant Hamster spelletje', 'price' => 5, 'kind' => 'game', 'picturePath' => '/images/games/gianthamster.png'],
         ];
         foreach ($rewards as $reward) {
             Reward::create($reward);

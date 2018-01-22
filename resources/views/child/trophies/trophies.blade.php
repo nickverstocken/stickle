@@ -11,7 +11,11 @@
             </div>
             <div class="cardtumb">
                 <div class="image">
-                    <img class="poster" src="https://img.youtube.com/vi/{{explode("v=", $reward->link)[1]}}/0.jpg" alt="Instellingen">
+                    @if($reward->kind == 'youtube')
+                    <img class="poster" src="https://img.youtube.com/vi/{{explode("v=", $reward->link)[1]}}/0.jpg" alt="{{$reward->title}}">
+                        @else
+                        <img class="poster" src="{{$reward->picturePath}}" alt="{{$reward->title}}">
+                    @endif
                 </div>
             </div>
             <div class="cardAction">
@@ -21,5 +25,5 @@
         @endforeach
     </div>
 </div>
-
+@include('layouts.modals.error')
 @stop

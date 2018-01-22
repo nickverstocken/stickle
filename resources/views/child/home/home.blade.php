@@ -89,7 +89,11 @@
                             </div>
                             <div class="cardtumb">
                                 <div class="image">
-                                    <img class="poster" src="https://img.youtube.com/vi/{{explode("v=", $reward->reward->link)[1]}}/0.jpg"alt="Instellingen">
+                                    @if($reward->reward->kind == 'youtube')
+                                    <img class="poster" src="https://img.youtube.com/vi/{{explode("v=", $reward->reward->link)[1]}}/0.jpg"alt="{{$reward->reward->title}}">
+                                    @else
+                                        <img class="poster" src="{{$reward->reward->picturePath}}" alt="{{$reward->reward->title}}">
+                                    @endif
                                 </div>
                             </div>
                             <div class="progress-bar">

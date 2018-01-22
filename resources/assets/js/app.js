@@ -191,19 +191,30 @@ window.selectChild = function(childId) {
     });
     scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
     scanner.addListener('scan', function (content) {
-        console.log(content);
-        $.post(content,
+        try{
+            var qr = JSON.parse(content);
+        }catch (e){
+            showError('Login fout', 'Dit is geen geldige QR code...');
+            return;
+        }
+
+        if(!qr.login){
+            showError('Login fout', 'Dit is geen QR code om in te loggen...');
+            return;
+        }
+        var url = '/kind/login/' + qr.login.stickerBookId;
+        $.post(url,
             { childId: childId}
             )
             .done(function(data) {
                 if(data.success){
                     window.location = data.url;
                 }else{
-                   showError('Login error', data.error);
+                   showError('Login fout', data.error);
                 }
             })
             .fail(function() {
-                showError('Login error',"not a valid QR code");
+                showError('Login fout',"Dit is geen geldige QR code...");
             });
     });
     Instascan.Camera.getCameras().then(function (cameras) {
@@ -254,11 +265,17 @@ window.loadscanner = function(childId){
     if(scanner){
         scanner.stop();
     }
-
     $('.QRscan').addClass('show');
     scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
     scanner.addListener('scan', function (content) {
-        $.post(content,
+        console.log(content);
+        var qr = JSON.parse(content);
+        if(!qr.reward){
+            showError('Sticker fout', 'Dit is geen QR code om beloningen te scannen...');
+            return;
+        }
+        var url = `/stickerbook/${qr.reward.stickerBookId}/reward/${qr.reward.rewardId}/scan`;
+        $.post(url,
             { childId: childId}
         )
             .done(function(data) {
